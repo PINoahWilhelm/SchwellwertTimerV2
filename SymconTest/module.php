@@ -324,6 +324,13 @@ require(__DIR__ . "\\pimodule.php");
         public function onAutomaticChange () {
 
             $automatik = $this->AutomatikVar;
+            $automatikVal = GetValue($automatik);
+
+            if ($automatikVal) {
+
+                $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
+
+            }
 
         }
 
@@ -381,7 +388,13 @@ require(__DIR__ . "\\pimodule.php");
 
                     IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
 
+                    $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
+
+                    $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer");
+
                 } else {
+
+                    $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
                     IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
