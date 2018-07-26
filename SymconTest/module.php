@@ -47,7 +47,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function setExcludedHide() {
 
-            return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar, $this->Status);
+            return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar, $this->Status, $this->searchObjectByName("Verzögerung"));
 
         }
 
@@ -59,7 +59,10 @@ require(__DIR__ . "\\pimodule.php");
 
         public function CheckVariables () {
 
-            $switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
+            $switches = $this->createSwitches(array("Automatik|0|false", "Sperre|1|false", "Status|2|false"));
+
+            $verzögerung = $this->checkInteger("Verzögerung", false, "", 0, $this->secondsToTimestamp(300));
+            $nachlauf = $this->checkInteger("Nachlauf", false, "", 0, $this->secondsToTimestamp(1800));
 
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
@@ -365,7 +368,9 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($newStatus) {
 
-                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 10);
+                    $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
+
+                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
 
                 } else {
 

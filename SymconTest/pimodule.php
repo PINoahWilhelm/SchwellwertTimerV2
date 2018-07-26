@@ -374,6 +374,14 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function secondsToTimestamp($sek) {
+        return (0 - 3600 + $sek);
+    }
+
+    protected function timestampToSeconds ($timestamp) {
+        return ((0 - 3600) + ($timestamp * -1)) * -1;
+    }
+
     protected function checkInteger ($name, $setProfile = false, $position = "", $index = 0, $defaultValue = null) {
 
         if ($name != null) {
