@@ -64,6 +64,9 @@ require(__DIR__ . "\\pimodule.php");
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 0, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 0, $this->secondsToTimestamp(1800));
 
+            $this->addProfile($verzögerung, "~UnixTimestampTime");
+            $this->addProfile($nachlauf, "~UnixTimestampTime");
+
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
 
