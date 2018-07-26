@@ -63,10 +63,10 @@ require(__DIR__ . "\\pimodule.php");
 
         public function CheckVariables () {
 
-            // $switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
+            $switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
 
-            // $targets = $this->checkFolder("Targets");
-            // $sensoren = $this->checkFolder("Sensoren");
+            $targets = $this->checkFolder("Targets");
+            $sensoren = $this->checkFolder("Sensoren");
 
             // $this->createOnChangeEvents(array($this->searchObjectByName("Automatik") . "|onAutomaticChange"), $this->searchObjectByName("Events"));
 
