@@ -42,7 +42,13 @@ require(__DIR__ . "\\pimodule.php");
 
         public function setExcludedHide() {
 
-            return array($this->AutomatikVar, $this->SperreVar, $this->Status);
+            return array($this->AutomatikVar, $this->SperreVar, $this->Status, $this->detailsVar);
+
+        }
+
+        public function setExcludedShow () {
+
+            return array("script", "instance");
 
         }
 

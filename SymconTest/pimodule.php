@@ -1416,6 +1416,28 @@ abstract class PISymconModule extends IPSModule {
 
     } 
 
+    protected function nameByObjectType ($ot) {
+
+        switch ($ot) {
+
+            case 0:
+                return "category";
+            case 1:
+                return "instance";
+            case 2:
+                return "variable";
+            case 3:
+                return "script";
+            case 4:
+                return "event";
+            case 5:
+                return "media";
+            case 6:
+                return "link";
+
+        }
+    } 
+
     // $varNames Beispiel: array("Element 1|false|1>onElement1Change", "Element 2|true|2")
     //                     array("Name|DefaultVal|Index")
     protected function createSwitches ($varNames, $position = null) {
@@ -2036,7 +2058,9 @@ abstract class PISymconModule extends IPSModule {
 
             foreach ($obj['ChildrenIDs'] as $child) {
 
-                if (!in_array($child, $exclude)) {
+                $o = IPS_GetObject($child);
+
+                if (!in_array($child, $exclude) && !in_array($this->nameByObjectType($o['ObjectType']), $exclude)) {
 
                     $this->hide($child);
 
@@ -2063,7 +2087,9 @@ abstract class PISymconModule extends IPSModule {
 
             foreach ($obj['ChildrenIDs'] as $child) {
 
-                if (!in_array($child, $exclude)) {
+                $o = IPS_GetObject($child);
+
+                if (!in_array($child, $exclude) && !in_array($this->nameByObjectType($o['ObjectType']), $exclude)) {
 
                     $this->show($child);
 
