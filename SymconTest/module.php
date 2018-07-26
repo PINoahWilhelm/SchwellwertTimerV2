@@ -124,6 +124,48 @@ require(__DIR__ . "\\pimodule.php");
                         
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
+                        $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
+
+                    } else {
+
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil);
+
+                    } 
+
+                }
+                
+
+            } else {
+
+                $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
+                $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
+                $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
+
+            }
+
+            if ($sensor2 != null) {
+
+                if (!$this->doesExist($this->searchObjectByName("Sensor 2", $this->Sensoren))) {
+
+                    $sensor2link = $this->linkVar($sensor2, "Sensor 2", $this->Sensoren, 0, true);
+
+                    $sensor2schwellwert = $this->checkVar("Sensor 2 Schwellwert", $this->getVarType($sensor2), "", "", 999);
+
+                    $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil);
+
+                    $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
+
+                } else {
+
+                    if ($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)) != $sensor2) {
+                        
+                        $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
+                        $this->deleteObject($this->searchObjectByName("Sensor 2 Schwellwert"));
+                        $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
+
+                    } else {
+
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 2 Schwellwert"), $sensor2profil);
 
                     }
 
@@ -132,41 +174,46 @@ require(__DIR__ . "\\pimodule.php");
 
             } else {
 
-
+                $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
+                $this->deleteObject($this->searchObjectByName("Sensor 2 Schwellwert"));
+                $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
 
             }
 
-            if ($sensor2 != null) {
+            if ($Sensor3 != null) {
 
-                if (!$this->doesExist($this->searchObjectByName("Sensor 2"))) {
+                if (!$this->doesExist($this->searchObjectByName("Sensor 3", $this->Sensoren))) {
 
-                    $sensor2link = $this->linkVar($sensor2, "Sensor 2", $this->Sensoren, 0, true);
-                    
-                    $sensor2schwellwert = $this->checkVar("Sensor 2 Schwellwert", $this->getVarType($sensor2), "");
+                    $Sensor3link = $this->linkVar($Sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
-                    $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil);
+                    $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($Sensor3), "", "", 999);
 
-                    $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
+                    $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil);
+
+                    $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $Sensor3 . "|onSensorChange"), $this->Events);
+
+                } else {
+
+                    if ($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)) != $Sensor3) {
+                        
+                        $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
+                        $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
+                        $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
+
+                    } else {
+
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 3 Schwellwert"), $sensor3profil);
+
+                    }
 
                 }
                 
 
-            }
+            } else {
 
-            if ($sensor3 != null) {
-
-                if (!$this->doesExist($this->searchObjectByName("Sensor 3"))) {
-
-                    $sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
-                    
-                    $sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "");
-
-                    $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil);
-
-                    $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
-
-                }
-                
+                $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
+                $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
+                $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
 
             }
 
