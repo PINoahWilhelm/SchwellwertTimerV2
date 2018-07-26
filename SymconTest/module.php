@@ -92,9 +92,9 @@ require(__DIR__ . "\\pimodule.php");
             $this->RegisterPropertyInteger("Sensor2", null);
             $this->RegisterPropertyInteger("Sensor3", null);
 
-            $this->RegisterPropertyInteger("Sensor1Profile", null);
-            $this->RegisterPropertyInteger("Sensor2Profile", null);
-            $this->RegisterPropertyInteger("Sensor3Profile", null);
+            $this->RegisterPropertyInteger("Sensor1Profile", 5);
+            $this->RegisterPropertyInteger("Sensor2Profile", 5);
+            $this->RegisterPropertyInteger("Sensor3Profile", 5);
 
             $this->RegisterPropertyInteger("Mode", 1);
 
