@@ -341,6 +341,8 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onStatusChanged () {
 
+            echo "Status changed";
+
         }
 
         public function onTresholdChange () {
@@ -351,8 +353,8 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onSensorChange ($fromtrailing = false) {
 
-            $senderVar = $_IPS['VARIABLE'];
-            $senderVal = GetValue($senderVar);
+            //$senderVar = $_IPS['VARIABLE'];
+            //$senderVal = GetValue($senderVar);
             $automatik = GetValue($this->AutomatikVar);
             $statusVar = $this->Status;
             $statusVal = GetValue($status);
