@@ -70,7 +70,7 @@ require(__DIR__ . "\\pimodule.php");
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
 
             $this->hide($targets);
             $this->hide($sensoren);
@@ -239,9 +239,13 @@ require(__DIR__ . "\\pimodule.php");
 
         ###################################################################################################################################
 
-        protected function onAutomaticChange () {
+        public function onAutomaticChange () {
 
             $automatik = $this->AutomatikVar;
+
+        }
+
+        public function onStatusChanged () {
 
         }
 

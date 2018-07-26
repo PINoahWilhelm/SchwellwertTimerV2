@@ -2337,10 +2337,14 @@ abstract class PISymconModule extends IPSModule {
                         $targetID = intval($funcAry[0]);
                         $function = $funcAry[1];
 
-                        $newName = IPS_GetName($targetID);
-                        $newName = "onChange " . $newName;
+                        if ($this->doesExist($targetID)) {
 
-                        $newEvents[] = $this->easyCreateOnChangeFunctionEvent($newName, $targetID, $function, $parent);
+                            $newName = IPS_GetName($targetID);
+                            $newName = "onChange " . $newName;
+
+                            $newEvents[] = $this->easyCreateOnChangeFunctionEvent($newName, $targetID, $function, $parent);
+
+                        }
 
                     }
 
