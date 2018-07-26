@@ -390,7 +390,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
 
-                    $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer");
+                    $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer", null, "last", true);
 
                 } else {
 
