@@ -136,7 +136,7 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    protected function onDetailsChange () {
+    public function onDetailsChange () {
 
         $senderVar = $_IPS['VARIABLE'];
         $senderVal = GetValue($senderVar);
