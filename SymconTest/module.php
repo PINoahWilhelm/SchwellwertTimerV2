@@ -349,7 +349,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function onSensorChange ($fromtrailing = false;) {
+        public function onSensorChange ($fromtrailing = false) {
 
             $senderVar = $_IPS['VARIABLE'];
             $senderVal = GetValue($senderVar);
