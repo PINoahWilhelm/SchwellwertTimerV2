@@ -47,7 +47,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function setExcludedHide() {
 
-            return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar, $this->Status, $this->searchObjectByName("Verzögerung"));
+            return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar, $this->Status);
 
         }
 
@@ -63,6 +63,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
+
+            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false);
 
             $this->addProfile($verzögerung, "~UnixTimestampTime");
             $this->addProfile($nachlauf, "~UnixTimestampTime");
@@ -80,6 +82,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->hide($targets);
             $this->hide($sensoren);
+            $this->hide($nachlaufAktiv);
 
             $this->checkSensorVars();
 
@@ -89,6 +92,8 @@ require(__DIR__ . "\\pimodule.php");
 
             // Scripts checken -und erstellen
             $this->checkScript("DelayEnd", "onDelayEnd");
+            $this->checkScript("Trailing", "trailing");
+            $this->checkScript("onTrailingEnd", "onTrailingEnd");
 
         }
 
@@ -340,9 +345,11 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onTresholdChange () {
 
+            $this->onSensorChange();
+
         }
 
-        public function onSensorChange () {
+        public function onSensorChange ($fromtrailing = false;) {
 
             $senderVar = $_IPS['VARIABLE'];
             $senderVal = GetValue($senderVar);
@@ -357,6 +364,8 @@ require(__DIR__ . "\\pimodule.php");
             $sensor1schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 1 Schwellwert"));
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 2 Schwellwert"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 3 Schwellwert"));
+
+            $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
 
@@ -382,21 +391,41 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                if ($newStatus) {
+                if (!$fromtrailing) {
 
-                    $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
+                    if ($trailingActive) {
+                        return;
+                    }                    
 
-                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                    if ($newStatus) {
 
-                    $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
-
-                    $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer", null, "last", true);
+                        $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
+    
+                        IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                        IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 10);
+    
+                        $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
+    
+                        $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer", null, "last", true);
+    
+                    } else {
+    
+                        $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
+    
+                        IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+    
+                    }
 
                 } else {
 
-                    $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
+                    $nachlaufactive = GetValue($this->searchObjectByName("Nachlauf aktiv"));
 
-                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+                    if ($newStatus && $nachlaufactive) {
+
+                        $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
+                        IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $nachlauf);
+
+                    }
 
                 }
 
@@ -407,7 +436,26 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onDelayEnd () {
 
+            SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
 
+            $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
+
+            SetValue($this->Status, true);
+
+            IPS_SetScriptTimer();
+
+        }
+
+        public function trailing () {
+
+            $this->onSensorChange(true);
+
+        }
+
+        public function onTrailingEnd () {
+
+            SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
+            SetValue($this->searchObjectByName("Status"), false);
 
         }
 
