@@ -128,7 +128,7 @@ abstract class PISymconModule extends IPSModule {
     ##                      ##
     ##########################
 
-    protected setGlobalized () {
+    protected function setGlobalized () {
 
         return array();
     
