@@ -76,7 +76,7 @@ require(__DIR__ . "\\pimodule.php");
         public function CheckScripts () {
 
             // Scripts checken -und erstellen
-
+            $this->checkScript("DelayEnd", "onDelayEnd");
 
         }
 
@@ -324,6 +324,63 @@ require(__DIR__ . "\\pimodule.php");
         }
 
         public function onSensorChange () {
+
+            $senderVar = $_IPS['VARIABLE'];
+            $senderVal = GetValue($senderVar);
+            $automatik = GetValue($this->AutomatikVar);
+            $statusVar = $this->Status;
+            $statusVal = GetValue($status);
+
+            $sensor1 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)));
+            $sensor2 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
+            $sensor3 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
+
+            $sensor1schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 1 Schwellwert"));
+            $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 2 Schwellwert"));
+            $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 3 Schwellwert"));
+
+            $currentStatus = GetValue($this->searchObjectByName("Status"));
+
+            if ($automatik) {
+
+                $newStatus = false;
+
+                if ($this->ReadPropertyInteger("SchwellwertMode") == 1) {
+
+                    if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
+
+                        $newStatus = true;
+    
+                    }
+
+                } else {
+
+                    if ($sensor1schwellwert <= $sensor1 || $sensor2schwellwert <= $sensor2 || $sensor3schwellwert <= $sensor3) {
+
+                        $newStatus = true;
+    
+                    }
+
+                }
+
+                if ($newStatus) {
+
+                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 10);
+
+                } else {
+
+                    IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+
+                }
+
+
+            }
+
+        }
+
+        public function onDelayEnd () {
+
+
 
         }
 

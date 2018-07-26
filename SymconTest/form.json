@@ -35,7 +35,8 @@
 	  { "type": "Select", "name": "Mode", "caption": "Aktivieren",
 		"options": [
 				{ "label": "Bei Grenzüberschreitung", "value": "1" },
-				{ "label": "Bei Grenzunterschreitung", "value": "2" }
+                { "label": "Bei Grenzunterschreitung", "value": "2" },
+                { "label": "Benutzerdefiniert", "value": "3" }
 			]
 		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",

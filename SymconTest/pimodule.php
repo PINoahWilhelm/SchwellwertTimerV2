@@ -2368,6 +2368,29 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function getValueIfPossible ($id) {
+
+        if ($id == null || $id == 0) {
+
+            return null;
+
+        } else {
+
+            if ($this->doesExist($id)) {
+
+                $gv = GetValue($id);
+                return $gv;
+
+            } else {
+
+                return 0;
+
+            }
+
+        }
+
+    }
+
 
 
 }
