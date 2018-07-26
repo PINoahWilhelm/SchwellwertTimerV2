@@ -23,35 +23,35 @@ abstract class PISymconModule extends IPSModule {
 
         parent::__construct($InstanceID);
 
-        // $className = get_class($this);
+        $className = get_class($this);
 
-        // $moduleGUID = $this->getModuleGuidByName($className);
+        $moduleGUID = $this->getModuleGuidByName($className);
 
-        // $module = IPS_GetModule($moduleGUID);
-        // //$ownInstance = IPS_GetObject($this->InstanceID);
+        $module = IPS_GetModule($moduleGUID);
+        //$ownInstance = IPS_GetObject($this->InstanceID);
 
-        // //$this->instanceName = $ownInstance['ObjectName'];
+        //$this->instanceName = $ownInstance['ObjectName'];
 
-        // //$this->moduleID = $module['ModuleID'];
-        // //$this->libraryID = $module['LibraryID'];
+        //$this->moduleID = $module['ModuleID'];
+        //$this->libraryID = $module['LibraryID'];
 
-        // $moduleJsonPath = __DIR__ . "\\module.json";
+        $moduleJsonPath = __DIR__ . "\\module.json";
 
-        // $moduleJson = json_decode(file_get_contents($moduleJsonPath));
+        $moduleJson = json_decode(file_get_contents($moduleJsonPath));
 
-        // $this->prefix = $moduleJson->prefix;
+        $this->prefix = $moduleJson->prefix;
 
-        // if ($this->doesExist($this->searchObjectByName("Automatik"))) {
+        if ($this->doesExist($this->searchObjectByName("Automatik"))) {
 
-        //     $this->AutomatikVar = $this->searchObjectByName("Automatik");
+            $this->AutomatikVar = $this->searchObjectByName("Automatik");
 
-        // }
+        }
 
-        // if ($this->doesExist($this->searchObjectByName("Sperre"))) {
+        if ($this->doesExist($this->searchObjectByName("Sperre"))) {
 
-        //     $this->SperreVar = $this->searchObjectByName("Sperre");
+            $this->SperreVar = $this->searchObjectByName("Sperre");
 
-        // }
+        }
 
         //$this->initDetails();
 
@@ -72,8 +72,6 @@ abstract class PISymconModule extends IPSModule {
     public function Create() {
 
         parent::Create();
-
-        $this->parentID = IPS_GetParent($this->InstanceID);
 
         $this->RegisterProperties();
 
