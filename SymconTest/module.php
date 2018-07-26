@@ -357,7 +357,7 @@ require(__DIR__ . "\\pimodule.php");
             //$senderVal = GetValue($senderVar);
             $automatik = GetValue($this->AutomatikVar);
             $statusVar = $this->Status;
-            $statusVal = GetValue($status);
+            $statusVal = GetValue($statusVar);
 
             $sensor1 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)));
             $sensor2 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
