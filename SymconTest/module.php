@@ -8,6 +8,8 @@ require(__DIR__ . "\\pimodule.php");
 
         // Eigene Variablen 
         public $Status;
+        public $Targets;
+        public $Sensoren;
 
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
@@ -27,6 +29,12 @@ require(__DIR__ . "\\pimodule.php");
 
  
         }
+
+        protected function setNeededModules () {
+
+            return array("Lux", "Temperature_F", "Temperature_C", "Wattage");
+
+        }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
@@ -35,18 +43,19 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function configForm () {
+        protected function setGlobalized () {
 
+            return array("Targets", "Sensoren");
 
         }
 
-        public function setExcludedHide() {
+        protected function setExcludedHide() {
 
             return array($this->AutomatikVar, $this->SperreVar, $this->Status, $this->detailsVar);
 
         }
 
-        public function setExcludedShow () {
+        protected function setExcludedShow () {
 
             return array("script", "instance");
 
@@ -56,7 +65,17 @@ require(__DIR__ . "\\pimodule.php");
 
             $switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
 
+            $targets = $this->checkFolder("Targets");
+            $sensoren = $this->checkFolder("Sensoren");
+
+            $this->createOnChangeEvents(array($this->searchObjectByName("Automatik") . "|onAutomaticChange"), $this->searchObjectByName("Events"));
+
+            $this->hide($targets);
+            $this->hide($sensoren);
+
             $this->Status = $switches[2];
+
+            $this->checkSensorVars();
 
         }
 
@@ -69,20 +88,32 @@ require(__DIR__ . "\\pimodule.php");
 
         public function RegisterProperties () {
 
+            $this->RegisterPropertyInteger("Sensor1", null);
+            $this->RegisterPropertyInteger("Sensor2", null);
+            $this->RegisterPropertyInteger("Sensor3", null);
+
+            $this->RegisterPropertyInteger("Sensor1Profile", null);
+            $this->RegisterPropertyInteger("Sensor2Profile", null);
+            $this->RegisterPropertyInteger("Sensor3Profile", null);
+
+            $this->RegisterPropertyInteger("Mode");
+
+            $this->RegisterPropertyInteger("SchwellwertMode");
 
         }
 
-        public function onSperreChange () {
-
-            echo "Sperre changed :)";
+        public function checkSensorVars() {
 
         }
 
-        public function onAutomatikChange () {
+        ###################################################################################################################################
 
-            echo "Automatik changed :)";
+        protected function onAutomaticChange () {
+
+            $automatik = $this->AutomatikVar;
 
         }
+
 }
 
 ?>

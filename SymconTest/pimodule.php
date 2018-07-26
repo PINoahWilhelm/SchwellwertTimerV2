@@ -60,6 +60,8 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
+        $this->initGlobalized();
+
         //$this->initDetails();
 
         
@@ -120,7 +122,98 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    ##########################
+    ##                      ##
+    ## Globalize VarID Mod  ##
+    ##                      ##
+    ##########################
+
+    protected setGlobalized () {
+
+        return array();
+    
+    }
+
+    protected initGlobalized () {
+
+        $gbl = $this->setGlobalized();
+
+        if (count($gbl) > 0) {
+
+            foreach ($gbl as $var) {
+
+                if ($this->doesExist($this->searchObjectByName($var))) {
+
+                    $this->$var = $this->searchObjectByName($var);
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    ##########################
+    ##                      ##
+    ## Standard Profile Mod ##
+    ##                      ##
+    ##########################
+
+    protected function setNeededModules () {
+
+        return array();
+
+    }
+
+    protected function initNeededModules () {
+
+        $neededModules = $this->setNeededModules();
+
+        if (count($neededModules) > 0) {
+
+            //$name, $type, $min = 0, $max = 100, $steps = 1, $associations = null, $prefix = "", $suffix = ""
+
+            if (in_array("Lux", $neededModules)) {
+
+                $this->checkVariableProfile($this->prefix . ".Lux_float", $this->varTypeByName("float"), 0, 150000, 100, null, "", " lx");
+                $this->checkVariableProfile($this->prefix . ".Lux_int", $this->varTypeByName("int"), 0, 150000, 100, null, "", " lx");
+
+            }
+
+            if (in_array("Temperature_F", $neededModules)) {
+
+                $this->checkVariableProfile($this->prefix . ".Temperature_F_float", $this->varTypeByName("float"), 0, 8450, 34, null, "", " °F");
+                $this->checkVariableProfile($this->prefix . ".Temperature_F_int", $this->varTypeByName("int"), 0, 8450, 34, null, "", " °F");
+
+            }
+
+            if (in_array("Temperature_C", $neededModules)) {
+
+                $this->checkVariableProfile($this->prefix . ".Temperature_C_float", $this->varTypeByName("float"), 0,  250, 1, null, "", " °C");
+                $this->checkVariableProfile($this->prefix . ".Temperature_C_int", $this->varTypeByName("int"), 0, 250, 1, null, "", " °C");
+
+            }
+
+            if (in_array("Wattage", $neededModules)) {
+
+                $this->checkVariableProfile($this->prefix . ".Wattage_float", $this->varTypeByName("float"), 0, 5000, 1, null, "", " W");
+                $this->checkVariableProfile($this->prefix . ".Wattage_int", $this->varTypeByName("float"), 0, 5000, 1, null, "", " W");
+
+            }
+
+        }
+
+    }
+
+
+    #################
+    ##             ##
     ## Details Mod ##
+    ##             ##
+    #################
+
     protected function initDetails () {
 
         if ($this->Details) {
@@ -137,16 +230,36 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    public function setExcludedShow () {
+    protected function setExcludedShow () {
 
         return array();
 
     }
 
-    public function setExcludedHide () {
+    protected function setExcludedHide () {
 
         return array();
 
+    }
+
+    protected function setSpecialShow () {
+
+        return array();
+
+    }
+
+    protected function setSpecialHide () {
+
+        return array();
+
+    }
+
+    protected function onDetailsChangeHide () {
+
+    }
+
+    protected function onDetailsChangeShow () {
+        
     }
 
     public function onDetailsChange () {
@@ -156,18 +269,39 @@ abstract class PISymconModule extends IPSModule {
         $excludeHide = $this->setExcludedHide();
         $excludeShow = $this->setExcludedShow();
 
+        $specialShow = $this->setSpecialShow();
+        $specialHide = $this->setSpecialHide();
+
         // Wenn ausblenden
         if ($senderVal == false) {
 
             $this->hideAll($excludeHide);
 
+            if (count($specialHide)) {
+
+                foreach ($specialHide as $id) {
+                    $this->hide($id);
+                }
+
+            }
+
+            $this->onDetailsChangeHide();
+
         } else {
 
             $this->showAll($excludeShow);
 
+            foreach ($specialShow as $id) {
+                $this->show($id);
+            }
+
+            $this->onDetailsChangeShow();
+
         }
 
     }
+
+    ##------------------------------------------------------------------------------------------------------------
 
     ##                      ##
     ##  Grundfunktionen     ##
