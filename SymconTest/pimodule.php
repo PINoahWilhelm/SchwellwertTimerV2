@@ -2085,7 +2085,7 @@ abstract class PISymconModule extends IPSModule {
 
         if ($this->doesExist($this->searchObjectByName($name, $parent))) {
 
-            return $this->searchObjectByName($name, $parent));
+            return $this->searchObjectByName($name, $parent);
 
         } else {
 
