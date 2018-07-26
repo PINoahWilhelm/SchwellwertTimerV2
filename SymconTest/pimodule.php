@@ -60,6 +60,8 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
+        $this->initGlobalized();
+
         
     }
 
