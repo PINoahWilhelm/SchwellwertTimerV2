@@ -141,7 +141,7 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    protected function setExcluded () {
+    public function setExcluded () {
 
         return array();
 

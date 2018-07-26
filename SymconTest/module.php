@@ -4,7 +4,7 @@ require(__DIR__ . "\\pimodule.php");
     // Klassendefinition
     class SymconSchwellwertTimerV2 extends PISymconModule {
 
-        public $Details = true;
+        public $Details = false;
 
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
@@ -35,7 +35,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        protected function setExcluded() {
+        public function setExcluded() {
 
             return array($this->AutomatikVar, $this->SperreVar);
 
