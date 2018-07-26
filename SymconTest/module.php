@@ -15,7 +15,7 @@ require(__DIR__ . "\\pimodule.php");
             // Diese Zeile nicht löschen
             parent::__construct($InstanceID);
 
-            
+
 
             // Selbsterstellter Code
         }
@@ -40,7 +40,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function setExcluded() {
+        public function setExcludedHide() {
 
             return array($this->AutomatikVar, $this->SperreVar, $this->Status);
 
