@@ -404,7 +404,6 @@ require(__DIR__ . "\\pimodule.php");
                         $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
     
                         IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
-                        IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 10);
     
                         $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
     
@@ -440,6 +439,8 @@ require(__DIR__ . "\\pimodule.php");
         public function onDelayEnd () {
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
+
+            IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 5);
 
             $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
