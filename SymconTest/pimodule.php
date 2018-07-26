@@ -11,6 +11,7 @@ abstract class PISymconModule extends IPSModule {
     public $parentID = null;
     public $form;
     public $details = false;
+    public $detailsVar = 0;
     public $detailsExclude = null;
 
 
@@ -50,6 +51,12 @@ abstract class PISymconModule extends IPSModule {
         if ($this->doesExist($this->searchObjectByName("Sperre"))) {
 
             $this->SperreVar = $this->searchObjectByName("Sperre");
+
+        }
+
+        if ($this->Details) {
+
+            $this->detailsVar = $this->getVarIfPossible("Details");
 
         }
 
@@ -130,7 +137,13 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    public function setExcluded () {
+    public function setExcludedShow () {
+
+        return array();
+
+    }
+
+    public function setExcludedHide () {
 
         return array();
 
@@ -140,12 +153,17 @@ abstract class PISymconModule extends IPSModule {
 
         $senderVar = $_IPS['VARIABLE'];
         $senderVal = GetValue($senderVar);
-        $exclude = $this->setExcluded();
+        $excludeHide = $this->setExcludedHide();
+        $excludeShow = $this->setExcludedShow();
 
         // Wenn ausblenden
         if ($senderVal == false) {
 
-            $this->hideAll($exclude);
+            $this->hideAll($excludeHide);
+
+        } else {
+
+            $this->showAll($excludeShow);
 
         }
 
@@ -2025,6 +2043,53 @@ abstract class PISymconModule extends IPSModule {
                 }
 
             }
+
+        }
+
+    }
+
+    protected function showAll ($exclude = null, $parent = null) {
+
+        if ($parent == null || $parent == null) {
+            $parent = $this->InstanceID;
+        }
+        if ($exclude == null) {
+            $exclude = array();
+        }
+
+        $obj = IPS_GetObject($parent);
+
+        if (IPS_HasChildren($obj['ObjectID'])) {
+
+            foreach ($obj['ChildrenIDs'] as $child) {
+
+                if (!in_array($child, $exclude)) {
+
+                    $this->show($child);
+
+                }
+
+            }
+
+        }
+
+    }
+
+    protected function getVarIfPossible ($name, $parent = null) {
+
+        if ($parent == null) {
+
+            $parent = $this->InstanceID;
+
+        }
+
+        if ($this->doesExist($this->searchObjectByName($name, $parent))) {
+
+            return $this->searchObjectByName($name, $parent));
+
+        } else {
+
+            return null;
 
         }
 
