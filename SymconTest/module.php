@@ -426,6 +426,7 @@ require(__DIR__ . "\\pimodule.php");
 
                         $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
                         IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+                        $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Nachlauf Timer", null, "last", true);
 
                     }
 
@@ -458,6 +459,8 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
             SetValue($this->searchObjectByName("Status"), false);
+
+            $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
         }
 
