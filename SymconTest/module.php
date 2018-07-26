@@ -51,7 +51,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function setExcludedHide() {
 
-            return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar);
+            // return array($this->AutomatikVar, $this->SperreVar, $this->detailsVar);
 
         }
 
