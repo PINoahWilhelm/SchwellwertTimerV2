@@ -134,7 +134,7 @@ abstract class PISymconModule extends IPSModule {
     
     }
 
-    protected initGlobalized () {
+    protected function initGlobalized () {
 
         $gbl = $this->setGlobalized();
 
