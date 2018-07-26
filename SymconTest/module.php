@@ -354,6 +354,11 @@ require(__DIR__ . "\\pimodule.php");
             if ($automatikVal) {
 
                 $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
+                $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
+
+                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
+                IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
+                IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
             }
 
