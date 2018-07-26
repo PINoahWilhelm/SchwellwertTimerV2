@@ -53,7 +53,7 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
-        $this->initDetails();
+        //$this->initDetails();
 
         
     }
