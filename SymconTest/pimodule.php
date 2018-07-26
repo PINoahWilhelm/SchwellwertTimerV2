@@ -60,8 +60,7 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
-        $this->initGlobalized();
-
+        $this->initNeededProfiles();
         
     }
 
@@ -74,6 +73,8 @@ abstract class PISymconModule extends IPSModule {
         $this->RegisterProperties();
 
         $this->CheckProfiles();
+
+        $this->setNeededProfiles();
 
         $this->CheckVariables();
 
@@ -159,15 +160,15 @@ abstract class PISymconModule extends IPSModule {
     ##                      ##
     ##########################
 
-    protected function setNeededModules () {
+    protected function setNeededProfiles () {
 
         return array();
 
     }
 
-    protected function initNeededModules () {
+    protected function initNeededProfiles () {
 
-        $neededModules = $this->setNeededModules();
+        $neededModules = $this->setNeededProfiles();
 
         if (count($neededModules) > 0) {
 

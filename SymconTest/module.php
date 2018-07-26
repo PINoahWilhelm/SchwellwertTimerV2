@@ -30,12 +30,6 @@ require(__DIR__ . "\\pimodule.php");
 
  
         }
-
-        protected function setNeededModules () {
-
-            return array("Lux", "Temperature_F", "Temperature_C", "Wattage");
-
-        }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
@@ -157,6 +151,10 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
+        }
+
+        protected function setNeededProfiles () {
+            return array("Lux", "Temperature_F", "Temperature_C", "Wattage");
         }
 
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal) {
