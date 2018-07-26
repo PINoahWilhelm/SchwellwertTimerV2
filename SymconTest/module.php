@@ -2,7 +2,7 @@
 require(__DIR__ . "\\pimodule.php");
 
     // Klassendefinition
-    class SymconTest extends PISymconModule {
+    class SymconSchwellwertTimerV2 extends PISymconModule {
 
         public $Details = true;
 
