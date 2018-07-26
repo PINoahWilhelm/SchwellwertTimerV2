@@ -442,7 +442,7 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->Status, true);
 
-            IPS_SetScriptTimer();
+            IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
         }
 
