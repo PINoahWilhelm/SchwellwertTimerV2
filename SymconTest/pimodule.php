@@ -551,12 +551,12 @@ abstract class PISymconModule extends IPSModule {
             return null;
         }
 
-        $childs = IPS_GetChildrenIDs($searchIn);
-
         if (!IPS_HasChildren($searchIn)) {
             return null;
         }
         
+        $childs = IPS_GetChildrenIDs($searchIn);
+
         $returnId = 0;
         
         foreach ($childs as $child) {

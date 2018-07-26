@@ -39,6 +39,26 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
+        protected function onDetailsChangeShow () {
+
+            $prnt = IPS_GetParent($this->InstanceID);
+            $name = IPS_GetName($this->InstanceID);
+
+            $this->linkVar($this->Sensoren, $name . " Sensoren", $prnt,99,true);
+            $this->linkVar($this->Targets, $name . " Geräte", $prnt,99,true);
+
+        }
+
+        protected function onDetailsChangeHide () {
+
+            $prnt = IPS_GetParent($this->InstanceID);
+            $name = IPS_GetName($this->InstanceID);
+
+            $this->deleteObject($this->searchObjectByName($name . " Sensoren", $prnt));
+            $this->deleteObject($this->searchObjectByName($name . " Geräte", $prnt));
+
+        }
+
         protected function setGlobalized () {
 
             return array("Targets", "Sensoren", "Status", "Events");
@@ -341,7 +361,14 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onStatusChange () {
 
-            echo "Status changed";
+            $var = $_IPS['Variable'];
+            $val = GetValue($var);
+
+            if ($val) {
+
+                
+
+            }
 
         }
 
@@ -446,6 +473,9 @@ require(__DIR__ . "\\pimodule.php");
             SetValue($this->Status, true);
 
             IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+
+            $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
+            IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
 
             $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Nachlauf Timer", null, "last", true);
 
