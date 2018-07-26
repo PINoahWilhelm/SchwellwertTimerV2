@@ -307,6 +307,21 @@ abstract class PISymconModule extends IPSModule {
 
     // PI GRUNDFUNKTIONEN
 
+    protected function getVarProfile($id) {
+
+        if ($this->doesExist($id)) {
+
+            if ($this->isVariable($id)) {
+
+                $id = IPS_GetVariable($id);
+                return $id['VariableProfile'];
+
+            }
+
+        }
+
+    }
+
 
     // CheckVar Funktionen
 
@@ -1569,6 +1584,17 @@ abstract class PISymconModule extends IPSModule {
 
         }
     } 
+
+    protected function getVarType ($id) {
+
+        if ($id != null && $id != 0) {
+
+            $obj = IPS_GetVariable($id);
+            return $obj['VariableType'];
+
+        }
+
+    }
 
     // $varNames Beispiel: array("Element 1|false|1>onElement1Change", "Element 2|true|2")
     //                     array("Name|DefaultVal|Index")
