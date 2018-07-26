@@ -180,21 +180,21 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
-            if ($Sensor3 != null) {
+            if ($sensor3 != null) {
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 3", $this->Sensoren))) {
 
-                    $Sensor3link = $this->linkVar($Sensor3, "Sensor 3", $this->Sensoren, 0, true);
+                    $Sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
-                    $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($Sensor3), "", "", 999);
+                    $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
 
                     $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil);
 
-                    $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $Sensor3 . "|onSensorChange"), $this->Events);
+                    $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
                 } else {
 
-                    if ($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)) != $Sensor3) {
+                    if ($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)) != $sensor3) {
                         
                         $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
