@@ -1564,6 +1564,17 @@ abstract class PISymconModule extends IPSModule {
 
     } 
 
+    protected function getTargetID ($id) {
+
+        if ($this->isLink($id)) {
+
+            $lnk = IPS_GetLink($id);
+            return $lnk['TargetID'];
+
+        }
+
+    }
+
     protected function nameByObjectType ($ot) {
 
         switch ($ot) {

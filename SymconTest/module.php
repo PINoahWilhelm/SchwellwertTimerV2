@@ -108,13 +108,24 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($sensor1 != null) {
 
-                if (!$this->doesExist($this->searchObjectByName("Sensor 1"))) {
+                if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->Sensoren))) {
 
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
-                    $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "");
+                    $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", 999);
 
                     $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil);
+
+                    $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
+
+                } else {
+
+                    if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
+                        
+                        $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
+                        $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
+
+                    }
 
                 }
                 
@@ -131,6 +142,8 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil);
 
+                    $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
+
                 }
                 
 
@@ -145,6 +158,8 @@ require(__DIR__ . "\\pimodule.php");
                     $sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "");
 
                     $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil);
+
+                    $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
                 }
                 
@@ -244,6 +259,14 @@ require(__DIR__ . "\\pimodule.php");
         }
 
         public function onStatusChanged () {
+
+        }
+
+        public function onTresholdChange () {
+
+        }
+
+        public function onSensorChange () {
 
         }
 
