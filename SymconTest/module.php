@@ -72,12 +72,10 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange"), $this->Events);
 
-            // $this->hide($targets);
-            // $this->hide($sensoren);
+            $this->hide($targets);
+            $this->hide($sensoren);
 
-            // $this->Status = $switches[2];
-
-            // $this->checkSensorVars();
+            $this->checkSensorVars();
 
         }
 
