@@ -59,7 +59,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public function CheckVariables () {
 
-            $switches = $this->createSwitches(array("Automatik|0|false", "Sperre|1|false", "Status|2|false"));
+            $switches = $this->createSwitches(array("Automatik|false|0", "Sperre|false|1", "Status|false|2"));
 
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
