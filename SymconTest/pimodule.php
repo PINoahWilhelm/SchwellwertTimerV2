@@ -144,7 +144,7 @@ abstract class PISymconModule extends IPSModule {
 
                 if ($this->doesExist($this->searchObjectByName($var))) {
 
-                    $this->$var = $this->searchObjectByName($var);
+                    $this->$$var = $this->searchObjectByName($var);
 
                 }
 
