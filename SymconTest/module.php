@@ -45,7 +45,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function setGlobalized () {
 
-            return array("Targets", "Sensoren");
+            return array("Targets", "Sensoren", "Status");
 
         }
 
