@@ -339,7 +339,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function onStatusChanged () {
+        public function onStatusChange () {
 
             echo "Status changed";
 
