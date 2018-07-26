@@ -61,7 +61,7 @@ abstract class PISymconModule extends IPSModule {
         }
 
         $this->initNeededProfiles();
-        
+        $this->initGlobalized();
     }
 
 
