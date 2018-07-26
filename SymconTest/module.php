@@ -35,15 +35,15 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function setExcluded() {
+        // public function setExcluded() {
 
-            return array($this->AutomatikVar, $this->SperreVar);
+        //     return array($this->AutomatikVar, $this->SperreVar);
 
-        }
+        // }
 
         public function CheckVariables () {
 
-            $switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
+            //$switches = $this->createSwitches(array("Automatik||false", "Sperre||false", "Status||false"));
 
         }
 
