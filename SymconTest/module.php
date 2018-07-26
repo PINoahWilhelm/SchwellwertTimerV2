@@ -73,7 +73,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function setExcludedShow () {
 
-            return array("script", "instance");
+            return array("script", "instance", $this->searchObjectByName("Nachlauf aktiv"));
 
         }
 
