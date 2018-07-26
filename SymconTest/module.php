@@ -61,14 +61,17 @@ require(__DIR__ . "\\pimodule.php");
 
             $switches = $this->createSwitches(array("Automatik|0|false", "Sperre|1|false", "Status|2|false"));
 
-            $verzögerung = $this->checkInteger("Verzögerung", false, "", 0, $this->secondsToTimestamp(300));
-            $nachlauf = $this->checkInteger("Nachlauf", false, "", 0, $this->secondsToTimestamp(1800));
+            $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
+            $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
 
             $this->addProfile($verzögerung, "~UnixTimestampTime");
             $this->addProfile($nachlauf, "~UnixTimestampTime");
 
             $this->addSetValue($verzögerung);
             $this->addSetValue($nachlauf);
+
+            $this->addIcon($verzögerung, "Clock");
+            $this->addIcon($nachlauf, "Clock");
 
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
