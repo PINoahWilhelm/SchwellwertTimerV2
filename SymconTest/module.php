@@ -91,9 +91,9 @@ require(__DIR__ . "\\pimodule.php");
         public function CheckScripts () {
 
             // Scripts checken -und erstellen
-            $this->checkScript("DelayEnd", "onDelayEnd");
-            $this->checkScript("Trailing", "trailing");
-            $this->checkScript("onTrailingEnd", "onTrailingEnd");
+            $this->checkScript("DelayEnd", $this->prefix . "_onDelayEnd");
+            $this->checkScript("Trailing", $this->prefix . "_trailing");
+            $this->checkScript("onTrailingEnd", $this->prefix . "_onTrailingEnd");
 
         }
 
