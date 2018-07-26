@@ -53,8 +53,6 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
-        $this->form = new Form();
-
         $this->initDetails();
 
         
