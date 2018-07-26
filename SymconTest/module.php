@@ -10,6 +10,7 @@ require(__DIR__ . "\\pimodule.php");
         public $Status;
         public $Targets;
         public $Sensoren;
+        public $Events;
 
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
@@ -41,11 +42,12 @@ require(__DIR__ . "\\pimodule.php");
            
             parent::ApplyChanges();
 
+
         }
 
         protected function setGlobalized () {
 
-            return array("Targets", "Sensoren", "Status");
+            return array("Targets", "Sensoren", "Status", "Events");
 
         }
 
@@ -68,7 +70,7 @@ require(__DIR__ . "\\pimodule.php");
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
 
-            // $this->createOnChangeEvents(array($this->searchObjectByName("Automatik") . "|onAutomaticChange"), $this->searchObjectByName("Events"));
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange"), $this->Events);
 
             // $this->hide($targets);
             // $this->hide($sensoren);
