@@ -70,8 +70,8 @@ require(__DIR__ . "\\pimodule.php");
             $this->addSetValue($verzögerung);
             $this->addSetValue($nachlauf);
 
-            $this->addIcon($verzögerung, "Clock");
-            $this->addIcon($nachlauf, "Clock");
+            $this->setIcon($verzögerung, "Clock");
+            $this->setIcon($nachlauf, "Clock");
 
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
