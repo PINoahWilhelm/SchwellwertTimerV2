@@ -112,7 +112,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
-                    $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", 999);
+                    $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
 
                     $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil);
 
@@ -129,6 +129,10 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
                 
+
+            } else {
+
+
 
             }
 
