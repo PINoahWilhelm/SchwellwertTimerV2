@@ -84,7 +84,7 @@ require(__DIR__ . "\\pimodule.php");
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
 
-            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false);
+            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false, "", 0, false);
 
             $this->addProfile($verzögerung, "~UnixTimestampTime");
             $this->addProfile($nachlauf, "~UnixTimestampTime");
@@ -395,7 +395,7 @@ require(__DIR__ . "\\pimodule.php");
                 $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
                 $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
-                SetValue($this->searchObjectByName("Nachlauf Aktiv"), false);
+                SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
                 SetValue($this->searchObjectByName("Status"), false);
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
