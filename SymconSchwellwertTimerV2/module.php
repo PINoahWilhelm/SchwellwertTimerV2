@@ -163,8 +163,6 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else {
 
-                    echo $this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) . " ---- " . $sensor1;
-
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
                         
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
