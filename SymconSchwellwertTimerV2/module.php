@@ -40,6 +40,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->onSensorChange();
 
+            $this->checkSensorVars();
+
         }
 
         protected function onDetailsChangeShow () {
@@ -116,8 +118,6 @@ require(__DIR__ . "\\pimodule.php");
             $this->hide($sensoren);
             $this->hide($nachlaufAktiv);
 
-            $this->checkSensorVars();
-
         }
 
         public function CheckScripts () {
@@ -165,8 +165,6 @@ require(__DIR__ . "\\pimodule.php");
 
                 //echo "sensoren: " . $this->sensoren . "\n";
                 //echo "Sensoren: " . $this->Sensoren . "\n";
-
-                echo "Sensor 1: " . $this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren"));
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
 
