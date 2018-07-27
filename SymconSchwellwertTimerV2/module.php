@@ -480,6 +480,14 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 2 Schwellwert"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 3 Schwellwert"));
 
+            $sensor1 = $this->nullToNull($sensor1);
+            $sensor2 = $this->nullToNull($sensor2);
+            $sensor3 = $this->nullToNull($sensor3);
+
+            $sensor1schwellwert = $this->nullToNull($sensor1schwellwert);
+            $sensor2schwellwert = $this->nullToNull($sensor2schwellwert);
+            $sensor3schwellwert = $this->nullToNull($sensor3schwellwert);
+
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
@@ -498,7 +506,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else {
 
-                    if ($sensor1schwellwert <= $sensor1 || $sensor2schwellwert <= $sensor2 || $sensor3schwellwert <= $sensor3) {
+                    if (($sensor1schwellwert <= $sensor1) == true || ($sensor2schwellwert <= $sensor2) == true || ($sensor3schwellwert <= $sensor3) == true) {
 
                         $newStatus = true;
     
@@ -578,6 +586,14 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 2 Schwellwert"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 3 Schwellwert"));
 
+            $sensor1 = $this->nullToNull($sensor1);
+            $sensor2 = $this->nullToNull($sensor2);
+            $sensor3 = $this->nullToNull($sensor3);
+
+            $sensor1schwellwert = $this->nullToNull($sensor1schwellwert);
+            $sensor2schwellwert = $this->nullToNull($sensor2schwellwert);
+            $sensor3schwellwert = $this->nullToNull($sensor3schwellwert);
+
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
@@ -596,7 +612,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else {
 
-                    if ($sensor1schwellwert <= $sensor1 || $sensor2schwellwert <= $sensor2 || $sensor3schwellwert <= $sensor3) {
+                    if (($sensor1schwellwert <= $sensor1) == true || ($sensor2schwellwert <= $sensor2) == true || ($sensor3schwellwert <= $sensor3) == true) {
 
                         $newStatus = true;
     

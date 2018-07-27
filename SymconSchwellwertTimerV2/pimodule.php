@@ -2399,6 +2399,13 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function nullToNull ($wert) {
+
+        if ($wert == null) {
+            return 0;
+        }
+
+    }
 
 
 }
