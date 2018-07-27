@@ -192,6 +192,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
                     
+                    echo "Sensor 1 exists";
                     // $this->deleteObject($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")));
                     // $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
                     // $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
