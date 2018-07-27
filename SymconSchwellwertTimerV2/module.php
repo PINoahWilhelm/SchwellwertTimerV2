@@ -189,11 +189,11 @@ require(__DIR__ . "\\pimodule.php");
 
             } else {
 
-                $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
-                $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
-                $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
 
                 if ($this->doesExist($sensor1)) {
+                    $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
+                    $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
+                    $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
                 }
 
@@ -239,11 +239,10 @@ require(__DIR__ . "\\pimodule.php");
 
             } else {
 
-                $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
-                $this->deleteObject($this->searchObjectByName("Sensor 2 Schwellwert"));
-                $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
-
                 if ($this->doesExist($sensor2)) {
+                    $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
+                    $this->deleteObject($this->searchObjectByName("Sensor 2 Schwellwert"));
+                    $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor2), $this->Events));
                 }
 
@@ -289,11 +288,11 @@ require(__DIR__ . "\\pimodule.php");
 
             } else {
 
-                $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
-                $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
-                $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
 
                 if ($this->doesExist($sensor3)) {
+                    $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
+                    $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
+                    $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
                 }
 
