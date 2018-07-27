@@ -174,6 +174,8 @@ require(__DIR__ . "\\pimodule.php");
 
                         $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
 
+                        $this->addSetValue($sensor1schwellwert);
+
                         $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                         $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
@@ -208,6 +210,8 @@ require(__DIR__ . "\\pimodule.php");
                     $sensor2link = $this->linkVar($sensor2, "Sensor 2", $this->Sensoren, 0, true);
 
                     $sensor2schwellwert = $this->checkVar("Sensor 2 Schwellwert", $this->getVarType($sensor2), "", "", 999);
+
+                    $this->addSetValue($sensor2schwellwert);
 
                     $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil, $sensor2);
 
@@ -274,6 +278,8 @@ require(__DIR__ . "\\pimodule.php");
                         $sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
                         $sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
+
+                        $this->addSetValue($sensor3schwellwert);
 
                         $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil, $sensor3);
 
