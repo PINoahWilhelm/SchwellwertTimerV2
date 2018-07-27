@@ -581,9 +581,19 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onDelayEnd () {
 
+            $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
+
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
 
-            IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+            if ($nachlauf <= 15) {
+
+                IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+
+            } else {
+
+                IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+
+            }
 
             $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
@@ -591,7 +601,6 @@ require(__DIR__ . "\\pimodule.php");
 
             IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
-            $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
             IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
 
             $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Nachlauf Timer", null, "last", true);
