@@ -164,11 +164,11 @@ require(__DIR__ . "\\pimodule.php");
             if ($sensor1 != null) {
 
                 //echo "sensoren: " . $this->sensoren . "\n";
-                echo "Sensoren: " . $this->Sensoren . "\n";
+                //echo "Sensoren: " . $this->Sensoren . "\n";
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->Sensoren))) {
 
-                    echo "Sensor 1 does not exist";
+                    //echo "Sensor 1 does not exist";
 
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
