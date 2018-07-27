@@ -377,6 +377,7 @@ require(__DIR__ . "\\pimodule.php");
             if ($tresholdVal == 5) {
 
                 $profile = $this->getVarProfile($source);
+                echo "Profile of " . $source . " is " . $profile;
                 $this->addProfile($tresholdVar, $profile);
 
             }
