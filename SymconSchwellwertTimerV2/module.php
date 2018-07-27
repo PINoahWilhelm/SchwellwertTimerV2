@@ -380,7 +380,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onStatusChange () {
 
-            $var = $_IPS['Variable'];
+            $var = $_IPS['VARIABLE'];
             $val = GetValue($var);
 
             $mode = $this->ReadPropertyInteger("Mode");
