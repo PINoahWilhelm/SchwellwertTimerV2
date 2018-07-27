@@ -104,7 +104,7 @@ require(__DIR__ . "\\pimodule.php");
             $this->hide($sensoren);
             $this->hide($nachlaufAktiv);
 
-            $this->checkSensorVars();
+            // $this->checkSensorVars();
 
         }
 
