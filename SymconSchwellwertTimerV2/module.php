@@ -9,7 +9,7 @@ require(__DIR__ . "\\pimodule.php");
         // Eigene Variablen 
         public $Status;
         public $Targets;
-        public $Sensoren;
+        public $sensoren;
         public $Events;
 
         // Der Konstruktor des Moduls
@@ -247,13 +247,13 @@ require(__DIR__ . "\\pimodule.php");
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 3", $this->Sensoren))) {
 
-                    $Sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
+                    $sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
-                    $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
+                    $sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
 
-                    $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil, $sensor3);
+                    $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil, $sensor3);
 
-                    $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
+                    $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
                 } else {
 
@@ -264,13 +264,13 @@ require(__DIR__ . "\\pimodule.php");
                         $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
                         $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
 
-                        $Sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
+                        $sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
-                        $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
+                        $sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
 
-                        $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil, $sensor3);
+                        $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil, $sensor3);
 
-                        $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
+                        $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
                     } else {
 
@@ -401,6 +401,10 @@ require(__DIR__ . "\\pimodule.php");
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+
+            } else {
+
+                $this->onSensorChange();
 
             }
 
