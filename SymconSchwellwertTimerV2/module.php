@@ -163,7 +163,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($sensor1 != null) {
 
-                echo "sensoren: " . $this->sensoren . "\n";
+                //echo "sensoren: " . $this->sensoren . "\n";
                 echo "Sensoren: " . $this->Sensoren . "\n";
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->Sensoren))) {
