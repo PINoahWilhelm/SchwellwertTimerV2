@@ -396,6 +396,7 @@ require(__DIR__ . "\\pimodule.php");
                 $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
                 SetValue($this->searchObjectByName("Nachlauf Aktiv"), false);
+                SetValue($this->searchObjectByName("Status"), false);
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
