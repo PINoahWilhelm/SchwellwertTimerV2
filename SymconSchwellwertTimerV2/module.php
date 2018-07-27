@@ -545,6 +545,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Nachlauf Timer", null, "last", true);
 
+            $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Clock");
+
         }
 
         public function trailing () {
