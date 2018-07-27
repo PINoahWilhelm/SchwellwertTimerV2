@@ -500,11 +500,12 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
 
+                        echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
                         $newStatus = true;
     
                     }
 
-                } else {
+                } else if ($this->ReadPropertyInteger("SchwellwertMode") == 2){
 
                     if (($sensor1schwellwert <= $sensor1) == true || ($sensor2schwellwert <= $sensor2) == true || ($sensor3schwellwert <= $sensor3) == true) {
 
