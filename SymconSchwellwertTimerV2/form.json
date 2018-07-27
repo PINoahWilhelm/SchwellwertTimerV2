@@ -46,9 +46,9 @@
 				]
 		},
 		{ "type": "Label", "label": "Zusätzliche Funktionen" },
-		{ "type": "Label", "label": "Schwellwert Über- (An) / Unterschreitung (Aus)" },
-	  	{ "type": "ValidationTextBox", "name": "valueOn", "caption": "An" },
-	  	{ "type": "ValidationTextBox", "name": "valueOff", "caption": "Aus" },
+		{ "type": "Label", "label": "Bei..." },
+	  	{ "type": "ValidationTextBox", "name": "valueOn", "caption": "Aktivierung" },
+	  	{ "type": "ValidationTextBox", "name": "valueOff", "caption": "Deaktivierung" },
 	  	{ "type": "SelectScript", "name": "ScriptOn", "caption": "An" },
 	  	{ "type": "SelectScript", "name": "ScriptOff", "caption": "Aus" }
 	]

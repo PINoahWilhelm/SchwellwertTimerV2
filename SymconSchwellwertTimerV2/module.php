@@ -489,19 +489,17 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($val) {
 
+                // Bei Überschreitung
                 if ($mode == 1) {
-
-                    $this->setAllInLinkList($this->searchObjectByName("Targets"), true);
-
-                } else if ($mode == 2) {
-
-                    $this->setAllInLinkList($this->searchObjectByName("Targets"), false);
-
-                } else if ($mode == 3) {
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
-                }
+                // Bei Unterschreitung
+                } else if ($mode == 2) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
+
+                } 
 
                 if ($scriptOn != null) {
                     IPS_RunScript($scriptOn);
@@ -511,15 +509,11 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($mode == 1) {
 
-                    $this->setAllInLinkList($this->searchObjectByName("Targets"), false);
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
                 } else if ($mode == 2) {
 
-                    $this->setAllInLinkList($this->searchObjectByName("Targets"), true);
-
-                } else if ($mode == 3) {
-
-                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
                 }
 
