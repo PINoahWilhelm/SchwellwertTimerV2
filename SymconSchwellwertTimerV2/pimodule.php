@@ -10,8 +10,10 @@ abstract class PISymconModule extends IPSModule {
     public $instanceName = null;
     public $parentID = null;
     public $form;
+
     public $details = false;
     public $detailsVar = 0;
+    public $detailsIndex = "last";
     public $detailsExclude = null;
 
 
@@ -218,7 +220,8 @@ abstract class PISymconModule extends IPSModule {
         if ($this->Details) {
 
             //$name, $setProfile = false, $position = "", $index = 0, $defaultValue = null
-            $details = $this->checkBoolean("Details", true, $this->InstanceID, "last", true);
+
+            $details = $this->checkBoolean("Details", true, $this->InstanceID, $this->detailsIndex, true);
             $events = $this->checkFolder("Events");
 
             $this->activateVariableLogging($details);

@@ -12,6 +12,8 @@ require(__DIR__ . "\\pimodule.php");
         public $sensoren;
         public $Events;
 
+        public $detailsIndex = 3;
+
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
         public function __construct($InstanceID) {
