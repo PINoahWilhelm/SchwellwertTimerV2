@@ -490,13 +490,17 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($newStatus) {
 
-                        $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
+                        if (!$this->doesExist($this->searchObjectByName("Verzögerung Timer"))) {
+
+                            $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
     
-                        IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                            IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
     
-                        $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
+                            $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
     
-                        $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer", null, "last", true);
+                            $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Verzögerung Timer", null, "last", true);
+
+                        }
     
                     } else {
     
