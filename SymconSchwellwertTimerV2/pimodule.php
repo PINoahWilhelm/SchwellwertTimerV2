@@ -221,6 +221,8 @@ abstract class PISymconModule extends IPSModule {
             $details = $this->checkBoolean("Details", true, $this->InstanceID, "last", true);
             $events = $this->checkFolder("Events");
 
+            $this->activateVariableLogging($details);
+
             $this->setIcon($details, "Gear");
             $this->hide($events);
             $this->createOnChangeEvents(array($details . "|onDetailsChange"), $events);
