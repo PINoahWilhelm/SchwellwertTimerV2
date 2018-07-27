@@ -178,7 +178,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
 
-                } else {
+                } else { 
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
 
