@@ -315,8 +315,7 @@ abstract class PISymconModule extends IPSModule {
             if ($this->isVariable($id)) {
 
                 $id = IPS_GetVariable($id);
-                print_r($id);
-                return $id['VariableProfile'];
+                return $id['VariableCustomProfile'];
 
             }
 
