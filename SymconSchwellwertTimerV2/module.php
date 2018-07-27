@@ -583,7 +583,7 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
 
-            IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 5);
+            IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
 
             $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
