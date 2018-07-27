@@ -613,6 +613,7 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
+            }
         }
 
         public function onTrailingEnd () {
