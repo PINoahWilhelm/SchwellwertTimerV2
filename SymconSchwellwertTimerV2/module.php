@@ -517,7 +517,7 @@ require(__DIR__ . "\\pimodule.php");
             $scriptOn = $this->ReadPropertyInteger("ScriptOn");
             $scriptOff = $this->ReadPropertyInteger("ScriptOff");
 
-            if (!$automatikVar) {
+            if (!$automatikVal) {
 
                 return;
 
