@@ -563,7 +563,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
 
-                        echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
+                        //echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
                         $newStatus = true;
     
                     }
