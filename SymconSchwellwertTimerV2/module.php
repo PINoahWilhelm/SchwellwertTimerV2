@@ -163,6 +163,8 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($sensor1 != null) {
 
+                echo "Sensor 1 " . $this->searchObjectByName("Sensor 1", $this->Sensoren);
+
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->Sensoren))) {
 
                     echo "Sensor 1 does not exist";
@@ -178,8 +180,6 @@ require(__DIR__ . "\\pimodule.php");
                 } else {
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
-                        
-                        echo "Target ID is not SensorID!" . $this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) . "!=" . $sensor1;
 
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
