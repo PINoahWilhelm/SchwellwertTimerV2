@@ -194,7 +194,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        //$this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);
+                        //$this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);   
 
                     } 
 
