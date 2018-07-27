@@ -315,7 +315,7 @@ require(__DIR__ . "\\pimodule.php");
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {
 
             // Grad_F
-            if ($tresholdVal == 1) {
+            if ($tresholdVal == 2) {
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Temperature_F_float") {
 
@@ -334,7 +334,7 @@ require(__DIR__ . "\\pimodule.php");
             }
 
             // Grad_C
-            if ($tresholdVal == 2) {
+            if ($tresholdVal == 1) {
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Temperature_C_float") {
 
