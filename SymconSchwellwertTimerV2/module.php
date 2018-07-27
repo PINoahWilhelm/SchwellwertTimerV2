@@ -173,10 +173,13 @@ require(__DIR__ . "\\pimodule.php");
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
                     $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
- 
+
                     $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                     $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
+
+                    $sensorName = IPS_GetName($sensor1);
+                    IPS_SetName($sensor1link, $sensorName);
 
                 } else { 
 
@@ -196,6 +199,9 @@ require(__DIR__ . "\\pimodule.php");
                         $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                         $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
+
+                        $sensorName = IPS_GetName($sensor1);
+                        IPS_SetName($sensor1link, $sensorName);
  
                     } else {
 
@@ -234,6 +240,9 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
 
+                    $sensorName = IPS_GetName($sensor2);
+                    IPS_SetName($sensor2link, $sensorName);
+
                 } else {
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)) != $sensor2) {
@@ -250,6 +259,9 @@ require(__DIR__ . "\\pimodule.php");
                         $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil, $sensor2);
 
                         $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
+
+                        $sensorName = IPS_GetName($sensor2);
+                        IPS_SetName($sensor2link, $sensorName);
 
                     } else {
 
@@ -283,6 +295,9 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
+                    $sensorName = IPS_GetName($sensor3);
+                    IPS_SetName($sensor3link, $sensorName);
+
                 } else {
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)) != $sensor3) {
@@ -301,6 +316,9 @@ require(__DIR__ . "\\pimodule.php");
                         $this->giveTresholdProfile($sensor3schwellwert, $sensor3profil, $sensor3);
 
                         $this->createOnChangeEvents(array($sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
+
+                        $sensorName = IPS_GetName($sensor3);
+                        IPS_SetName($sensor3link, $sensorName);
 
                     } else {
 
