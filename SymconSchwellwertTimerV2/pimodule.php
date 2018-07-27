@@ -1396,7 +1396,7 @@ abstract class PISymconModule extends IPSModule {
 
                 $vr = IPS_GetVariable($id);
                 
-                if ($vr['VariableProfile'] != $profile) {
+                if ($vr['VariableCustomProfile'] != $profile) {
 
                     IPS_SetVariableCustomProfile($id, $profile);
 
