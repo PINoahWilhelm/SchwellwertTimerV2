@@ -72,7 +72,7 @@ abstract class PISymconModule extends IPSModule {
 
         $this->RegisterProperties();
 
-        // $this->CheckProfiles();
+        $this->CheckProfiles();
 
         // $this->setNeededProfiles();
 
@@ -89,7 +89,7 @@ abstract class PISymconModule extends IPSModule {
 
         parent::ApplyChanges(); 
 
-        // $this->CheckProfiles();
+        $this->CheckProfiles();
 
         // $this->CheckVariables();
 
