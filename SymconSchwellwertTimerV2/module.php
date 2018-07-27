@@ -175,7 +175,7 @@ require(__DIR__ . "\\pimodule.php");
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
                     $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
-
+ 
                     $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                     $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
