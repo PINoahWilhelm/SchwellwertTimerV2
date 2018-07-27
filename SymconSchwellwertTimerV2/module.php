@@ -190,11 +190,13 @@ require(__DIR__ . "\\pimodule.php");
             } else {
 
 
-                if ($this->doesExist($this->searchObjectByName("Sensor 1"), $this->Sensoren)) {
+                if ($this->doesExist($this->searchObjectByName("Sensor 1", $this->Sensoren))) {
+                    
                     $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                     $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
                     $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
+
                 }
 
             }
@@ -239,7 +241,7 @@ require(__DIR__ . "\\pimodule.php");
 
             } else {
 
-                if ($this->doesExist($this->searchObjectByName("Sensor 2"), $this->Sensoren)) {
+                if ($this->doesExist($this->searchObjectByName("Sensor 2", $this->Sensoren))) {
                     $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
                     $this->deleteObject($this->searchObjectByName("Sensor 2 Schwellwert"));
                     $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
@@ -289,7 +291,7 @@ require(__DIR__ . "\\pimodule.php");
             } else {
 
 
-                if ($this->doesExist($this->searchObjectByName("Sensor 3"), $this->Sensoren)) {
+                if ($this->doesExist($this->searchObjectByName("Sensor 3", $this->Sensoren))) {
                     $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
                     $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
                     $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
