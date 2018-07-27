@@ -86,25 +86,25 @@ require(__DIR__ . "\\pimodule.php");
 
             $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false); // "", 0, false
 
-            // $this->addProfile($verzögerung, "~UnixTimestampTime");
-            // $this->addProfile($nachlauf, "~UnixTimestampTime");
+            $this->addProfile($verzögerung, "~UnixTimestampTime");
+            $this->addProfile($nachlauf, "~UnixTimestampTime");
 
-            // $this->addSetValue($verzögerung);
-            // $this->addSetValue($nachlauf);
+            $this->addSetValue($verzögerung);
+            $this->addSetValue($nachlauf);
 
-            // $this->setIcon($verzögerung, "Clock");
-            // $this->setIcon($nachlauf, "Clock");
+            $this->setIcon($verzögerung, "Clock");
+            $this->setIcon($nachlauf, "Clock");
 
-            // $targets = $this->checkFolder("Targets");
-            // $sensoren = $this->checkFolder("Sensoren");
+            $targets = $this->checkFolder("Targets");
+            $sensoren = $this->checkFolder("Sensoren");
 
-            // $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
 
-            // $this->hide($targets);
-            // $this->hide($sensoren);
-            // $this->hide($nachlaufAktiv);
+            $this->hide($targets);
+            $this->hide($sensoren);
+            $this->hide($nachlaufAktiv);
 
-            // $this->checkSensorVars();
+            $this->checkSensorVars();
 
         }
 
@@ -192,7 +192,10 @@ require(__DIR__ . "\\pimodule.php");
                 $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                 $this->deleteObject($this->searchObjectByName("Sensor 1 Schwellwert"));
                 $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
-                $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
+
+                if ($this->doesExist($sensor1)) {
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
+                }
 
             }
 
@@ -241,6 +244,10 @@ require(__DIR__ . "\\pimodule.php");
                 $this->deleteObject($this->searchObjectByName("onChange Sensor 2 Schwellwert", $this->Events));
                 $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor2), $this->Events));
 
+                if ($this->doesExist($sensor2)) {
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor2), $this->Events));
+                }
+
             }
 
             if ($sensor3 != null) {
@@ -287,6 +294,10 @@ require(__DIR__ . "\\pimodule.php");
                 $this->deleteObject($this->searchObjectByName("Sensor 3 Schwellwert"));
                 $this->deleteObject($this->searchObjectByName("onChange Sensor 3 Schwellwert", $this->Events));
                 $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
+
+                if ($this->doesExist($sensor3)) {
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
+                }
 
             }
 
