@@ -198,7 +198,7 @@ require(__DIR__ . "\\pimodule.php");
                         $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                         $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
-
+ 
                     } else {
 
                         $this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);   
