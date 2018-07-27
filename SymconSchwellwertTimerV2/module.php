@@ -494,15 +494,19 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
+                    if ($scriptOn != null) {
+                        IPS_RunScript($scriptOn);
+                    } 
+
                 // Bei Unterschreitung
                 } else if ($mode == 2) {
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
-                } 
+                    if ($scriptOn != null) {
+                        IPS_RunScript($scriptOff);
+                    } 
 
-                if ($scriptOn != null) {
-                    IPS_RunScript($scriptOn);
                 } 
 
             } else {
@@ -511,15 +515,19 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
+                    if ($scriptOff != null) {
+                        IPS_RunScript($scriptOff);
+                    } 
+
                 } else if ($mode == 2) {
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
-                }
+                    if ($scriptOn != null) {
+                        IPS_RunScript($scriptOn);
+                    } 
 
-                if ($scriptOff != null) {
-                    IPS_RunScript($scriptOff);
-                } 
+                }
 
             }
 

@@ -35,8 +35,7 @@
 	  { "type": "Select", "name": "Mode", "caption": "Aktivieren",
 		"options": [
 				{ "label": "Bei Grenzüberschreitung", "value": "1" },
-                { "label": "Bei Grenzunterschreitung", "value": "2" },
-                { "label": "Benutzerdefiniert", "value": "3" }
+                { "label": "Bei Grenzunterschreitung", "value": "2" }
 			]
 		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",
@@ -48,8 +47,9 @@
 		{ "type": "Label", "label": "Zusätzliche Funktionen" },
 		{ "type": "Label", "label": "Bei..." },
 	  	{ "type": "ValidationTextBox", "name": "valueOn", "caption": "Aktivierung" },
-	  	{ "type": "ValidationTextBox", "name": "valueOff", "caption": "Deaktivierung" },
-	  	{ "type": "SelectScript", "name": "ScriptOn", "caption": "An" },
-	  	{ "type": "SelectScript", "name": "ScriptOff", "caption": "Aus" }
+		{ "type": "ValidationTextBox", "name": "valueOff", "caption": "Deaktivierung" },
+		{ "type": "Label", "label": "Bei..." },
+	  	{ "type": "SelectScript", "name": "ScriptOn", "caption": "Aktivierung" },
+	  	{ "type": "SelectScript", "name": "ScriptOff", "caption": "Deaktivierung" }
 	]
   }
