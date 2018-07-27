@@ -453,6 +453,8 @@ require(__DIR__ . "\\pimodule.php");
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
+
+
             } else {
 
                 $this->onSensorChange();
@@ -505,12 +507,21 @@ require(__DIR__ . "\\pimodule.php");
             $var = $_IPS['VARIABLE'];
             $val = GetValue($var);
 
+            $automatikVar = $this->searchObjectByName("Automatik");
+            $automatikVal = GetValue($automatikVar);
+
             $mode = $this->ReadPropertyInteger("Mode");
             $valueOn = $this->ReadPropertyInteger("valueOn");
             $valueOff = $this->ReadPropertyInteger("valueOff");
 
             $scriptOn = $this->ReadPropertyInteger("ScriptOn");
             $scriptOff = $this->ReadPropertyInteger("ScriptOff");
+
+            if (!$automatikVar) {
+
+                return;
+
+            }
 
             if ($val) {
 
