@@ -131,6 +131,12 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
+            $this->RegisterPropertyInteger("valueOn", 1);
+            $this->RegisterPropertyInteger("valueOff", 0);
+
+            $this->RegisterPropertyInteger("ScriptOn", null);
+            $this->RegisterPropertyInteger("ScriptOff", null);
+
         }
 
         protected function checkSensorVars() {
@@ -377,9 +383,52 @@ require(__DIR__ . "\\pimodule.php");
             $var = $_IPS['Variable'];
             $val = GetValue($var);
 
+            $mode = $this->ReadPropertyInteger("Mode");
+            $valueOn = $this->ReadPropertyInteger("valueOn");
+            $valueOff = $this->ReadPropertyInteger("valueOff");
+
+            $scriptOn = $this->ReadPropertyInteger("ScriptOn");
+            $scriptOff = $this->ReadPropertyInteger("ScriptOff");
+
             if ($val) {
 
-                
+                if ($mode == 1) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), true);
+
+                } else if ($mode == 2) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), false);
+
+                } else if ($mode == 3) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
+
+                }
+
+                if ($scriptOn != null) {
+                    IPS_RunScript($scriptOn);
+                } 
+
+            } else {
+
+                if ($mode == 1) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), false);
+
+                } else if ($mode == 2) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), true);
+
+                } else if ($mode == 3) {
+
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
+
+                }
+
+                if ($scriptOff != null) {
+                    IPS_RunScript($scriptOff);
+                } 
 
             }
 
