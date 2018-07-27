@@ -377,14 +377,14 @@ require(__DIR__ . "\\pimodule.php");
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Wattage_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Wattage_float");
-                    $this->setIcon($tresholdVar, "Energy");
+                    $this->setIcon($tresholdVar, "Electricity");
 
                 }
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Wattage_int") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Wattage_int");
-                    $this->setIcon($tresholdVar, "Energy");
+                    $this->setIcon($tresholdVar, "Electricity");
 
                 }
 
