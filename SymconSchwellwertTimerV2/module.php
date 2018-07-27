@@ -534,18 +534,7 @@ require(__DIR__ . "\\pimodule.php");
     
                     }
 
-                } else {
-
-                    $nachlaufactive = GetValue($this->searchObjectByName("Nachlauf aktiv"));
-
-                    if ($newStatus && $nachlaufactive) {
-
-                        $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
-                        IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
-
-                    }
-
-                }
+                } 
 
 
             }
@@ -576,6 +565,53 @@ require(__DIR__ . "\\pimodule.php");
         public function trailing () {
 
             $this->onSensorChange(true);
+
+            $automatik = GetValue($this->AutomatikVar);
+            $statusVar = $this->Status;
+            $statusVal = GetValue($statusVar);
+
+            $sensor1 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)));
+            $sensor2 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
+            $sensor3 = $this->getValueIfPossible($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
+
+            $sensor1schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 1 Schwellwert"));
+            $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 2 Schwellwert"));
+            $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Sensor 3 Schwellwert"));
+
+            $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
+
+            $currentStatus = GetValue($this->searchObjectByName("Status"));
+
+            if ($automatik) {
+
+                $newStatus = false;
+
+                if ($this->ReadPropertyInteger("SchwellwertMode") == 1) {
+
+                    if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
+
+                        $newStatus = true;
+    
+                    }
+
+                } else {
+
+                    if ($sensor1schwellwert <= $sensor1 || $sensor2schwellwert <= $sensor2 || $sensor3schwellwert <= $sensor3) {
+
+                        $newStatus = true;
+    
+                    }
+
+                }
+
+            $nachlaufactive = GetValue($this->searchObjectByName("Nachlauf aktiv"));
+
+            if ($newStatus && $nachlaufactive) {
+
+                $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
+                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+
+            }
 
         }
 
