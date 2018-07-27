@@ -390,10 +390,12 @@ require(__DIR__ . "\\pimodule.php");
             $automatik = $this->AutomatikVar;
             $automatikVal = GetValue($automatik);
 
-            if ($automatikVal) {
+            if (!$automatikVal) {
 
                 $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
                 $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
+
+                SetValue($this->searchObjectByName("Nachlauf Aktiv"), false);
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
