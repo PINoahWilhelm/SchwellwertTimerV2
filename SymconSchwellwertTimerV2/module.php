@@ -464,7 +464,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function onSensorChange ($fromtrailing = false) {
+        public function onSensorChange () {
 
             //$senderVar = $_IPS['VARIABLE'];
             //$senderVal = GetValue($senderVar);
@@ -506,7 +506,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                if (!$fromtrailing) {
+                // if (!$fromtrailing) {
 
                     if ($trailingActive) {
                         return;
@@ -534,7 +534,7 @@ require(__DIR__ . "\\pimodule.php");
     
                     }
 
-                } 
+                // } 
 
 
             }
