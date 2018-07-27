@@ -549,7 +549,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 // if (!$fromtrailing) {
 
-                    if ($trailingActive) {
+                    if ($trailingActive && $newStatus) {
 
                         $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
                         IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
