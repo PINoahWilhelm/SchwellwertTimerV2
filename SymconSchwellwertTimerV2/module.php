@@ -91,6 +91,9 @@ require(__DIR__ . "\\pimodule.php");
             $this->activateVariableLogging($switches[1]);
             $this->activateVariableLogging($switches[2]);
 
+            $this->activateVariableLogging($verzögerung);
+            $this->activateVariableLogging($nachlauf);
+
             $this->addProfile($verzögerung, "~UnixTimestampTime");
             $this->addProfile($nachlauf, "~UnixTimestampTime");
 
