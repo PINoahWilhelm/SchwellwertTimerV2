@@ -108,6 +108,8 @@ require(__DIR__ . "\\pimodule.php");
             $targets = $this->checkFolder("Targets");
             $sensoren = $this->checkFolder("Sensoren");
 
+            $this->Sensoren = $sensoren;
+
             $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
 
             $this->hide($targets);
@@ -194,7 +196,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        //$this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);   
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);   
 
                     } 
 
