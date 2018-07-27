@@ -157,7 +157,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
 
-                    $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil);
+                    $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                     $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
 
@@ -174,13 +174,13 @@ require(__DIR__ . "\\pimodule.php");
 
                         $sensor1schwellwert = $this->checkVar("Sensor 1 Schwellwert", $this->getVarType($sensor1), "", "", 999);
 
-                        $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil);
+                        $this->giveTresholdProfile($sensor1schwellwert, $sensor1profil, $sensor1);
 
                         $this->createOnChangeEvents(array($sensor1schwellwert . "|onTresholdChange", $sensor1 . "|onSensorChange"), $this->Events);
 
                     } else {
 
-                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil);
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 1 Schwellwert"), $sensor1profil, $sensor1);
 
                     } 
 
@@ -204,7 +204,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $sensor2schwellwert = $this->checkVar("Sensor 2 Schwellwert", $this->getVarType($sensor2), "", "", 999);
 
-                    $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil);
+                    $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil, $sensor2);
 
                     $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
 
@@ -221,13 +221,13 @@ require(__DIR__ . "\\pimodule.php");
 
                         $sensor2schwellwert = $this->checkVar("Sensor 2 Schwellwert", $this->getVarType($sensor2), "", "", 999);
 
-                        $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil);
+                        $this->giveTresholdProfile($sensor2schwellwert, $sensor2profil, $sensor2);
 
                         $this->createOnChangeEvents(array($sensor2schwellwert . "|onTresholdChange", $sensor2 . "|onSensorChange"), $this->Events);
 
                     } else {
 
-                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 2 Schwellwert"), $sensor2profil);
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 2 Schwellwert"), $sensor2profil, $sensor2);
 
                     }
 
@@ -251,7 +251,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
 
-                    $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil);
+                    $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil, $sensor3);
 
                     $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
@@ -268,13 +268,13 @@ require(__DIR__ . "\\pimodule.php");
 
                         $Sensor3schwellwert = $this->checkVar("Sensor 3 Schwellwert", $this->getVarType($sensor3), "", "", 999);
 
-                        $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil);
+                        $this->giveTresholdProfile($Sensor3schwellwert, $Sensor3profil, $sensor3);
 
                         $this->createOnChangeEvents(array($Sensor3schwellwert . "|onTresholdChange", $sensor3 . "|onSensorChange"), $this->Events);
 
                     } else {
 
-                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 3 Schwellwert"), $sensor3profil);
+                        $this->giveTresholdProfile($this->searchObjectByName("Sensor 3 Schwellwert"), $sensor3profil, $sensor3);
 
                     }
 
@@ -296,7 +296,7 @@ require(__DIR__ . "\\pimodule.php");
             return array("Lux", "Temperature_F", "Temperature_C", "Wattage");
         }
 
-        protected function giveTresholdProfile ($tresholdVar, $tresholdVal) {
+        protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {
 
             // Grad_F
             if ($tresholdVal == 1) {
@@ -376,7 +376,8 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($tresholdVal == 5) {
 
-                $this->addProfile($tresholdVar, $this->getVarProfile($tresholdVal));
+                $profile = $this->getVarProfile($source);
+                $this->addProfile($tresholdVar, $profile);
 
             }
 
