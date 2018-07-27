@@ -420,6 +420,45 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
+        public function onDetailsChange () {
+
+            $senderVar = $_IPS['VARIABLE'];
+            $senderVal = GetValue($senderVar);
+            $excludeHide = $this->setExcludedHide();
+            $excludeShow = $this->setExcludedShow();
+    
+            $specialShow = $this->setSpecialShow();
+            $specialHide = $this->setSpecialHide();
+    
+            // Wenn ausblenden
+            if ($senderVal == false) {
+    
+                $this->hideAll($excludeHide);
+    
+                if (count($specialHide)) {
+    
+                    foreach ($specialHide as $id) {
+                        $this->hide($id);
+                    }
+    
+                }
+    
+                $this->onDetailsChangeHide();
+    
+            } else {
+    
+                $this->showAll($excludeShow);
+    
+                foreach ($specialShow as $id) {
+                    $this->show($id);
+                }
+    
+                $this->onDetailsChangeShow();
+    
+            }
+    
+        }
+
         public function onStatusChange () {
 
             $var = $_IPS['VARIABLE'];
