@@ -301,14 +301,14 @@ require(__DIR__ . "\\pimodule.php");
             // Grad_F
             if ($tresholdVal == 1) {
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Temperature_F_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Temperature_F_float");
                     $this->setIcon($tresholdVar, "Temperature");
 
                 }
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Temperature_F_int") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Temperature_F_int");
                     $this->setIcon($tresholdVar, "Temperature");
@@ -320,14 +320,14 @@ require(__DIR__ . "\\pimodule.php");
             // Grad_C
             if ($tresholdVal == 2) {
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Temperature_C_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Temperature_C_float");
                     $this->setIcon($tresholdVar, "Temperature");
 
                 }
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Temperature_C_int") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Temperature_C_int");
                     $this->setIcon($tresholdVar, "Temperature");
@@ -339,14 +339,14 @@ require(__DIR__ . "\\pimodule.php");
             // Lux
             if ($tresholdVal == 3) {
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Lux_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_float");
                     $this->setIcon($tresholdVar, "Sun");
 
                 }
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Lux_int") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_int");
                     $this->setIcon($tresholdVar, "Sun");
@@ -358,14 +358,14 @@ require(__DIR__ . "\\pimodule.php");
             // Wattage
             if ($tresholdVal == 4) {
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Wattage_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Wattage_float");
                     $this->setIcon($tresholdVar, "Energy");
 
                 }
 
-                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int")) {
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Wattage_int") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Wattage_int");
                     $this->setIcon($tresholdVar, "Energy");
