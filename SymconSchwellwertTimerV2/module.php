@@ -572,7 +572,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public function trailing () {
 
-            $this->onSensorChange(true);
+            //$this->onSensorChange(true);
 
             $automatik = GetValue($this->AutomatikVar);
             $statusVar = $this->Status;
