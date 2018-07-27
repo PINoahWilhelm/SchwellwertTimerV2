@@ -87,6 +87,10 @@ require(__DIR__ . "\\pimodule.php");
 
             $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false); // "", 0, false
 
+            $this->activateVariableLogging($switches[0]);
+            $this->activateVariableLogging($switches[1]);
+            $this->activateVariableLogging($switches[2]);
+
             $this->addProfile($verzögerung, "~UnixTimestampTime");
             $this->addProfile($nachlauf, "~UnixTimestampTime");
 
