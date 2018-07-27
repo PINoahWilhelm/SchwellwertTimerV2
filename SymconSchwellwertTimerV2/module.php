@@ -507,7 +507,35 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else if ($this->ReadPropertyInteger("SchwellwertMode") == 2){
 
-                    if (($sensor1schwellwert <= $sensor1) == true || ($sensor2schwellwert <= $sensor2) == true || ($sensor3schwellwert <= $sensor3) == true) {
+                    $sens1valid = false;
+                    $sens2valid = false;
+                    $sens3valid = false;
+
+                    if ($sensor1schwellwert != null && $sensor1 != null) {
+
+                        if ($sensor1schwellwert <= $sensor1) {
+                            $sens1valid = true;
+                        }
+
+                    }
+
+                    if ($sensor2schwellwert != null && $sensor2 != null) {
+
+                        if ($sensor2schwellwert <= $sensor2) {
+                            $sens2valid = true;
+                        }
+
+                    }
+
+                    if ($sensor3schwellwert != null && $sensor3 != null) {
+
+                        if ($sensor3schwellwert <= $sensor3) {
+                            $sens3valid = true;
+                        }
+
+                    }
+
+                    if ($sens1valid || $sens2valid || $sens3valid) {
 
                         $newStatus = true;
     
@@ -613,7 +641,35 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else {
 
-                    if (($sensor1schwellwert <= $sensor1) == true || ($sensor2schwellwert <= $sensor2) == true || ($sensor3schwellwert <= $sensor3) == true) {
+                    $sens1valid = false;
+                    $sens2valid = false;
+                    $sens3valid = false;
+
+                    if ($sensor1schwellwert != null && $sensor1 != null) {
+
+                        if ($sensor1schwellwert <= $sensor1) {
+                            $sens1valid = true;
+                        }
+
+                    }
+
+                    if ($sensor2schwellwert != null && $sensor2 != null) {
+
+                        if ($sensor2schwellwert <= $sensor2) {
+                            $sens2valid = true;
+                        }
+
+                    }
+
+                    if ($sensor3schwellwert != null && $sensor3 != null) {
+
+                        if ($sensor3schwellwert <= $sensor3) {
+                            $sens3valid = true;
+                        }
+
+                    }
+
+                    if ($sens1valid || $sens2valid || $sens3valid) {
 
                         $newStatus = true;
     
