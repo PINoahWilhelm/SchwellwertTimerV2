@@ -84,27 +84,27 @@ require(__DIR__ . "\\pimodule.php");
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
 
-            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false); // "", 0, false
+            // $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false); // "", 0, false
 
-            $this->addProfile($verzögerung, "~UnixTimestampTime");
-            $this->addProfile($nachlauf, "~UnixTimestampTime");
+            // $this->addProfile($verzögerung, "~UnixTimestampTime");
+            // $this->addProfile($nachlauf, "~UnixTimestampTime");
 
-            $this->addSetValue($verzögerung);
-            $this->addSetValue($nachlauf);
+            // $this->addSetValue($verzögerung);
+            // $this->addSetValue($nachlauf);
 
-            $this->setIcon($verzögerung, "Clock");
-            $this->setIcon($nachlauf, "Clock");
+            // $this->setIcon($verzögerung, "Clock");
+            // $this->setIcon($nachlauf, "Clock");
 
-            $targets = $this->checkFolder("Targets");
-            $sensoren = $this->checkFolder("Sensoren");
+            // $targets = $this->checkFolder("Targets");
+            // $sensoren = $this->checkFolder("Sensoren");
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
+            // $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
 
-            $this->hide($targets);
-            $this->hide($sensoren);
-            $this->hide($nachlaufAktiv);
+            // $this->hide($targets);
+            // $this->hide($sensoren);
+            // $this->hide($nachlaufAktiv);
 
-            $this->checkSensorVars();
+            // $this->checkSensorVars();
 
         }
 

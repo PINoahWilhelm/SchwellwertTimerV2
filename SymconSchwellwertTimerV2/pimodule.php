@@ -74,7 +74,7 @@ abstract class PISymconModule extends IPSModule {
 
         $this->CheckProfiles();
 
-        // $this->setNeededProfiles();
+        $this->setNeededProfiles();
 
         // $this->CheckVariables();
 
