@@ -2450,6 +2450,8 @@ abstract class PISymconModule extends IPSModule {
 
                     $newFolder = $this->checkFolder($newFolderName, $parent, $index);
 
+                    $this->show($newFolder);
+
                     $folder = IPS_GetObject($folder);
 
                     foreach ($folder['ChildrenIDs'] as $elem) {
