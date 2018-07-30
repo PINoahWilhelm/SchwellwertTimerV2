@@ -718,7 +718,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
-            $statusVal = GetValue($this->Status);
+            $statusVal = GetValue($this->searchObjectbyName("Status"));
 
             if ($statusVal != true) {
 
@@ -834,7 +834,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($statusVal != false) {
 
-                SetValue($statusVal, false);
+                SetValue($this->searchObjectByName("Status"), false);
 
             }
 
