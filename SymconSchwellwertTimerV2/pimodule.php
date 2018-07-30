@@ -1442,7 +1442,7 @@ abstract class PISymconModule extends IPSModule {
             if ($index != null ) {
                 
                 //IPS_SetPosition($targets, $index);
-                $this->setParent($targets, $index);
+                $this->setPosition($targets, $index);
             
             }
             
