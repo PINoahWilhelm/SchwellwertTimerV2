@@ -2450,6 +2450,8 @@ abstract class PISymconModule extends IPSModule {
 
                     $newFolder = $this->checkFolder($newFolderName, $parent, $index);
 
+                    $ownName = IPS_GetName($this->InstanceID);
+
                     $this->show($newFolder);
 
                     $folder = IPS_GetObject($folder);
@@ -2460,7 +2462,18 @@ abstract class PISymconModule extends IPSModule {
 
                         $obj = IPS_GetObject($elem);
 
-                        $this->linkVar($elem['ObjectID'], $elem['ObjectName'], $newFolder, 0, false);
+                        if ($obj['ObjectType'] == $this->objectTypeByName("link")) {
+
+                            $link = IPS_CreateLink();
+                            IPS_SetName($link, $obj['ObjectName']);
+                            IPS_SetParent($link, $newFolder);
+                            IPS_SetIdent($link, $this->nameToIdent($ownName . $obj['ObjectName']));
+
+                        } else {
+
+                            $this->linkVar($elem['ObjectID'], $elem['ObjectName'], $newFolder, 0, false);
+
+                        }
 
                     }
 
