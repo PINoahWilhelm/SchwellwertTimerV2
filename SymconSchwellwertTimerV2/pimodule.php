@@ -2449,7 +2449,7 @@ abstract class PISymconModule extends IPSModule {
 
             if (IPS_HasChildren($folder)) {
 
-                if (!$this->doesExist($this->searchObjectByName($newFolderName, $parent))) {
+                if ($this->doesExist($this->searchObjectByName($newFolderName, $parent))) {
 
                     //$newFolder = $this->checkFolder($newFolderName, $parent, $index);
 
