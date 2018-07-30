@@ -2445,6 +2445,7 @@ abstract class PISymconModule extends IPSModule {
         if ($this->doesExist($folder)) {
 
             $newFolder = $this->checkFolder($newFolderName, $parent, $index);
+            $this->show($newFolder);
 
             if (IPS_HasChildren($folder)) {
 
@@ -2454,7 +2455,7 @@ abstract class PISymconModule extends IPSModule {
 
                     $ownName = IPS_GetName($this->InstanceID);
 
-                    $this->show($newFolder);
+                    // $this->show($newFolder);
 
                     $folder = IPS_GetObject($folder);
 
