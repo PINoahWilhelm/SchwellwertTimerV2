@@ -443,11 +443,18 @@ require(__DIR__ . "\\pimodule.php");
 
             if (!$automatikVal) {
 
+                $statusVal = GetValue($this->searchObjectByName("Status"));
+
                 $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
                 $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
                 SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
-                SetValue($this->searchObjectByName("Status"), false);
+
+                if ($statusVal != false) {
+
+                    SetValue($this->searchObjectByName("Status"), false);
+
+                }
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
@@ -711,7 +718,13 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
 
-            SetValue($this->Status, true);
+            $statusVal = GetValue($this->Status);
+
+            if ($statusVal != true) {
+
+                SetValue($this->Status, true);
+
+            }
 
             IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
@@ -815,8 +828,15 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onTrailingEnd () {
 
+            $statusVal = GetValue($this->searchObjectByName("Status"));
+
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
-            SetValue($this->searchObjectByName("Status"), false);
+
+            if ($statusVal != false) {
+
+                SetValue($statusVal, false);
+
+            }
 
             $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
