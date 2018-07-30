@@ -2485,6 +2485,10 @@ abstract class PISymconModule extends IPSModule {
 
                 }
 
+            } else {
+
+                echo "linkFolderMobile: No Children";
+
             }            
 
         } else {
