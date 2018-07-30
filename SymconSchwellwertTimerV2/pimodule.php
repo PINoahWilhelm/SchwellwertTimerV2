@@ -2427,6 +2427,50 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function linkFolderMobile ($folder, $newFolderName, $parent = null, $index = null) {
+
+        if ($parent == null) {
+
+            $parent = $this->InstanceID;
+
+        }
+
+        if ($index == null) {
+
+            $index = "|AFTER|" . $this->InstanceID;
+
+        }
+
+        if ($this->doesExist($folder)) {
+
+            if (IPS_HasChildren($folder)) {
+
+                if (!$this->doesExist($this->searchObjectByName($newFolderName, $parent))) {
+
+                    $newFolder = $this->checkFolder($newFolderName, $parent, $index);
+
+                    $folder = IPS_GetObject($folder);
+
+                    foreach ($folder['ChildrenIDs'] as $elem) {
+
+                        //($target, $linkName = "Unnamed Link", $parent = null, $linkPosition = 0, $ident = false)
+
+                        $obj = IPS_GetValue($elem);
+
+                        $this->linkVar($elem['ObjectID'], $elem['ObjectName'], $newFolder, 0, true);
+
+                    }
+
+                }
+
+            }            
+
+        } else {
+            echo "linkFolderMobile: Folder does not exist!";
+        }
+
+    }
+
 
 }
 

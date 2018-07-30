@@ -49,8 +49,8 @@ require(__DIR__ . "\\pimodule.php");
             $prnt = IPS_GetParent($this->InstanceID);
             $name = IPS_GetName($this->InstanceID);
 
-            $this->linkVar($this->Sensoren, $name . " Sensoren", $prnt,99,true);
-            $this->linkVar($this->Targets, $name . " Geräte", $prnt,99,true);
+            $this->linkFolderMobile($this->Sensoren, $name . " Sensoren", $prnt);
+            $this->linkFolderMobile($this->Targets, $name . " Geräte", $prnt);
 
         }
 
