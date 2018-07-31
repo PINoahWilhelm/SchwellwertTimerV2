@@ -168,8 +168,6 @@ require(__DIR__ . "\\pimodule.php");
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
 
-                    echo "Sensor 1 does not exist";
-
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
                     $sensor1schwellwert = $this->checkVar("Schwellwert 1", $this->getVarType($sensor1), "", "", 999);
@@ -348,6 +346,8 @@ require(__DIR__ . "\\pimodule.php");
         }
 
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {
+
+            echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal;
 
             // Grad_F
             if ($tresholdVal == 2) {
