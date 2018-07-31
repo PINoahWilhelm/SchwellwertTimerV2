@@ -390,6 +390,8 @@ require(__DIR__ . "\\pimodule.php");
             // Lux
             if ($tresholdVal == 3) {
 
+                echo "TVAL " . $tresholdVal;
+
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($source) != $this->prefix . ".Lux_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_float");
