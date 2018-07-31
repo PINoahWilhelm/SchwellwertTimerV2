@@ -347,7 +347,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {
 
-            echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal;
+            //echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal;
 
             // Grad_F
             if ($tresholdVal == 2) {
@@ -398,6 +398,8 @@ require(__DIR__ . "\\pimodule.php");
                 }
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($source) != $this->prefix . ".Lux_int") {
+
+                    echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal . " (int)";
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_int");
                     $this->setIcon($tresholdVar, "Sun");
