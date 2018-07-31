@@ -373,7 +373,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Temperature_C_float") {
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Temperature_C_float");
-                    $this->setIcon($tresholdVar, "Temperature");
+                    $this->setIcon($tresholdVar, "Temperature"); 
 
                 }
 
