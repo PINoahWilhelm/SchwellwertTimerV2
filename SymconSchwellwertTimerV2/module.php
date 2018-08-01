@@ -851,7 +851,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($this->doesExist($this->searchObjectByName("Verzögerung Timer"))) {
 
-                $verzögerung = $this->searchObjectByName("Verzögerung");
+                $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($verzögerung));
 
@@ -863,7 +863,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($this->doesExist($this->searchObjectByName("Nachlauf Timer"))) {
 
-                $trailing = $this->searchObjectByName("Nachlauf Timer");
+                $trailing = GetValue($this->searchObjectByName("Nachlauf Timer"));
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($trailing));
 
