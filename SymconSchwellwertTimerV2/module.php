@@ -29,7 +29,6 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
-
  
         }
  
@@ -41,6 +40,8 @@ require(__DIR__ . "\\pimodule.php");
             $this->onSensorChange();
 
             $this->checkSensorVars();
+
+            $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"));
 
         }
 
@@ -841,6 +842,32 @@ require(__DIR__ . "\\pimodule.php");
             }
 
             $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
+
+        }
+
+        #####################################################################################################################################
+
+        public function onDelayVarChange () {
+
+            if ($this->doesExist($this->searchObjectByName("Verzögerung Timer"))) {
+
+                $verzögerung = $this->searchObjectByName("Verzögerung");
+
+                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($verzögerung));
+
+            }
+
+        }
+
+        public function onTrailingVarChange () {
+
+            if ($this->doesExist($this->searchObjectByName("Nachlauf Timer"))) {
+
+                $trailing = $this->searchObjectByName("Nachlauf Timer");
+
+                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($trailing));
+
+            }
 
         }
 
