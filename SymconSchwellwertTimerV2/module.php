@@ -869,6 +869,22 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
+            if ($this->doesExist($this->getFirstChildFrom($this->searchObjectByName("Trailing")))) {
+
+                $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
+
+                if ($nachlauf <= $this->timestampToSeconds(15)) {
+
+                    IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+
+                } else {
+
+                    IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+
+                }
+
+            }
+
         }
 
 }
