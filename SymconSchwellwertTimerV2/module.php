@@ -853,7 +853,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
 
-                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($verzögerung));
+                IPS_SetScriptTimer($this->searchObjectByName("onDelayEnd"), $this->timestampToSeconds($verzögerung));
 
             }
 
