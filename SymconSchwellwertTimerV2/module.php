@@ -863,7 +863,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($this->doesExist($this->searchObjectByName("Nachlauf Timer"))) {
 
-                $trailing = GetValue($this->searchObjectByName("Nachlauf Timer"));
+                $trailing = GetValue($this->searchObjectByName("Nachlauf"));
 
                 IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($trailing));
 
