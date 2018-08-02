@@ -709,7 +709,7 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
 
-            if ($nachlauf <= $this->timestampToSeconds(15)) {
+            if ($this->timestampToSeconds($nachlauf) <= 15) {
 
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
 
@@ -873,7 +873,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
 
-                if ($nachlauf <= $this->timestampToSeconds(15)) {
+                if ($this->timestampToSeconds($nachlauf) <= 15) {
 
                     IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
 
