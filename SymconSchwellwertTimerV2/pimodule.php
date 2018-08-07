@@ -2000,6 +2000,32 @@ abstract class PISymconModule extends IPSModule {
                                 
                             }
                             
+                        } else {
+
+                            if ($getVar['VariableType'] == 0) {
+                
+                                SetValue($device['ObjectID'], $wert);
+                            } else if ($getVar['VariableType'] == 1) {
+
+                                if (gettype($wert) == "boolean") {
+                            
+                                    if ($wert) {
+                                        $wert = 100;
+                                    } else {
+                                        $wert = 0;
+                                    }
+                                    
+                                    SetValue($device['ObjectID'], $wert);
+                                    
+                                } else {
+                                
+                                    SetValue($device['ObjectID'], $wert);
+                                    
+                                }
+
+                            }
+                            
+
                         }
                     } else {
                     
