@@ -113,7 +113,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->Sensoren = $sensoren;
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange", $this->Sperre . "|onSperreChange"), $this->Events);
 
             $this->hide($targets);
             $this->hide($sensoren);
@@ -549,7 +549,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
-                    if ($scriptOn != null) {
+                    if ($scriptOff != null) {
                         IPS_RunScript($scriptOff);
                     } 
 
@@ -884,6 +884,12 @@ require(__DIR__ . "\\pimodule.php");
                 }
 
             }
+
+        }
+
+        public function onSperreChange () {
+
+            $this->onStatusChange();
 
         }
 
