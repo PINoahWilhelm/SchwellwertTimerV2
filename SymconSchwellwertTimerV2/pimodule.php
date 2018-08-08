@@ -2358,7 +2358,7 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-
+ 
     // Starke vereinfachungen
 
 
@@ -2381,7 +2381,7 @@ abstract class PISymconModule extends IPSModule {
 
         return $elements;
 
-    }
+    } 
 
     // array("TargetID|Function")
     protected function createOnChangeEvents ($ary, $parent = null) {
