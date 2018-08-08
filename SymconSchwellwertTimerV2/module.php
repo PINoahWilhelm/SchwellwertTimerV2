@@ -517,6 +517,8 @@ require(__DIR__ . "\\pimodule.php");
             //$var = $_IPS['VARIABLE'];
             //$val = GetValue($var);
 
+            echo "onStautschange executed \n";
+
             $var  = $this->searchObjectByName("Status");
             $val = GetValue($var);
 
