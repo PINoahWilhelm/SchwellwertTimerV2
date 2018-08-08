@@ -514,7 +514,10 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onStatusChange () {
 
-            $var = $_IPS['VARIABLE'];
+            //$var = $_IPS['VARIABLE'];
+            //$val = GetValue($var);
+
+            $var  = $this->searchObjectByName("Status");
             $val = GetValue($var);
 
             $automatikVar = $this->searchObjectByName("Automatik");
