@@ -530,7 +530,9 @@ require(__DIR__ . "\\pimodule.php");
             $scriptOn = $this->ReadPropertyInteger("ScriptOn");
             $scriptOff = $this->ReadPropertyInteger("ScriptOff");
 
-            if (!$automatikVal) {
+            $sperre = $this->searchObjectByName("Sperre");
+
+            if (!$automatikVal || $sperre) {
 
                 return;
 
