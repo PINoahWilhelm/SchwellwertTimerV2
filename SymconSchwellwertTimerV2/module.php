@@ -164,8 +164,8 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($sensor1 != null) {
 
-                //echo "sensoren: " . $this->sensoren . "\n";
-                //echo "Sensoren: " . $this->Sensoren . "\n";
+                ////echo "sensoren: " . $this->sensoren . "\n";
+                ////echo "Sensoren: " . $this->Sensoren . "\n";
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
 
@@ -400,7 +400,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Lux_int") {
 
-                    //echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal . " (int)";
+                    ////echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal . " (int)";
 
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_int");
                     $this->setIcon($tresholdVar, "Sun");
@@ -517,7 +517,7 @@ require(__DIR__ . "\\pimodule.php");
             //$var = $_IPS['VARIABLE'];
             //$val = GetValue($var);
 
-            echo "onStautschange executed \n";
+            //echo "onStautschange executed \n";
 
             $var  = $this->searchObjectByName("Status");
             $val = GetValue($var);
@@ -629,7 +629,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
 
-                        //echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
+                        ////echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
                         $newStatus = true;
     
                     }
@@ -900,7 +900,7 @@ require(__DIR__ . "\\pimodule.php");
             $sperreVar = $this->searchObjectByName("Sperre");
             $sperreVal = GetValue($sperreVar);
 
-            echo "onSperreChange executed \n";
+            //echo "onSperreChange executed \n";
 
             if ($sperreVal == false) {
 
