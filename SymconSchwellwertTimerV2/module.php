@@ -892,7 +892,14 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onSperreChange () {
 
-            $this->onStatusChange();
+            $sperreVar = $this->searchObjectByName("Sperre");
+            $sperreVal = GetValue($sperreVar);
+
+            if ($sperreVal == false) {
+
+                $this->onStatusChange();
+
+            }
 
         }
 
