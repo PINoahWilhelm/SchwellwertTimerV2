@@ -531,6 +531,7 @@ require(__DIR__ . "\\pimodule.php");
             $scriptOff = $this->ReadPropertyInteger("ScriptOff");
 
             $sperre = $this->searchObjectByName("Sperre");
+            $sperre = GetValue($sperre);
 
             if (!$automatikVal || $sperre) {
 
