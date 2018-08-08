@@ -113,7 +113,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->Sensoren = $sensoren;
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange", $this->Sperre . "|onSperreChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange", $this->searchObjectByName("Sperre") . "|onSperreChange"), $this->Events);
 
             $this->hide($targets);
             $this->hide($sensoren);
