@@ -144,8 +144,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
-            $this->RegisterPropertyInteger("valueOn", "");
-            $this->RegisterPropertyInteger("valueOff", "");
+            $this->RegisterPropertyString("valueOn", "");
+            $this->RegisterPropertyString("valueOff", "");
 
             $this->RegisterPropertyInteger("ScriptOn", null);
             $this->RegisterPropertyInteger("ScriptOff", null);
