@@ -144,7 +144,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
-            $this->RegisterPropertyInteger(, null);
+            $this->RegisterPropertyInteger("valueOn", null);
             $this->RegisterPropertyInteger("valueOff", null);
 
             $this->RegisterPropertyInteger("ScriptOn", null);
@@ -526,7 +526,7 @@ require(__DIR__ . "\\pimodule.php");
             $automatikVal = GetValue($automatikVar);
 
             $mode = $this->ReadPropertyInteger("Mode");
-            $valueOn = $this->ReadPropertyInteger();
+            $valueOn = $this->ReadPropertyInteger("valueOn");
             $valueOff = $this->ReadPropertyInteger("valueOff");
 
             $scriptOn = $this->ReadPropertyInteger("ScriptOn");
