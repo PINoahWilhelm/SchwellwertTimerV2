@@ -548,7 +548,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($valueOn != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
                     }
 
@@ -561,7 +561,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($valueOff != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
                     }
 
@@ -577,7 +577,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($valueOff != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
                     }
 
@@ -589,7 +589,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($valueOn != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
                     }
 
