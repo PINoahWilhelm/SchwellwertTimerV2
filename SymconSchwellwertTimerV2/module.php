@@ -144,8 +144,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
-            $this->RegisterPropertyInteger("valueOn", null);
-            $this->RegisterPropertyInteger("valueOff", null);
+            $this->RegisterPropertyInteger("valueOn", "");
+            $this->RegisterPropertyInteger("valueOff", "");
 
             $this->RegisterPropertyInteger("ScriptOn", null);
             $this->RegisterPropertyInteger("ScriptOff", null);
@@ -546,7 +546,7 @@ require(__DIR__ . "\\pimodule.php");
                 // Bei Überschreitung
                 if ($mode == 1) {
 
-                    if ($valueOn != null) {
+                    if ($valueOn != "") {
 
                         $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
@@ -559,7 +559,7 @@ require(__DIR__ . "\\pimodule.php");
                 // Bei Unterschreitung
                 } else if ($mode == 2) {
 
-                    if ($valueOff != null) {
+                    if ($valueOff != "") {
 
                         $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
@@ -575,7 +575,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($mode == 1) {
 
-                    if ($valueOff != null) {
+                    if ($valueOff != "") {
 
                         $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
@@ -587,7 +587,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else if ($mode == 2) {
 
-                    if ($valueOn != null) {
+                    if ($valueOn != "") {
 
                         $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
