@@ -144,8 +144,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
-            $this->RegisterPropertyInteger("valueOn", "");
-            $this->RegisterPropertyInteger("valueOff", "");
+            $this->RegisterPropertyInteger("valueOn", 1);
+            $this->RegisterPropertyInteger("valueOff", 0);
 
             $this->RegisterPropertyInteger("ScriptOn", null);
             $this->RegisterPropertyInteger("ScriptOff", null);
@@ -546,11 +546,7 @@ require(__DIR__ . "\\pimodule.php");
                 // Bei Überschreitung
                 if ($mode == 1) {
 
-                    if ($valueOn != "") {
-
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
-
-                    }
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
                     if ($scriptOn != null) {
                         IPS_RunScript($scriptOn);
@@ -559,11 +555,7 @@ require(__DIR__ . "\\pimodule.php");
                 // Bei Unterschreitung
                 } else if ($mode == 2) {
 
-                    if ($valueOff != "") {
-
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
-
-                    }
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
                     if ($scriptOff != null) {
                         IPS_RunScript($scriptOff);
@@ -575,11 +567,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($mode == 1) {
 
-                    if ($valueOff != "") {
-
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
-
-                    }
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOff);
 
                     if ($scriptOff != null) {
                         IPS_RunScript($scriptOff);
@@ -587,11 +575,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 } else if ($mode == 2) {
 
-                    if ($valueOn != "") {
-
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
-
-                    }
+                    $this->setAllInLinkList($this->searchObjectByName("Targets"), $valueOn);
 
                     if ($scriptOn != null) {
                         IPS_RunScript($scriptOn);
