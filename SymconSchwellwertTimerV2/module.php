@@ -30,6 +30,13 @@ require(__DIR__ . "\\pimodule.php");
 
             parent::Create();
 
+            $dtVar = $this->searchObjectByName("Details");
+            $dtVal = GetValue($dtVar);
+
+            if ($dtVal == true) {
+                SetValue($dtVar, false);
+            }
+
             $this->deleteObject($this->searchObjectByName("Details"));
 
             $this->deleteObject($this->searchObjectRealByName("Details onChange", $this->searchObjectByName("Events")));
