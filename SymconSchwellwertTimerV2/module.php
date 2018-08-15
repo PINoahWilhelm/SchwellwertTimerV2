@@ -30,7 +30,7 @@ require(__DIR__ . "\\pimodule.php");
 
             parent::Create();
 
-            $dtVar = $this->searchObjectByName();
+            $dtVar = $this->searchObjectByName("Details");
             $dtVal = GetValue($dtVar);
 
             if ($dtVal == true) {
