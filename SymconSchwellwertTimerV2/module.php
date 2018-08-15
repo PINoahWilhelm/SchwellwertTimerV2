@@ -30,7 +30,7 @@ require(__DIR__ . "\\pimodule.php");
 
             parent::Create();
 
-            $dtVar = $this->searchObjectByName("Details");
+            $dtVar = $this->searchObjectByName();
             $dtVal = GetValue($dtVar);
 
             if ($dtVal == true) {
@@ -41,9 +41,15 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->show($this->searchObjectByName("Einstellungen"));
 
-            $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
+            // $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
 
-            $this->deleteObject($this->searchObjectByName("Details"));
+            if ($this->doesExist($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")))) {
+
+                IPS_DeleteEvent($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
+
+            }
+
+            $this->deleteObject($this->searchObjectByName());
             
         }
  
