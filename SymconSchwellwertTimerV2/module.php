@@ -29,7 +29,18 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
- 
+
+            $dtVar = $this->searchObjectByName("Details");
+            $dtVal = GetValue($dtVar);
+
+            if ($dtVal == true) {
+                SetValue($dtVar, false);
+            }
+
+            $this->deleteObject($this->searchObjectByName("Details"));
+
+            $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
+            
         }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
