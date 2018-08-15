@@ -58,7 +58,7 @@ abstract class PISymconModule extends IPSModule {
 
         if ($this->Details) {
 
-            $this->detailsVar = $this->getVarIfPossible("Details");
+            $this->detailsVar = $this->getVarIfPossible("Einstellungen");
 
         }
 
