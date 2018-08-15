@@ -45,6 +45,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($this->doesExist($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")))) {
 
+                echo "doesExist !!!!";
                 IPS_DeleteEvent($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
 
             }
