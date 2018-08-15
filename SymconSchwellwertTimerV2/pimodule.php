@@ -221,7 +221,7 @@ abstract class PISymconModule extends IPSModule {
 
             //$name, $setProfile = false, $position = "", $index = 0, $defaultValue = null
 
-            $details = $this->checkBoolean("Einstellungen", true, $this->InstanceID, $this->detailsIndex, true);
+            $details = $this->checkBoolean("Details", true, $this->InstanceID, $this->detailsIndex, true);
             $events = $this->checkFolder("Events");
 
             $this->activateVariableLogging($details);
@@ -1854,7 +1854,7 @@ abstract class PISymconModule extends IPSModule {
             return null;
         }
 
-        if (!$this->doesExist($id) && $check) {
+        if (!$this->doesExist($id)) {
             return null; 
         }
 
