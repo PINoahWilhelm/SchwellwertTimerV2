@@ -29,33 +29,6 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
-
-            $dtVar = $this->searchObjectByName("Details");
-            $dtVal = GetValue($dtVar);
-
-            if ($dtVal == true) {
-                SetValue($dtVar, false);
-            }
-
-            $this->setExcludedHide();
-
-            $this->show($this->searchObjectByName("Einstellungen"));
-
-            // $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
-
-            // echo "Events: " . $this->searchObjectByName("Events") . "\n";
-            // echo "Details onChange " . $this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events"));
-            
-            $this->deleteObject($this->searchObjectByRealName("onChange Details", $this->searchObjectByName("Events")));
-
-            // if ($this->doesExist($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")))) {
-
-            //     echo "doesExist !!!!";
-            //     IPS_DeleteEvent($this->searchObjectByRealName("onChange Details", $this->searchObjectByName("Events")));
-
-            // }
-
-            $this->deleteObject($this->searchObjectByName("Details"));
             
         }
  
