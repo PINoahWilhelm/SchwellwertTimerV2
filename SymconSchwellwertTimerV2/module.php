@@ -41,9 +41,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->show($this->searchObjectByName("Einstellungen"));
 
-            $this->deleteObject($this->searchObjectByName("Details"));
-
             $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
+
+            $this->deleteObject($this->searchObjectByName("Details"));
             
         }
  
