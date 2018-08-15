@@ -29,7 +29,11 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
- 
+
+            $this->deleteObject($this->searchObjectByName("Details"));
+
+            $this->deleteObject($this->searchObjectRealByName("Details onChange", $this->searchObjectByName("Events")));
+            
         }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
