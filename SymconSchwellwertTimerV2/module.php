@@ -44,7 +44,7 @@ require(__DIR__ . "\\pimodule.php");
             // $this->deleteObject($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
 
             echo "Events: " . $this->searchObjectByName("Events") . "\n";
-            echo "Details onChange " . $this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")));
+            echo "Details onChange " . $this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events"));
 
             if ($this->doesExist($this->searchObjectByRealName("Details onChange", $this->searchObjectByName("Events")))) {
 
