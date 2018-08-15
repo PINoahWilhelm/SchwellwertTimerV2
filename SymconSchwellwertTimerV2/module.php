@@ -49,7 +49,7 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
-            $this->deleteObject($this->searchObjectByName());
+            $this->deleteObject($this->searchObjectByName("Details"));
             
         }
  
