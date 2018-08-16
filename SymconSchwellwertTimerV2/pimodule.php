@@ -2006,7 +2006,7 @@ abstract class PISymconModule extends IPSModule {
 
                             if ($version == "5.1") {
 
-                                SymconSzenenV2_SetScene($wert);
+                                SymconSzenenV2_SetScene($parent, $wert);
 
                             } else if ($version == "5.0") {
 
