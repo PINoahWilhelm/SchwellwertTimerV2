@@ -1966,6 +1966,19 @@ abstract class PISymconModule extends IPSModule {
                              HM_WriteValueBoolean($device['ObjectID'], "STATE", $wert);
         
                         }
+
+                        // SymconSzenenV2 Support (Ab 5.1)
+                        if ($instance['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
+
+                            $version = SymconSzenenV2_GetVersion($deviceID);
+
+                            if ($version == "5.1") {
+
+                                SymconSzenenV2_SetScene($deviceID, $wert);
+
+                            }
+
+                        }
                     }
                 break;
             
