@@ -2000,6 +2000,20 @@ abstract class PISymconModule extends IPSModule {
                                 
                             }
                             
+                        } else if ($parentInstanz['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
+
+                            $version = SymconSzenenV2_GetVersion($parent);
+
+                            if ($version == "5.1") {
+
+                                SymconSzenenV2_SetScene($wert);
+
+                            } else if ($version == "5.0") {
+
+                                SetValue($deviceID, $wert);
+
+                            }
+
                         } else {
 
                             if ($getVar['VariableType'] == 0) {
