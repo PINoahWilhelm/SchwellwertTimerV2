@@ -9,8 +9,6 @@
 * Sobald der/die Schwellwert/e überschritten werden beginnt die **Verzögerung**, sobald der/die Sensor/en den/die Schwellwert/e wieder unterschreitet bricht die **Verzögerung** wieder ab. Ist die Verzögerung abgelaufen geht die **Status** Variable auf **AN** und der **Nachlauf** startet.
 * Der Nachlauf verlägert sich solange der Wert überschritten ist von alleine. Sobald der Nachlauf abläuft wird die Status Variable auf AUS geschaltet
 # IP-Symcon Versionen
-| Branch        | IPS 5.0           | IPS 4.2  |
+| Branch        | IPS 5.0           | IPS 4.0+  |
 | ------------- |:-------------:| -----:|
-| Master      | :white_check_mark: | :warning: |
-
-:warning: = Kleinere Einschränkungen
+| Master      | :white_check_mark: | :white_check_mark: |
