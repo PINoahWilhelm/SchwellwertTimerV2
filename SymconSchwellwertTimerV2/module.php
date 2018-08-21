@@ -43,10 +43,10 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $baseScript = $this->checkScript("BaseScript", "<?php \n \$status = GetValue(" . $this->searchObjectByName("Status") . "); \n \n if (\$status == true) { \n \n } else { \n  \n } ?>", false);
+            $baseScript = $this->checkScript("BaseScript", "<?php \n \n \$status = GetValue(" . $this->searchObjectByName("Status") . "); \n \n if (\$status == true) { \n \n } else { \n  \n } \n \n ?>", false);
 
             $this->hide($baseScript);
-            
+
         }
 
         protected function onDetailsChangeShow () {
