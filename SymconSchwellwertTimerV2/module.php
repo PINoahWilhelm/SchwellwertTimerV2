@@ -34,7 +34,7 @@ require(__DIR__ . "\\pimodule.php");
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
-           
+
             parent::ApplyChanges();
 
             $this->onSensorChange();
@@ -43,6 +43,10 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
+            $baseScript = $this->checkScript("BaseScript", "<?php \n \$status = GetValue(" . $this->searchObjectByName("Status") . "); \n \n if (\$status == true) { \n \n } else { \n  \n } ?>", false);
+
+            $this->hide($baseScript);
+            
         }
 
         protected function onDetailsChangeShow () {
@@ -532,6 +536,8 @@ require(__DIR__ . "\\pimodule.php");
             $scriptOn = $this->ReadPropertyInteger("ScriptOn");
             $scriptOff = $this->ReadPropertyInteger("ScriptOff");
 
+            $baseScript = $this->searchObjectByName("BaseScript");
+
             $sperre = $this->searchObjectByName("Sperre");
             $sperre = GetValue($sperre);
 
@@ -600,6 +606,8 @@ require(__DIR__ . "\\pimodule.php");
                 }
 
             }
+
+            IPS_RunScript($baseScript);
 
         }
 
