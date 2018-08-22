@@ -982,12 +982,6 @@ class FunctionsObject extends IPSModule{
             echo "Device/Variable $deviceID existiert nicht!";
             return;
         }
-        if ($this->SperreVar != null){
-            $sperre = GetValue($this->SperreVar);
-            if ($sperre) {
-                return;
-            }
-        }
         $actualState = GetValue($deviceID);
         $dimWert = $wert;
         if ($actualState == $wert) {
@@ -1009,21 +1003,16 @@ class FunctionsObject extends IPSModule{
                 $parent = IPS_GetInstance($deviceParent);
                 if ($parent['ModuleInfo']['ModuleName'] == "EIB Group") {
                     
-                    // EIB Switch
                     if ($device['VariableType'] == 0) {
-                        //echo "EIB_SWITCH(" . $deviceParent . "  $wert";
                         EIB_Switch($deviceParent, $wert);
                     } else if ($device['VariableType'] == 1) {
-                        //echo "EIB_DIMVALUE(" . $deviceParent . "  $wert";
                         EIB_DimValue($deviceParent, $dimWert);
                     }
                 } else if ($parent['ModuleInfo']['ModuleName'] == "HomeMatic Device") {
                     if ($device['VariableType'] == 0) {
-                        //echo "HM_WriteValueBoolean($deviceParent, \"STATE\", $wert);";
                         HM_WriteValueBoolean($deviceParent, "STATE", $wert);
                     } 
                 } else if ($parent['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
-                    //echo "SymconSzenenV2_SetScene($deviceParent, $wert);";
                     SymconSzenenV2_SetScene($deviceParent, $wert);
                 } else {
                     if ($device['VariableType'] == 0) {
