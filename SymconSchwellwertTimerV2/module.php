@@ -925,6 +925,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $obj = new FunctionsObject($this->InstanceID);
             $obj->TargetsFolder = $this->searchObjectByName("Targets");
+            $obj->Schwellwert1 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 1"));
+            $obj->Schwellwert2 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 2"));
+            $obj->Schwellwert3 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 3"));
 
             return $obj;
 
@@ -938,6 +941,9 @@ class FunctionsObject extends IPSModule{
     public $InstanceID;
     public $TargetsFolder;
     public $SetTargets;
+    public $Schwellwert1 = null;
+    public $Schwellwert2 = null;
+    public $Schwellwert3 = null;
 
     public function __construct ($ii) {
         $this->InstanceID = $ii;
