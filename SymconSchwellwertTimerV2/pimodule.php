@@ -1893,7 +1893,6 @@ abstract class PISymconModule extends IPSModule {
 
     protected function setDevice ($deviceID, $wert){
 
-
         if ($this->SperreVar != null){
 
             $sperre = GetValue($this->SperreVar);
