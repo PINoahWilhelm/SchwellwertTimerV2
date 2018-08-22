@@ -43,7 +43,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $baseScript = $this->checkScript("BaseScript", "<?php\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\nif (\$status == true) {\n\n    //Wenn Schwellwert überschritten\n\n} else {\n\n    //Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
+            $baseScript = $this->checkScript("BaseScript", "<?php\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\n\$module = $this->prefix" . "_GetSpecialFunctions($this->InstanceID);\n\nif (\$status == true) {\n\n    //Wenn Schwellwert überschritten\n\n} else {\n\n    //Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
 
             $this->setPosition($baseScript, 0);
 
