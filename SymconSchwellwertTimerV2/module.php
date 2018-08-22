@@ -925,9 +925,14 @@ require(__DIR__ . "\\pimodule.php");
 
             $obj = new FunctionsObject($this->InstanceID);
             $obj->TargetsFolder = $this->searchObjectByName("Targets");
+
             $obj->Schwellwert1 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 1"));
             $obj->Schwellwert2 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 2"));
             $obj->Schwellwert3 = $this->getValIfPossible($this->searchObjectByName("Schwellwert 3"));
+
+            $obj->Sensor1 = $this->getValIfPossible($this->ReadPropertyInteger("Sensor1"));
+            $obj->Sensor2 = $this->getValIfPossible($this->ReadPropertyInteger("Sensor2"));
+            $obj->Sensor3 = $this->getValIfPossible($this->ReadPropertyInteger("Sensor3"));
 
             return $obj;
 
@@ -938,12 +943,20 @@ require(__DIR__ . "\\pimodule.php");
 
 class FunctionsObject extends IPSModule{
 
+    // Basis Information
     public $InstanceID;
     public $TargetsFolder;
     public $SetTargets;
+
+    // Schwellwerte 
     public $Schwellwert1 = null;
     public $Schwellwert2 = null;
     public $Schwellwert3 = null;
+
+    // Sensoren
+    public $Sensor1 = null;
+    public $Sensor2 = null;
+    public $Sensor3 = null;
 
     public function __construct ($ii) {
         $this->InstanceID = $ii;
