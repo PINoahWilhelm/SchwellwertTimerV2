@@ -1019,6 +1019,8 @@ class FunctionsObject extends IPSModule{
                         SetValue($deviceID, $wert);
                     } else if ($device['VariableType'] == 1) {
                         SetValue($deviceID, $dimWert);
+                    } else {
+                        SetValue($deviceID, $dimWert);
                     }
                 }
             } else {
