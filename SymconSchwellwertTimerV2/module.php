@@ -1002,10 +1002,10 @@ class FunctionsObject extends IPSModule{
         }
         $device = IPS_GetObject($deviceID);
         $deviceParent = IPS_GetParent($deviceID);
-        if ($this->isVariable($device['ObjectID'])) {
+        if ($device['ObjectType'] == 2) {
             $device = IPS_GetVariable($deviceID);
             $parent = IPS_GetObject($deviceParent);
-            if ($this->isInstance($deviceParent)) {
+            if ($parent['ObjectType'] == 6) {
                 $parent = IPS_GetInstance($deviceParent);
                 if ($parent['ModuleInfo']['ModuleName'] == "EIB Group") {
                     
