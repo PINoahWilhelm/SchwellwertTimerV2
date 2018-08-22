@@ -45,6 +45,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $baseScript = $this->checkScript("BaseScript", "<?php\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\nif (\$status == true) {\n\n//Wenn Schwellwert überschritten\n\n} else {\n\n//Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
 
+            $this->setPosition($baseScript, 0);
+
             $this->hide($baseScript);
 
         }
