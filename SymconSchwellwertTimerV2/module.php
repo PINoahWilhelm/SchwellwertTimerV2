@@ -923,29 +923,41 @@ require(__DIR__ . "\\pimodule.php");
 
         public function GetSpecialFunctions () {
 
-            $nObj = new StdClass;
-            $nObj->InstanceID = $this->InstanceID;
-            $nObj->TargetsFolder = $this->searchObjectByName("Targets");
-            $nObj->SetTargets = function ($wert) {
+            $obj = new FunctionsObject($this->InstanceID);
+            $obj->TargetsFolder = $this->searchObjectByName("Targets");
 
-                if (IPS_HasChildren($this->TargetsFolder)) {
-
-                    $children = IPS_GetChildrenIDs($this->TargetsFolder);
-
-                    foreach ($children as $child) {
-
-                        echo $child;
-
-                    }
-
-                }
-
-            };
-
-            return $nObj;
+            return $obj;
 
         }
 
+
+}
+
+class FunctionsObject extends IPSModule{
+
+    public $InstanceID;
+    public $TargetsFolder;
+    public $SetTargets;
+
+    public function __construct ($ii) {
+        $this->InstanceID = $ii;
+    }
+
+    public function SetTargets ($wert) {
+
+        if (IPS_HasChildren($this->TargetsFolder)) {
+
+            $children = IPS_GetChildrenIDs($this->TargetsFolder);
+
+            foreach ($children as $child) {
+
+                echo $child;
+
+            }
+
+        }
+
+    }
 
 }
 
