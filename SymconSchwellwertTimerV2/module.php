@@ -958,11 +958,12 @@ class FunctionsObject extends IPSModule{
 
                     $obj = IPS_GetLink($obj['ObjectID']);
                     $obj = $obj['TargetID'];
-
+                    
                     $this->SetDevice($obj, $wert);
 
                 } else {
 
+                    echo "No link";
                     $this->SetDevice($obj, $wert);
 
                 }
