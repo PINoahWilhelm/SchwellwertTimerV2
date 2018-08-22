@@ -973,208 +973,75 @@ class FunctionsObject extends IPSModule{
 
     }
 
-    protected function setDevice ($deviceID, $wert){
-
+    protected function setDevice ($deviceID, $wert) {
+        if ($deviceID == null || $deviceID == 0) {
+            echo "DeviceID darf nicht null oder 0 sein";
+            return;
+        }
+        if (!IPS_ObjectExists($deviceID)) {
+            echo "Device/Variable $deviceID existiert nicht!";
+            return;
+        }
         if ($this->SperreVar != null){
-
             $sperre = GetValue($this->SperreVar);
-
             if ($sperre) {
-
                 return;
-
             }
-
         }
-
+        $actualState = GetValue($deviceID);
+        $dimWert = $wert;
+        if ($actualState == $wert) {
+            return;
+        }
+        if (gettype($wert) == "boolean") {
+            if ($wert == true) {
+                $dimWert = 100;
+            } else {
+                $dimWert = 0;
+            }
+        }
         $device = IPS_GetObject($deviceID);
-    
-        switch($device['ObjectType']){
-        
-            case 1:
-                    $instance = IPS_GetInstance($device['ObjectID']);
+        $deviceParent = IPS_GetParent($deviceID);
+        if ($this->isVariable($device['ObjectID'])) {
+            $device = IPS_GetVariable($deviceID);
+            $parent = IPS_GetObject($deviceParent);
+            if ($this->isInstance($deviceParent)) {
+                $parent = IPS_GetInstance($deviceParent);
+                if ($parent['ModuleInfo']['ModuleName'] == "EIB Group") {
                     
-                    //wenn EIB Groub
-                    if ($instance['ModuleInfo']['ModuleName'] == "EIB Group"){
-                        
-                        if(IPS_HasChildren($device['ObjectID']) == 1) {
-                            
-                            foreach(IPS_GetChildrenIDs($device['ObjectID']) as $child){	
-                            
-                                $childVar = IPS_GetVariable($child);
-                                
-                                //wenn bool / Switch
-                                if($childVar['VariableType'] == 0){
-                                    
-                                    EIB_Switch($device['ObjectID'], $wert);
-                                
-                                }
-                                
-                                //wenn int / Dim / float
-                                if($childVar['VariableType'] == 1 || $childVar['VariableType'] == 2) {
-                                    if(is_int($wert) || is_float($wert)){
-                                        
-                                        EIB_DimValue($device['ObjectID'], $wert);								
-                                    
-                                    }else{
-                                        
-                                        if(is_bool($wert)){
-                                        
-                                            if($wert === true){
-                                                $wert = 100;
-                                                EIB_DimValue($device['ObjectID'], $wert);
-                                                
-                                            }
-                                            else{
-                                                $wert = 0;
-                                                EIB_DimValue($device['ObjectID'], $wert);
-                                                
-                                            }
-                                        }
-                                    }	
-                                    
-                                }
-                        
-                            }
-                    
-                        }
-                    
-                    }else{
-                      
-                        //Homematic Support (Aktuell: Switch)
-                        if ($instance['ModuleInfo']['ModuleName'] == "HomeMatic Device") {
-                
-                             HM_WriteValueBoolean($device['ObjectID'], "STATE", $wert);
-        
-                        }
-
-                        // SymconSzenenV2 Support (Ab 5.1)
-                        if ($instance['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
-
-                            $version = SymconSzenenV2_GetVersion($deviceID);
-
-                            if ($version == "5.1") {
-
-                                SymconSzenenV2_SetScene($deviceID, $wert);
-
-                            }
-
-                        }
+                    // EIB Switch
+                    if ($device['VariableType'] == 0) {
+                        //echo "EIB_SWITCH(" . $deviceParent . "  $wert";
+                        EIB_Switch($deviceParent, $wert);
+                    } else if ($device['VariableType'] == 1) {
+                        //echo "EIB_DIMVALUE(" . $deviceParent . "  $wert";
+                        EIB_DimValue($deviceParent, $dimWert);
                     }
-                break;
-            
-            case 2:
-                    $getVar = IPS_GetVariable($device['ObjectID']);
-                
-                    $parent = IPS_GetParent($device['ObjectID']);
-                    
-                    if(IPS_GetObject($parent)['ObjectType'] == 1){
-                    
-                        $parentInstanz = IPS_GetInstance($parent);
-                    
-                        if($parentInstanz['ModuleInfo']['ModuleName'] == "EIB Group" ||  $parentInstanz['ModuleInfo']['ModuleName'] == "HomeMatic Device" ){
-                    
-                            $this->setDevice($parent, $wert);
-                        
-                        } else if ($parentInstanz['ModuleInfo']['ModuleName'] == "Dummy Module") {
-                        
-                            if (gettype($wert) == "boolean") {
-                            
-                                if ($wert) {
-                                    $wert = 100;
-                                } else {
-                                    $wert = 0;
-                                }
-                                
-                                SetValue($deviceID, $wert);
-                                
-                            } else {
-                            
-                                SetValue($deviceID, $wert);
-                                
-                            }
-                            
-                        } else if ($parentInstanz['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
-
-                            $version = SymconSzenenV2_GetVersion($parent);
-
-                            if ($version == "5.1") {
-
-                                SymconSzenenV2_SetScene($parent, $wert);
-
-                            } else if ($version == "5.0") {
-
-                                SetValue($deviceID, $wert);
-
-                            }
-
-                        } else {
-
-                            if ($getVar['VariableType'] == 0) {
-                
-                                SetValue($device['ObjectID'], $wert);
-                            } else if ($getVar['VariableType'] == 1) {
-
-                                if (gettype($wert) == "boolean") {
-                            
-                                    if ($wert) {
-                                        $wert = 100;
-                                    } else {
-                                        $wert = 0;
-                                    }
-                                    
-                                    SetValue($device['ObjectID'], $wert);
-                                    
-                                } else {
-                                
-                                    SetValue($device['ObjectID'], $wert);
-                                    
-                                }
-
-                            }
-                            
-
-                        }
-                    } else {
-                    
-                    // wenn bool
-                    if ($getVar['VariableType'] == 0) {
-                
-                        SetValue($device['ObjectID'], $wert);
+                } else if ($parent['ModuleInfo']['ModuleName'] == "HomeMatic Device") {
+                    if ($device['VariableType'] == 0) {
+                        //echo "HM_WriteValueBoolean($deviceParent, \"STATE\", $wert);";
+                        HM_WriteValueBoolean($deviceParent, "STATE", $wert);
+                    } 
+                } else if ($parent['ModuleInfo']['ModuleName'] == "SymconSzenenV2") {
+                    //echo "SymconSzenenV2_SetScene($deviceParent, $wert);";
+                    SymconSzenenV2_SetScene($deviceParent, $wert);
+                } else {
+                    if ($device['VariableType'] == 0) {
+                        SetValue($deviceID, $wert);
+                    } else if ($device['VariableType'] == 1) {
+                        SetValue($deviceID, $dimWert);
                     }
-                        
-                    // wenn int oder floar
-                    if($getVar['VariableType'] == 1 || $getVar['VariableType'] == 2) { 
-                        
-                        if(is_int($wert) || is_float($wert)){
-                            
-                            SetValue($device['ObjectID'], $wert);
-                        }
-                        else {
-                            if(is_bool($wert)){              
-                                if($wert == true){
-                                
-                                    $wert = 100;
-                            
-                                    SetValue($device['ObjectID'], $wert);
-                                }
-                                if($wert == false){
-                                    
-                                    $wert = 0;
-                                    SetValue($device['ObjectID'], $wert);
-                                }
-                            }
-                        
-                        }
-                    }	
-                    
-                    }
-                    
-                break;
-                
-        
+                }
+            } else {
+                if ($device['VariableType'] == 0) {
+                    SetValue($deviceID, $wert);
+                } else if ($device['VariableType'] == 1) {
+                    SetValue($deviceID, $dimWert);
+                }
+            }
+        } else {
+            echo "Bitte nur Variablen verlinken!";
         }
-        
     }
 
 }
