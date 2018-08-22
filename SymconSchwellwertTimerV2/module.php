@@ -43,7 +43,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $baseScript = $this->checkScript("BaseScript", "<?php \n \n \$status = GetValue(" . $this->searchObjectByName("Status") . "); \n \n if (\$status == true) { \n \n //Wenn Schwellwert überschritten \n \n } else { \n \n //Wenn Schwellwert unterschritten \n \n } \n \n ?>", false);
+            $baseScript = $this->checkScript("BaseScript", "<?php\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\nif (\$status == true) {\n\n//Wenn Schwellwert überschritten\n\n} else {\n\n//Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
 
             $this->hide($baseScript);
 
@@ -144,15 +144,7 @@ require(__DIR__ . "\\pimodule.php");
             $this->RegisterPropertyInteger("Sensor2Profile", 5);
             $this->RegisterPropertyInteger("Sensor3Profile", 5);
 
-            $this->RegisterPropertyInteger("Mode", 1);
-
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
-
-            $this->RegisterPropertyString("valueOn", "");
-            $this->RegisterPropertyString("valueOff", "");
-
-            $this->RegisterPropertyInteger("ScriptOn", null);
-            $this->RegisterPropertyInteger("ScriptOff", null);
 
         }
 
@@ -529,13 +521,6 @@ require(__DIR__ . "\\pimodule.php");
             $automatikVar = $this->searchObjectByName("Automatik");
             $automatikVal = GetValue($automatikVar);
 
-            $mode = $this->ReadPropertyInteger("Mode");
-            $valueOn = $this->ReadPropertyString("valueOn");
-            $valueOff = $this->ReadPropertyString("valueOff");
-
-            $scriptOn = $this->ReadPropertyInteger("ScriptOn");
-            $scriptOff = $this->ReadPropertyInteger("ScriptOff");
-
             $baseScript = $this->searchObjectByName("BaseScript");
 
             $sperre = $this->searchObjectByName("Sperre");
@@ -547,65 +532,65 @@ require(__DIR__ . "\\pimodule.php");
 
             }
  
-            if ($val) {
+            // if ($val) {
 
-                // Bei Überschreitung
-                if ($mode == 1) {
+            //     // Bei Überschreitung
+            //     if ($mode == 1) {
 
-                    if ($valueOn != "") {
+            //         if ($valueOn != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
 
-                    }
+            //         }
 
-                    if ($scriptOn != null) {
-                        IPS_RunScript($scriptOn);
-                    } 
+            //         if ($scriptOn != null) {
+            //             IPS_RunScript($scriptOn);
+            //         } 
 
-                // Bei Unterschreitung
-                } else if ($mode == 2) {
+            //     // Bei Unterschreitung
+            //     } else if ($mode == 2) {
 
-                    if ($valueOff != "") {
+            //         if ($valueOff != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
 
-                    }
+            //         }
 
-                    if ($scriptOff != null) {
-                        IPS_RunScript($scriptOff);
-                    } 
+            //         if ($scriptOff != null) {
+            //             IPS_RunScript($scriptOff);
+            //         } 
 
-                } 
+            //     } 
 
-            } else {
+            // } else {
 
-                if ($mode == 1) {
+            //     if ($mode == 1) {
 
-                    if ($valueOff != "") {
+            //         if ($valueOff != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
 
-                    }
+            //         }
 
-                    if ($scriptOff != null) {
-                        IPS_RunScript($scriptOff);
-                    } 
+            //         if ($scriptOff != null) {
+            //             IPS_RunScript($scriptOff);
+            //         } 
 
-                } else if ($mode == 2) {
+            //     } else if ($mode == 2) {
 
-                    if ($valueOn != "") {
+            //         if ($valueOn != "") {
 
-                        $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
 
-                    }
+            //         }
 
-                    if ($scriptOn != null) {
-                        IPS_RunScript($scriptOn);
-                    } 
+            //         if ($scriptOn != null) {
+            //             IPS_RunScript($scriptOn);
+            //         } 
 
-                }
+            //     }
 
-            }
+            // }
 
             IPS_RunScript($baseScript);
 
