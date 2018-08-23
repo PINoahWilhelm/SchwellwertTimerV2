@@ -215,7 +215,7 @@ require(__DIR__ . "\\pimodule.php");
                 } else { 
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
-                        echo "GetTargetID Fehler...";
+                        
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Schwellwert 1"));
                         $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
