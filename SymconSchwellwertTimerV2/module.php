@@ -361,7 +361,6 @@ require(__DIR__ . "\\pimodule.php");
 
             } else { 
 
-
                 if ($this->doesExist($this->searchObjectByName("Sensor 3", $this->searchObjectByName("Sensoren")))) {
                     $this->deleteObject($this->searchObjectByName("onChange Schwellwert 3", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren))), $this->Events));

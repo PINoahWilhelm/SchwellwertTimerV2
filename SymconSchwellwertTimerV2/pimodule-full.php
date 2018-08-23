@@ -5,6 +5,7 @@
 abstract class PISymconModule extends IPSModule {
 
     public $prefix = null;
+
     public $details = false;
     public $detailsVar = 0;
     public $detailsIndex = "last";
@@ -207,6 +208,8 @@ abstract class PISymconModule extends IPSModule {
     protected function initDetails () {
 
         if ($this->Details) {
+
+            //$name, $setProfile = false, $position = "", $index = 0, $defaultValue = null
 
             $details = $this->checkBoolean("Einstellungen", true, $this->InstanceID, $this->detailsIndex, true);
             $events = $this->checkFolder("Events");
@@ -817,6 +820,347 @@ abstract class PISymconModule extends IPSModule {
                 }
 
             }
+
+        }
+
+    }
+
+    protected function dynamicVariableProfileName ($name) {
+
+        return $this->prefix . $this->InstanceID . "." . $name;
+
+    }
+
+    protected function createDynamicProfile ($profileName, $elements) {
+
+        if ($profileName != null && count($elements) > 0 ) {
+
+            $min = 0;
+            $max = count($elements) - 1;
+
+            if (IPS_VariableProfileExists($profileName)) {
+
+                IPS_DeleteVariableProfile($profileName);
+
+            }
+
+            $this->checkVariableProfile($profileName, 1, $min, $max, 0, $elements);
+
+        }
+
+    }
+
+    protected function changeAssociations ($profileName, $changeAssoc) {
+
+        if (IPS_VariableProfileExists($profileName)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            $name = $profileName;
+            $type = $profile['ProfileType'];
+            $maxVal = $profile['MaxValue'];
+            $minVal = $profile['MinValue'];
+            $stepSize = $profile['StepSize'];
+            $digits = $profile['Digits'];
+            $suffix = $profile['Suffix'];
+            $prefix = $profile['Prefix'];
+            $actualAssocs = $profile['Associations'];
+
+            //$name, $type, $min = 0, $max = 100, $steps = 1, $associations = null
+
+            $newAssocs = null;
+            $blockIt = array();
+
+            if ($changeAssoc != null) {
+
+                // foreach ($changeAssoc as $oldName => $newName) {
+
+                //     // echo "OLDNAME: " . $oldName . "  NewName: " . $newName . " \\n";
+                //    // if ($this->profileHasAssociation($profileName, $oldName)) {
+
+                //         foreach ($actualAssocs as $actualAssoc) {
+
+                //             //print($actualAssoc);
+
+                //             if ($actualAssoc['Name'] == $oldName && !in_array($actualAssoc['Name'], $blockIt)) {
+
+                //                 //IPS_SetVariableProfileAssociation($profileName, intval($actualAssoc['Value']), $newName, $actualAssoc['Icon'], hexdec($actualAssoc['Color']));
+                //                 $blockIt[] = $actualAssoc['Name']; 
+                //                 $newAssocs[$newName] = intval($actualAssoc['Value']);
+
+                //             } else {
+
+                //                 $aname = $actualAssoc['Name'];
+                //                 $newAssocs[$aname] = intval($actualAssoc['Value']);
+
+                //             }
+
+                //         }
+
+                //     //}
+
+                // }
+
+                foreach ($actualAssocs as $actualAssoc) {
+
+                    $toReplace = false;
+
+                    $nname = null;
+                    $nvalue = null;
+
+                    foreach ($changeAssoc as $oldName => $newName) {
+
+                        if ($oldName == $actualAssoc['Name']) {
+                            $toReplace = true;
+                            $nname = $newName;
+                        }
+
+                    }
+
+                    if ($toReplace) {
+
+                        $newAssocs[$nname] = $actualAssoc['Value']; 
+
+                    } else {
+
+                        $nme = $actualAssoc['Name'];
+                        $newAssocs[$nme] = $actualAssoc['Value'];
+
+                    }
+
+                }
+
+            }
+
+            IPS_DeleteVariableProfile($profileName);
+            $this->checkVariableProfile($profileName, $type, $minVal, $maxVal, $stepSize, $newAssocs);
+
+        }
+
+    }
+
+    protected function removeAssociation ($profileName, $association) {
+
+        if (IPS_VariableProfileExists($profileName)) {
+
+            if (!$this->profileHasAssociation($profileName, $association)) {
+                return;
+            }
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            $name = $profileName;
+            $type = $profile['ProfileType'];
+            $maxVal = $profile['MaxValue'];
+            $minVal = $profile['MinValue'];
+            $stepSize = $profile['StepSize'];
+            $digits = $profile['Digits'];
+            $suffix = $profile['Suffix'];
+            $prefix = $profile['Prefix'];
+            $actualAssocs = $profile['Associations'];
+
+            //$name, $type, $min = 0, $max = 100, $steps = 1, $associations = null
+
+            $newAssocs = null; 
+            
+            if ($actualAssocs != null) {
+
+                foreach ($actualAssocs as $assoc) {
+
+                    if ($assoc['Name'] != $association) {
+
+                        $assocName = $assoc['Name'];
+                        $newAssocs[$assocName] = $assoc['Value'];
+
+                    }
+
+                }
+
+            }
+
+            IPS_DeleteVariableProfile($profileName);
+            $this->checkVariableProfile($profileName, $type, $minVal, $maxVal, $stepSize, $newAssocs);
+
+        }
+    }
+
+    protected function addAssociations ($profileName, $addAssocs) {
+
+        if (IPS_VariableProfileExists($profileName)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            $name = $profileName;
+            $type = $profile['ProfileType'];
+            $maxVal = $profile['MaxValue'];
+            $minVal = $profile['MinValue'];
+            $stepSize = $profile['StepSize'];
+            $digits = $profile['Digits'];
+            $suffix = $profile['Suffix'];
+            $prefix = $profile['Prefix'];
+            $actualAssocs = $profile['Associations'];
+
+            $newAssocs = array();
+            $blockIt = array();
+
+            if ($addAssocs != null) {
+
+                foreach ($actualAssocs as $actualAssoc) {
+
+                    $nme = $actualAssoc['Name'];
+                    $newAssocs[$nme] = $actualAssoc['Value'];
+
+                }
+
+                foreach ($addAssocs as $aa => $bb) {
+
+                    $newAssocs[$aa] = $bb;
+
+                }
+
+            }
+
+            IPS_DeleteVariableProfile($profileName);
+            $this->checkVariableProfile($profileName, $type, $minVal, $maxVal, $stepSize, $newAssocs, $prefix, $suffix);
+
+        }
+
+    }
+
+    protected function getValueByAssociationText ($profileName, $text) {
+
+        if ($this->profileHasAssociation($profileName, $text)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            foreach ($profile['Associations'] as $assoc) {
+
+                if ($assoc['Name'] == $text) {
+
+                    return $assoc['Value'];
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+    protected function getAssociationTextByValue ($profileName, $value) {
+
+        if ($this->profileHasAssociationValue($profileName, $value)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            foreach ($profile['Associations'] as $assoc) {
+
+                if ($assoc['Value'] == $value) {
+
+                    return $assoc['Name'];
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+    protected function profileHasAssociation ($profileName, $searchedAssoc) {
+
+        if (IPS_VariableProfileExists($profileName)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            if (count($profile['Associations']) > 0) {
+
+                $found = false;
+
+                foreach ($profile['Associations'] as $assoc) {
+
+                    if ($assoc['Name'] == $searchedAssoc) {
+                        $found = true;
+                    }
+
+                }
+
+                return $found;
+
+            } else {
+
+                return false;
+
+            }
+
+        }
+
+    }
+
+    protected function profileHasAssociationValue ($profileName, $searchedValue) {
+
+        if (IPS_VariableProfileExists($profileName)) {
+
+            $profile = IPS_GetVariableProfile($profileName);
+
+            if (count($profile['Associations']) > 0) {
+
+                $found = false;
+
+                foreach ($profile['Associations'] as $assoc) {
+
+                    if ($assoc['Value'] == $searchedValue) {
+                        $found = true;
+                    }
+
+                }
+
+                return $found;
+
+            } else {
+
+                return false;
+
+            }
+
+        }
+
+    }
+
+    protected function cloneVariableProfile ($sourceProfileName, $newProfileName) {
+
+        if (IPS_VariableProfileExists($sourceProfileName)) {
+
+            $profile = IPS_GetVariableProfile($sourceProfileName);
+
+            $name = $newProfileName;
+            $type = $profile['ProfileType'];
+            $maxVal = $profile['MaxValue'];
+            $minVal = $profile['MinValue'];
+            $stepSize = $profile['StepSize'];
+            $digits = $profile['Digits'];
+            $suffix = $profile['Suffix'];
+            $prefix = $profile['Prefix'];
+            $actualAssocs = $profile['Associations'];
+            
+            $nAssocs = array();
+
+            if ($actualAssocs != null) {
+
+                foreach ($actualAssocs as $actualAssoc) {
+
+                    $aName = $actualAssoc['Name'];
+
+                    $nAssocs[$aName] = $actualAssoc['Value'];
+
+                }
+
+            }
+
+            $this->checkVariableProfile($name, $type, $minVal, $maxVal, $stepSize, $nAssocs, $prefix, $suffix);
+
 
         }
 
@@ -1438,6 +1782,30 @@ abstract class PISymconModule extends IPSModule {
         return $maxPos;
 
     }
+
+    protected function orderChildrenByPosition ($objID) {
+
+        if (IPS_HasChildren($objID)) {
+
+            $children = IPS_GetObject($objID);
+            $children = $children['ChildrenIDs'];
+            
+            usort($children, function($a, $b) {
+
+                $go1 = IPS_GetObject($a);
+                $go2 = IPS_GetObject($b);
+                
+                return $go1['ObjectPosition'] > $go2['ObjectPosition'];
+            
+            });
+
+            return $children;
+
+        }
+
+    }
+
+    //
 
     protected function linkCompleteDummy ($source, $target) {
 
@@ -2223,5 +2591,351 @@ abstract class PISymconModule extends IPSModule {
 
 
 }
+
+
+## LISTE FEHLT!
+
+
+// interface iFormElement {
+//     // public $type;
+//     // public $name;
+// }
+
+// class Label implements iFormElement {
+
+//     public $type = "Label";
+//     public $label;
+
+//     public function __construct($text) {
+
+//         $this->label = $text;
+
+//     }
+
+// }
+
+// class CheckBox implements iFormElement {
+
+//     public $type = "CheckBox";
+//     public $name;
+//     public $caption;
+
+//     public function __construct($name, $caption) {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class HorizontalSlider implements iFormElement {
+
+//     public $type = "HorizontalSlider";
+//     public $name;
+//     public $caption;
+//     public $minimum;
+//     public $maximum;
+//     public $onChange;
+
+//     public function __construct ($name, $caption = "No Title", $minimum = 0, $maximum = 100, $onChange = "") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+//         $this->minimum = $minimum;
+//         $this->maximum = $maximum;
+//         $this->onChange = $onChange;
+
+//     }
+
+// }
+
+// class IntervalBox implements iFormElement {
+
+//     public $type = "IntervalBox";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name;
+//         $this->caption;
+
+//     }
+
+// }
+
+// class NumberSpinner implements iFormElement {
+
+//     public $type = "NumberSpinner";
+//     public $name;
+//     public $caption;
+//     public $digits;
+//     public $hex;
+//     public $suffix;
+
+//     public function __construct($name, $caption = "Unnamed", $digits = 0, $hex = false, $suffix = "") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+//         $this->digits = $digits;
+//         $this->hex = $hex;
+//         $this->suffix = $suffix;
+
+//     }
+
+// }
+
+// class Button {
+
+//     public $type = "Button";
+//     public $label;
+//     public $onClick;
+
+//     public function __construct ($label, $onClick) {
+
+//         $this->label = $label;
+//         $this->onClick = $onClick;
+
+//     }
+
+// }
+
+// class PasswordTextBox implements iFormElement {
+
+//     public $type = "PasswordTextBox";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption) {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class Select implements iFormElement {
+
+//     public $type = "";
+//     public $name;
+//     public $caption;
+//     public $options;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectOption {
+
+//     public $label;
+//     public $value;
+
+//     public function __construct($label, $value) {
+
+//         $this->label = $label;
+//         $this->value = $value;
+
+//     }
+
+// }
+
+// class SelectCategory implements iFormElement {
+
+//     public $type = "SelectCategory";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+
+// }
+
+// class SelectColor implements iFormElement {
+
+//     public $type = "SelectColor";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+
+// }
+
+// class SelectDate implements iFormElement {
+
+//     public $type = "SelectDate";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectDateTime implements iFormElement {
+
+//     public $type = "SelectDateTime";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectEvent implements iFormElement {
+
+//     public $type = "SelectEvent";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectFile implements iFormElement {
+
+//     public $type = "SelectFile";
+//     public $name;
+//     public $caption;
+//     public $extension;
+
+//     public function __construct ($name, $caption = "Unnamed", $extension = null) {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+//         $this->extension = $extension;
+
+//     }
+    
+// }
+
+// class SelectInstance implements iFormElement {
+
+//     public $type = "SelectInstance";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectLink implements iFormElement {
+
+//     public $type = "SelectLink";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectMedia implements iFormElement {
+
+//     public $type = "SelectMedia";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectObject implements iFormElement {
+
+//     public $type = "SelectObject";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectScript implements iFormElement {
+
+//     public $type = "SelectScript";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class SelectVariable implements iFormElement {
+
+//     public $type = "SelectVariable";
+//     public $name;
+//     public $caption;
+
+//     public function __construct ($name, $caption = "Unnamed") {
+
+//         $this->name = $name;
+//         $this->caption = $caption;
+
+//     }
+
+// }
+
+// class Form {
+
+//     public $elements;
+//     public $actions;
+//     public $status;
+
+// }
 
 ?>
