@@ -758,6 +758,9 @@ require(__DIR__ . "\\pimodule.php");
         public function onDelayEnd () {
 
             $mode = $this->ReadPropertyInteger("Mode");
+
+            echo "onDelayEnd Mode is " . $mode . "||";
+
             $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
