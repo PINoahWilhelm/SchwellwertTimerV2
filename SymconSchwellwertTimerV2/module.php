@@ -159,9 +159,13 @@ require(__DIR__ . "\\pimodule.php");
         public function CheckScripts () {
 
             // Scripts checken -und erstellen
-            $this->checkScript("DelayEnd", $this->prefix . "_onDelayEnd");
-            $this->checkScript("Trailing", $this->prefix . "_trailing");
-            $this->checkScript("onTrailingEnd", $this->prefix . "_onTrailingEnd");
+            // $this->checkScript("DelayEnd", $this->prefix . "_onDelayEnd");
+            // $this->checkScript("Trailing", $this->prefix . "_trailing");
+            // $this->checkScript("onTrailingEnd", $this->prefix . "_onTrailingEnd");
+
+            $this->RegisterTimer("DelayEnd", 0, $this->prefix . "_onDelayEnd(" . $this>->InstanceID . ");");
+            $this->RegisterTimer("Trailing", 0, $this->prefix . "_trailing(" . $this>->InstanceID . ");");
+            $this->RegisterTimer("onTrailingEnd", 0, $this->prefix . "_onTrailingEnd(" . $this>->InstanceID . ");");
 
         }
 
@@ -487,10 +491,13 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
-                IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
-                IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+                // IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), 0);
+                // IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 0);
+                // IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
+                $this->SetTimerInterval("onTrailingEnd", 0);
+                $this->SetTimerInterval("Trailing", 0);
+                $this->SetTimerInterval("DelayEnd", 0);
 
 
             } else {
@@ -617,7 +624,8 @@ require(__DIR__ . "\\pimodule.php");
                     if ($trailingActive && $newStatus) {
 
                         $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
-                        IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+                        //IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+                        $this->SetTimerInterval("onTrailingEnd", $this->timestampToSeconds($nachlauf));
 
                         return;
                     }                    
@@ -628,7 +636,8 @@ require(__DIR__ . "\\pimodule.php");
 
                             $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
     
-                            IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                            //IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                            $this->SetTimerInterval("DelayEnd", $this->timestampToSeconds($verzögerung));
     
                             $this->setIcon($this->getFirstChildFrom($this->searchObjectByName("DelayEnd")), "Clock");
     
@@ -640,7 +649,8 @@ require(__DIR__ . "\\pimodule.php");
     
                         $this->deleteObject($this->searchObjectByName("Verzögerung Timer"));
     
-                        IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+                        //IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+                        $this->SetTimerInterval("DelayEnd", 0);
     
                     }
 
@@ -658,11 +668,13 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($this->timestampToSeconds($nachlauf) <= 15) {
 
-                IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+                //IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+                $this->SetTimerInterval("Trailing", $this->timestampToSeconds($nachlauf) - 1);
 
             } else {
 
                 IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+                $this->SetTimerInterval("Trailing", 15);
 
             }
 
@@ -688,9 +700,11 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
-            IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+            //IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
+            $this->SetTimerInterval("DelayEnd", 0);
 
-            IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+            //IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+            $this->SetTimerInterval("onTrailingEnd", $this->timestampToSeconds($nachlauf));
 
             $this->linkVar($this->getFirstChildFrom($this->searchObjectByName("onTrailingEnd")), "Nachlauf Timer", null, "last", true);
 
@@ -772,7 +786,8 @@ require(__DIR__ . "\\pimodule.php");
             if ($newStatus && $nachlaufactive) {
 
                 $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
-                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+                //IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($nachlauf));
+                $this->SetTimerInterval("onTrailingEnd", $this->timestampToSeconds($nachlauf));
 
             }
 
@@ -817,7 +832,8 @@ require(__DIR__ . "\\pimodule.php");
 
                 $verzögerung = GetValue($this->searchObjectByName("Verzögerung"));
 
-                IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                //IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), $this->timestampToSeconds($verzögerung));
+                $this->SetTimerInterval("DelayEnd", $this->timestampToSeconds($verzögerung));
 
             }
 
@@ -829,7 +845,8 @@ require(__DIR__ . "\\pimodule.php");
 
                 $trailing = GetValue($this->searchObjectByName("Nachlauf"));
 
-                IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($trailing));
+                //IPS_SetScriptTimer($this->searchObjectByName("onTrailingEnd"), $this->timestampToSeconds($trailing));
+                $this->SetTimerInterval("onTrailingEnd", $this->timestampToSeconds($trailing));
 
             }
 
@@ -839,11 +856,13 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->timestampToSeconds($nachlauf) <= 15) {
 
-                    IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+                    //IPS_SetScriptTimer($this->searchObjectByName("Trailing"), $this->timestampToSeconds($nachlauf) - 1);
+                    $this->SetTimerInterval("Trailing", $this->timestampToSeconds($nachlauf) - 1);
 
                 } else {
 
-                    IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+                    //IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
+                    $this->SetTimerInterval("Trailing", 15);
 
                 }
 
