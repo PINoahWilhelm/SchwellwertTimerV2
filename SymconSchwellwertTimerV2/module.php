@@ -49,7 +49,7 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function checkBaseScript () {
 
-            if (!$this->doesExist($this->InstanceID)) {
+            if (IPS_GetName($this->InstanceID) != "Unnamed Object (ID: " . $this->InstanceID . ")") {
                 return;
             }
 
