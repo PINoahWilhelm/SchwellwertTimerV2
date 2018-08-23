@@ -250,7 +250,7 @@ require(__DIR__ . "\\pimodule.php");
                     
                     $this->deleteObject($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")));
                     $this->deleteObject($this->searchObjectByName("Schwellwert 1")); 
-                    $this->deleteObject($this->searchObjectByName("onChange Schwellwert 2", $this->Events));
+                    $this->deleteObject($this->searchObjectByName("onChange Schwellwert 1", $this->Events));
                     $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
 
                 }
