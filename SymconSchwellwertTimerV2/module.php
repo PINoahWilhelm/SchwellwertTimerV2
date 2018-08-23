@@ -65,7 +65,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-            }
+            } 
 
         }
 
