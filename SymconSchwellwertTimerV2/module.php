@@ -179,6 +179,8 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
+            $this->RegisterPropertyInteger("Mode", 1);
+
         }
 
         protected function checkSensorVars() {
@@ -755,6 +757,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onDelayEnd () {
 
+            $mode = $this->ReadPropertyInteger("Mode");
             $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), true);
@@ -775,7 +778,15 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($statusVal != true) {
 
-                SetValue($this->Status, true);
+                if ($mode == 1) {
+
+                    SetValue($this->Status, true);
+
+                } else if ($mode == 2) {
+
+                    SetValue($this->Status, false);
+
+                }
 
             }
 
@@ -882,12 +893,22 @@ require(__DIR__ . "\\pimodule.php");
         public function onTrailingEnd () {
 
             $statusVal = GetValue($this->searchObjectByName("Status"));
+            $mode = $this->ReadPropertyInteger("Mode");
+
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
 
             if ($statusVal != false) {
 
-                SetValue($this->searchObjectByName("Status"), false);
+                if ($mode == 1) {
+
+                    SetValue($this->searchObjectByName("Status"), false);
+
+                } else if ($mode == 2) {
+
+                    SetValue($this->searchObjectByName("Status"), true);
+
+                }
 
             }
 
@@ -937,6 +958,8 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
+        ##############################################################################################
+        
         public function GetSpecialFunctions () {
 
             $obj = new FunctionsObject($this->InstanceID);

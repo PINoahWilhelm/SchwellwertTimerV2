@@ -37,6 +37,12 @@
 					{ "label": "UND", "value": "1" },
 					{ "label": "ODER", "value": "2" }
 				]
+		},
+		{ "type": "Select", "name": "Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
 		}
 	]
   }
