@@ -211,7 +211,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     $sensorName = IPS_GetName($sensor1);
                     IPS_SetName($sensor1link, $sensorName);
-
+ 
                 } else { 
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
