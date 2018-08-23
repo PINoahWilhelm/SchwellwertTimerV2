@@ -148,7 +148,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->Sensoren = $sensoren;
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->searchObjectByName("Sperre") . "|onSperreChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange"), $this->Events);
 
             $this->hide($targets);
             $this->hide($sensoren);
@@ -932,21 +932,6 @@ require(__DIR__ . "\\pimodule.php");
                     IPS_SetScriptTimer($this->searchObjectByName("Trailing"), 15);
 
                 }
-
-            }
-
-        }
-
-        public function onSperreChange () {
-
-            $sperreVar = $this->searchObjectByName("Sperre");
-            $sperreVal = GetValue($sperreVar);
-
-            //echo "onSperreChange executed \n";
-
-            if ($sperreVal == false) {
-
-                // $this->onStatusChange();
 
             }
 
