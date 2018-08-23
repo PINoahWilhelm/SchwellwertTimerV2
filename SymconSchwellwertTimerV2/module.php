@@ -55,7 +55,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-            }  else {
+            }  else { 
 
                 if (!$this->doesExist($this->ReadPropertyInteger("BaseScript"))) {
 
