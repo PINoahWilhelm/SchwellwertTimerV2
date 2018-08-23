@@ -71,8 +71,9 @@ require(__DIR__ . "\\pimodule.php");
             
             $sperre = $this->searchObjectByName("Sperre");
 
-            $baseScript = $this->checkScript("SWT SetValue", "<?\n\necho IPS_GetName(\$_IPS['SELF']) . \" \"" . ";\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\n\$sperre = PI_GetValueSetTrigger(" . $sperre . ");\n\nif (\$sperre == true) {\n\n    return;\n\n} \n\nif (\$status == true) {\n\n    echo \"an\";\n\n} else {\n\n    echo \"aus\";\n\n}\n\n?>", false);
-            $baseScriptOnChange = $this->easyCreateRealOnChangeFunctionEvent("SWT Status onChange", $this->searchObjectByName("Status"), $baseScript, $baseScript, false);
+            $baseScript = $this->checkScript("SWT SetValue", "<?\n\necho IPS_GetName(\$_IPS['SELF']) . \" \"" . ";\n\n\$status = PI_GetValueSetTrigger(" . $this->searchObjectByName("Status") . ");\n\n\$sperre = PI_GetValueSetTrigger(" . $sperre . ");\n\nif (\$sperre == true) {\n\n    return;\n\n} \n\nif (\$status == true) {\n\n    echo \"an\";\n\n} else {\n\n    echo \"aus\";\n\n}\n\n?>", false);
+            $statusOnChange = $this->easyCreateRealOnChangeFunctionEvent("Status event", $this->searchObjectByName("Status"), $baseScript, $baseScript, false);
+            $sperreOnChange = $this->easyCreateRealOnChangeFunctionEvent("Sperre event", $this->searchObjectByName("Sperre"), $baseScript, $baseScript, false);
             IPS_SetProperty($this->InstanceID, "BaseScript", $baseScript);
             $this->setPosition($baseScript, 0);
             $this->hide($baseScript);
