@@ -417,7 +417,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-            }
+            } 
 
             // Lux
             if ($tresholdVal == 3) {
@@ -437,7 +437,7 @@ require(__DIR__ . "\\pimodule.php");
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_int");
                     $this->setIcon($tresholdVar, "Sun");
 
-                }
+                } 
 
             }
 
