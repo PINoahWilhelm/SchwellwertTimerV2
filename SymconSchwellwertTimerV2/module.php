@@ -219,7 +219,7 @@ require(__DIR__ . "\\pimodule.php");
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Schwellwert 1"));
                         $this->deleteObject($this->searchObjectByName("onChange Schwellwert 1", $this->Events));
-                        $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
+                        $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren))), $this->Events));
 
                         $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
@@ -281,7 +281,7 @@ require(__DIR__ . "\\pimodule.php");
                         $this->deleteObject($this->searchObjectByName("Sensor 2", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Schwellwert 2"));
                         $this->deleteObject($this->searchObjectByName("onChange Schwellwert 2", $this->Events));
-                        $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor2), $this->Events));
+                        $this->deleteObject($this->searchObjectByName("onChange " . $this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)), $this->Events));
 
                         $sensor2link = $this->linkVar($sensor2, "Sensor 2", $this->Sensoren, 0, true);
 
@@ -336,11 +336,11 @@ require(__DIR__ . "\\pimodule.php");
                         $this->deleteObject($this->searchObjectByName("Sensor 3", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Schwellwert 3"));
                         $this->deleteObject($this->searchObjectByName("onChange Schwellwert 3", $this->Events));
-                        $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
+                        $this->deleteObject($this->searchObjectByName("onChange " . $this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)), $this->Events));
 
                         $sensor3link = $this->linkVar($sensor3, "Sensor 3", $this->Sensoren, 0, true);
 
-                        $sensor3schwellwert = $this->checkVar("Schwellwert 3", $this->getVarType($sensor3), "", "", 999);
+                        $sensor3schwellwert = $this->checkVar("Schwellwert 3", $this->getVarType($sensor3), "", "", 999); 
 
                         $this->addSetValue($sensor3schwellwert);
 
