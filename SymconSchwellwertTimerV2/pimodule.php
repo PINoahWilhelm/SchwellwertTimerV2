@@ -1815,14 +1815,6 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    // Sort
-
-    public static function cmp ($a, $b) {
-
-        return $a['ObjectPosition'] > $b['ObjectPosition'];
-
-    }
-
     //
 
     protected function linkCompleteDummy ($source, $target) {
