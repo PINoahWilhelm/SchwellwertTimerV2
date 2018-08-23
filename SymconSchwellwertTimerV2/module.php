@@ -28,7 +28,7 @@ require(__DIR__ . "\\pimodule.php");
 
             parent::Create();
             
-            $this->checkBaseScript();
+            $this->checkSensorVars();
             
         }
  
@@ -247,7 +247,7 @@ require(__DIR__ . "\\pimodule.php");
 
 
                 if ($this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
-                    echo "Case 3";
+                    
                     $this->deleteObject($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")));
                     $this->deleteObject($this->searchObjectByName("Schwellwert 1"));
                     $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
