@@ -251,7 +251,7 @@ require(__DIR__ . "\\pimodule.php");
                     $this->deleteObject($this->searchObjectByName("onChange Schwellwert 1", $this->Events));
                     $this->deleteObject($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")));
                     $this->deleteObject($this->searchObjectByName("Schwellwert 1")); 
-                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor1), $this->Events));
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren))), $this->Events));
 
                 }
 
@@ -309,7 +309,7 @@ require(__DIR__ . "\\pimodule.php");
                     $this->deleteObject($this->searchObjectByName("onChange Schwellwert 2", $this->Events));
                     $this->deleteObject($this->searchObjectByName("Sensor 2", $this->searchObjectByName("Sensoren")));
                     $this->deleteObject($this->searchObjectByName("Schwellwert 2"));
-                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor2), $this->Events));
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren))), $this->Events));
                 }
 
             } 
@@ -367,7 +367,7 @@ require(__DIR__ . "\\pimodule.php");
                     $this->deleteObject($this->searchObjectByName("onChange Schwellwert 3", $this->Events));
                     $this->deleteObject($this->searchObjectByName("Sensor 3", $this->searchObjectByName("Sensoren")));
                     $this->deleteObject($this->searchObjectByName("Schwellwert 3"));
-                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($sensor3), $this->Events));
+                    $this->deleteObject($this->searchObjectByName("onChange " . IPS_GetName($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren))), $this->Events));
                 }
 
             }
