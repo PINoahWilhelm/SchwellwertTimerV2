@@ -47,8 +47,6 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function checkBaseScript () {
 
-            $sperre = $this->searchObjectByName("Sperre");
-
             if ($this->ReadPropertyInteger("BaseScript") == null) {
 
                 if (!$this->doesExist($this->ReadPropertyInteger("BaseScript"))) {
@@ -71,6 +69,8 @@ require(__DIR__ . "\\pimodule.php");
 
         protected function createBaseScript () {
             
+            $sperre = $this->searchObjectByName("Sperre");
+
             $baseScript = $this->checkScript("SWT SetValue", "<?\n\necho IPS_GetName(\$_IPS['SELF']) . \" \"" . ";\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\n\$sperre = PI_GetValueSetTrigger(" . $sperre . ");\n\nif (\$sperre == true) {\n\n    return;\n\n} \n\nif (\$status == true) {\n\n    echo \"an\";\n\n} else {\n\n    echo \"aus\";\n\n}\n\n?>", false);
             $baseScriptOnChange = $this->easyCreateRealOnChangeFunctionEvent("SWT Status onChange", $this->searchObjectByName("Status"), $baseScript, $baseScript, false);
             IPS_SetProperty($this->InstanceID, "BaseScript", $baseScript);
