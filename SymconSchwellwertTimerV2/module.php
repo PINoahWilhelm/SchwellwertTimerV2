@@ -66,7 +66,7 @@ require(__DIR__ . "\\pimodule.php");
             }
 
         }
-
+ 
         protected function createBaseScript () {
             
             $sperre = $this->searchObjectByName("Sperre");
