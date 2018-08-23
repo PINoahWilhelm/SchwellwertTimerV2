@@ -200,7 +200,7 @@ require(__DIR__ . "\\pimodule.php");
                 ////echo "Sensoren: " . $this->Sensoren . "\n";
 
                 if (!$this->doesExist($this->searchObjectByName("Sensor 1", $this->searchObjectByName("Sensoren")))) {
-                    echo "Case 1";
+                    //echo "Case 1";
                     $sensor1link = $this->linkVar($sensor1, "Sensor 1", $this->Sensoren, 0, true);
 
                     $sensor1schwellwert = $this->checkVar("Schwellwert 1", $this->getVarType($sensor1), "", "", 999);
@@ -215,7 +215,7 @@ require(__DIR__ . "\\pimodule.php");
                 } else { 
 
                     if ($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)) != $sensor1) {
-                        echo "Case 2";
+                        //echo "Case 2";
                         $this->deleteObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
                         $this->deleteObject($this->searchObjectByName("Schwellwert 1"));
                         $this->deleteObject($this->searchObjectByName("onChange Sensor 1 Schwellwert", $this->Events));
