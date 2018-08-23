@@ -26,6 +26,10 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
+
+            $this->RegisterTimer("DelayEnd", 0, $this->prefix . "_onDelayEnd(" . $this->InstanceID . ");");
+            $this->RegisterTimer("Trailing", 0, $this->prefix . "_trailing(" . $this->InstanceID . ");");
+            $this->RegisterTimer("onTrailingEnd", 0, $this->prefix . "_onTrailingEnd(" . $this->InstanceID . ");");
             
         }
  
@@ -163,9 +167,7 @@ require(__DIR__ . "\\pimodule.php");
             // $this->checkScript("Trailing", $this->prefix . "_trailing");
             // $this->checkScript("onTrailingEnd", $this->prefix . "_onTrailingEnd");
 
-            $this->RegisterTimer("DelayEnd", 0, $this->prefix . "_onDelayEnd(" . $this->InstanceID . ");");
-            $this->RegisterTimer("Trailing", 0, $this->prefix . "_trailing(" . $this->InstanceID . ");");
-            $this->RegisterTimer("onTrailingEnd", 0, $this->prefix . "_onTrailingEnd(" . $this->InstanceID . ");");
+            
 
         }
 
