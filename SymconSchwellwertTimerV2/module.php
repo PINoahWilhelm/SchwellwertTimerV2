@@ -360,7 +360,7 @@ require(__DIR__ . "\\pimodule.php");
                 }
                 
 
-            } else {
+            } else { 
 
 
                 if ($this->doesExist($this->searchObjectByName("Sensor 3", $this->searchObjectByName("Sensoren")))) {
