@@ -41,7 +41,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $this->checkSensorVars();
+            $this->checkBaseScript();
 
         }
 
