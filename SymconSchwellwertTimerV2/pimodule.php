@@ -4,11 +4,7 @@
 
 abstract class PISymconModule extends IPSModule {
 
-    public $moduleID = null;
-    public $libraryID = null;
     public $prefix = null;
-    public $parentID = null;
-    public $form;
 
     public $details = false;
     public $detailsVar = 0;
@@ -30,11 +26,7 @@ abstract class PISymconModule extends IPSModule {
         $moduleGUID = $this->getModuleGuidByName($className);
 
         $module = IPS_GetModule($moduleGUID);
-        //$ownInstance = IPS_GetObject($this->InstanceID);
 
-
-        //$this->moduleID = $module['ModuleID'];
-        //$this->libraryID = $module['LibraryID'];
 
         $moduleJsonPath = __DIR__ . "\\module.json";
 

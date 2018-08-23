@@ -14,8 +14,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public $detailsIndex = 3;
 
-        // Der Konstruktor des Moduls
-        // Überschreibt den Standard Kontruktor von IPS
+
         public function __construct($InstanceID) {
             // Diese Zeile nicht löschen
             parent::__construct($InstanceID);
@@ -126,7 +125,7 @@ require(__DIR__ . "\\pimodule.php");
             $verzögerung = $this->checkInteger("Verzögerung", false, "", 3, $this->secondsToTimestamp(300));
             $nachlauf = $this->checkInteger("Nachlauf", false, "", 4, $this->secondsToTimestamp(1800));
 
-            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false); // "", 0, false
+            $nachlaufAktiv = $this->checkBoolean("Nachlauf aktiv", false);
 
             $this->activateVariableLogging($switches[0]);
             $this->activateVariableLogging($switches[1]);
@@ -432,8 +431,6 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Lux_int") {
 
-                    ////echo "Give " . $tresholdVar . " Profile Nr. " . $tresholdVal . " (int)";
-
                     $this->addProfile($tresholdVar, $this->prefix . ".Lux_int");
                     $this->setIcon($tresholdVar, "Sun");
 
@@ -544,94 +541,6 @@ require(__DIR__ . "\\pimodule.php");
     
         }
 
-        // public function onStatusChange () {
-
-        //     //$var = $_IPS['VARIABLE'];
-        //     //$val = GetValue($var);
-
-        //     //echo "onStautschange executed \n";
-
-        //     $var  = $this->searchObjectByName("Status");
-        //     $val = GetValue($var);
-
-        //     $automatikVar = $this->searchObjectByName("Automatik");
-        //     $automatikVal = GetValue($automatikVar);
-
-        //     $baseScript = $this->searchObjectByName("BaseScript");
-
-        //     $sperre = $this->searchObjectByName("Sperre");
-        //     $sperre = GetValue($sperre);
-
-        //     if (!$automatikVal || $sperre) {
-
-        //         return;
-
-        //     }
- 
-        //     // if ($val) {
-
-        //     //     // Bei Überschreitung
-        //     //     if ($mode == 1) {
-
-        //     //         if ($valueOn != "") {
-
-        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
-
-        //     //         }
-
-        //     //         if ($scriptOn != null) {
-        //     //             IPS_RunScript($scriptOn);
-        //     //         } 
-
-        //     //     // Bei Unterschreitung
-        //     //     } else if ($mode == 2) {
-
-        //     //         if ($valueOff != "") {
-
-        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
-
-        //     //         }
-
-        //     //         if ($scriptOff != null) {
-        //     //             IPS_RunScript($scriptOff);
-        //     //         } 
-
-        //     //     } 
-
-        //     // } else {
-
-        //     //     if ($mode == 1) {
-
-        //     //         if ($valueOff != "") {
-
-        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
-
-        //     //         }
-
-        //     //         if ($scriptOff != null) {
-        //     //             IPS_RunScript($scriptOff);
-        //     //         } 
-
-        //     //     } else if ($mode == 2) {
-
-        //     //         if ($valueOn != "") {
-
-        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
-
-        //     //         }
-
-        //     //         if ($scriptOn != null) {
-        //     //             IPS_RunScript($scriptOn);
-        //     //         } 
-
-        //     //     }
-
-        //     // }
-
-        //     IPS_RunScript($baseScript);
-
-        // }
-
         public function onTresholdChange () {
 
             $this->onSensorChange();
@@ -640,8 +549,6 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onSensorChange () {
 
-            //$senderVar = $_IPS['VARIABLE'];
-            //$senderVal = GetValue($senderVar);
             $automatik = GetValue($this->AutomatikVar);
             $statusVar = $this->Status;
             $statusVal = GetValue($statusVar);
@@ -653,14 +560,6 @@ require(__DIR__ . "\\pimodule.php");
             $sensor1schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 1"));
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
-
-            // $sensor1 = $this->nullToNull($sensor1);
-            // $sensor2 = $this->nullToNull($sensor2);
-            // $sensor3 = $this->nullToNull($sensor3);
-
-            // $sensor1schwellwert = $this->nullToNull($sensor1schwellwert);
-            // $sensor2schwellwert = $this->nullToNull($sensor2schwellwert);
-            // $sensor3schwellwert = $this->nullToNull($sensor3schwellwert);
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
@@ -674,7 +573,6 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert <= $sensor1 && $sensor2schwellwert <= $sensor2 && $sensor3schwellwert <= $sensor3) {
 
-                        ////echo "Sensor1: " . $sensor1 . " Sensor1Schwellwert: " . $sensor1schwellwert;
                         $newStatus = true;
     
                     }
@@ -717,8 +615,6 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                // if (!$fromtrailing) {
-
                     if ($trailingActive && $newStatus) {
 
                         $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
@@ -748,9 +644,6 @@ require(__DIR__ . "\\pimodule.php");
                         IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
     
                     }
-
-                // } 
-
 
             }
 
@@ -808,8 +701,6 @@ require(__DIR__ . "\\pimodule.php");
 
         public function trailing () {
 
-            //$this->onSensorChange(true);
-
             $automatik = GetValue($this->AutomatikVar);
             $statusVar = $this->Status;
             $statusVal = GetValue($statusVar);
@@ -822,13 +713,6 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
-            // $sensor1 = $this->nullToNull($sensor1);
-            // $sensor2 = $this->nullToNull($sensor2);
-            // $sensor3 = $this->nullToNull($sensor3);
-
-            // $sensor1schwellwert = $this->nullToNull($sensor1schwellwert);
-            // $sensor2schwellwert = $this->nullToNull($sensor2schwellwert);
-            // $sensor3schwellwert = $this->nullToNull($sensor3schwellwert);
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
