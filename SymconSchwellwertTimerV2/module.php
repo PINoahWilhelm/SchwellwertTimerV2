@@ -37,7 +37,7 @@ require(__DIR__ . "\\pimodule.php");
 
             parent::ApplyChanges();
 
-            print_r($this);
+            //print_r($this);
 
             $this->onSensorChange();
 
