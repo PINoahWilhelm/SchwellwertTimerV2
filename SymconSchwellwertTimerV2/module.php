@@ -148,7 +148,7 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function  () {
+        public function RegisterProperties () {
 
             $this->RegisterPropertyInteger("Sensor1", null);
             $this->RegisterPropertyInteger("Sensor2", null);
