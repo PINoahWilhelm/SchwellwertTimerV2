@@ -43,15 +43,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $this->checkBaseScript();
-
         }
 
         protected function checkBaseScript () {
-
-            if (IPS_GetName($this->InstanceID) != "Unnamed Object (ID: " . $this->InstanceID . ")") {
-                return;
-            }
 
             $sperre = $this->searchObjectByName("Sperre");
 
