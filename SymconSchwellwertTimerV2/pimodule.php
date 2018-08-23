@@ -542,6 +542,26 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function easyCreateRealOnChangeFunctionEvent ($onChangeEventName, $targetId, $function, $parent = null, $autoFunctionToText = true) {
+        if ($parent == null) {
+            $parent = $this->InstanceID;
+        }
+        if (!$this->doesExist($this->searchObjectByName($onChangeEventName, $parent))) {
+            $eid = IPS_CreateEvent(0);
+            IPS_SetEventTrigger($eid, 1, $targetId);
+            IPS_SetParent($eid, $parent);
+            if ($autoFunctionToText) {
+                IPS_SetEventScript($eid, "<?php " . $this->prefix . "_" . $function . "(" . $this->InstanceID . "); ?>");
+            } else {
+                IPS_SetEventScript($eid, $function);
+            }
+            IPS_SetName($eid, $onChangeEventName);
+            IPS_SetEventActive($eid, true);
+            IPS_SetIdent($eid, $this->nameToIdent($onChangeEventName));
+            return $eid;
+        }
+    }
+
     // Such Funktionen
 
     protected function searchObjectByName ($name, $searchIn = null, $objectType = null) {
@@ -2464,7 +2484,7 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
-    protected function createRealOnChangeEvents ($ary, $parent = null) {
+    protected function createRealOnChangeEvents ($ary, $parent = null, $script = false) {
         if ($parent == null) {
             $parent = $this->InstanceID;
         }
@@ -2484,26 +2504,6 @@ abstract class PISymconModule extends IPSModule {
                     }
                 }
             }
-        }
-    }
-
-    protected function easyCreateRealOnChangeFunctionEvent ($onChangeEventName, $targetId, $function, $parent = null, $autoFunctionToText = true) {
-        if ($parent == null) {
-            $parent = $this->InstanceID;
-        }
-        if (!$this->doesExist($this->searchObjectByName($onChangeEventName, $parent))) {
-            $eid = IPS_CreateEvent(0);
-            IPS_SetEventTrigger($eid, 1, $targetId);
-            IPS_SetParent($eid, $parent);
-            if ($autoFunctionToText) {
-                IPS_SetEventScript($eid, "<?php " . $this->prefix . "_" . $function . "(" . $this->InstanceID . "); ?>");
-            } else {
-                IPS_SetEventScript($eid, $function);
-            }
-            IPS_SetName($eid, $onChangeEventName);
-            IPS_SetEventActive($eid, true);
-            IPS_SetIdent($eid, $this->nameToIdent($onChangeEventName));
-            return $eid;
         }
     }
 

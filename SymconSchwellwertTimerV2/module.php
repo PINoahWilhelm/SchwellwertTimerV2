@@ -43,11 +43,23 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
 
-            $baseScript = $this->checkScript("BaseScript", "<?php\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\n\$module = $this->prefix" . "_GetSpecialFunctions($this->InstanceID);\n\nif (\$status == true) {\n\n    //Wenn Schwellwert überschritten\n\n} else {\n\n    //Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
+            $sperre = $this->searchObjectByName("Sperre");
 
-            $this->setPosition($baseScript, 0);
+            if ($this->ReadPropertyInteger("BaseScript") == null) {
 
-            $this->hide($baseScript);
+                if (!$this->doesExist($this->ReadPropertyInteger("BaseScript"))) {
+
+                    $baseScript = $this->checkScript(IPS_GetName($this->InstanceID) . " SetValue", "<?\n\necho IPS_GetName(\$_IPS['SELF'])." ";\n\n\$status = GetValue(" . $this->searchObjectByName("Status") . ");\n\n\$sperre = PI_GetValueSetTrigger($sperre);\n\n if (\$sperre == true) { \n \n return \n \n } \n\nif (\$status == true) {\n\n    //Wenn Schwellwert überschritten\n\n} else {\n\n    //Wenn Schwellwert unterschritten\n\n}\n\n?>", false);
+                    $baseScriptOnChange = $this->easyCreateRealOnChangeFunctionEvent(IPS_GetName($this->InstanceID) . " Status onChange", $this->searchObjectByName("Status"), $baseScript, $baseScript, false);
+                    IPS_SetProperty($this->InstanceID, "BaseScript", $baseScript);
+
+                    $this->setPosition($baseScript, 0);
+
+                    $this->hide($baseScript);
+
+                }
+
+            }
 
         }
 
@@ -119,7 +131,7 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->Sensoren = $sensoren;
 
-            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->Status . "|onStatusChange", $this->searchObjectByName("Sperre") . "|onSperreChange"), $this->Events);
+            $this->createOnChangeEvents(array($this->AutomatikVar . "|onAutomaticChange", $this->searchObjectByName("Sperre") . "|onSperreChange"), $this->Events);
 
             $this->hide($targets);
             $this->hide($sensoren);
@@ -136,11 +148,13 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
-        public function RegisterProperties () {
+        public function  () {
 
             $this->RegisterPropertyInteger("Sensor1", null);
             $this->RegisterPropertyInteger("Sensor2", null);
             $this->RegisterPropertyInteger("Sensor3", null);
+
+            $this->RegisterPropertyInteger("BaseScript", null);
 
             $this->RegisterPropertyInteger("Sensor1Profile", 5);
             $this->RegisterPropertyInteger("Sensor2Profile", 5);
@@ -510,93 +524,93 @@ require(__DIR__ . "\\pimodule.php");
     
         }
 
-        public function onStatusChange () {
+        // public function onStatusChange () {
 
-            //$var = $_IPS['VARIABLE'];
-            //$val = GetValue($var);
+        //     //$var = $_IPS['VARIABLE'];
+        //     //$val = GetValue($var);
 
-            //echo "onStautschange executed \n";
+        //     //echo "onStautschange executed \n";
 
-            $var  = $this->searchObjectByName("Status");
-            $val = GetValue($var);
+        //     $var  = $this->searchObjectByName("Status");
+        //     $val = GetValue($var);
 
-            $automatikVar = $this->searchObjectByName("Automatik");
-            $automatikVal = GetValue($automatikVar);
+        //     $automatikVar = $this->searchObjectByName("Automatik");
+        //     $automatikVal = GetValue($automatikVar);
 
-            $baseScript = $this->searchObjectByName("BaseScript");
+        //     $baseScript = $this->searchObjectByName("BaseScript");
 
-            $sperre = $this->searchObjectByName("Sperre");
-            $sperre = GetValue($sperre);
+        //     $sperre = $this->searchObjectByName("Sperre");
+        //     $sperre = GetValue($sperre);
 
-            if (!$automatikVal || $sperre) {
+        //     if (!$automatikVal || $sperre) {
 
-                return;
+        //         return;
 
-            }
+        //     }
  
-            // if ($val) {
+        //     // if ($val) {
 
-            //     // Bei Überschreitung
-            //     if ($mode == 1) {
+        //     //     // Bei Überschreitung
+        //     //     if ($mode == 1) {
 
-            //         if ($valueOn != "") {
+        //     //         if ($valueOn != "") {
 
-            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
 
-            //         }
+        //     //         }
 
-            //         if ($scriptOn != null) {
-            //             IPS_RunScript($scriptOn);
-            //         } 
+        //     //         if ($scriptOn != null) {
+        //     //             IPS_RunScript($scriptOn);
+        //     //         } 
 
-            //     // Bei Unterschreitung
-            //     } else if ($mode == 2) {
+        //     //     // Bei Unterschreitung
+        //     //     } else if ($mode == 2) {
 
-            //         if ($valueOff != "") {
+        //     //         if ($valueOff != "") {
 
-            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
 
-            //         }
+        //     //         }
 
-            //         if ($scriptOff != null) {
-            //             IPS_RunScript($scriptOff);
-            //         } 
+        //     //         if ($scriptOff != null) {
+        //     //             IPS_RunScript($scriptOff);
+        //     //         } 
 
-            //     } 
+        //     //     } 
 
-            // } else {
+        //     // } else {
 
-            //     if ($mode == 1) {
+        //     //     if ($mode == 1) {
 
-            //         if ($valueOff != "") {
+        //     //         if ($valueOff != "") {
 
-            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
+        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOff));
 
-            //         }
+        //     //         }
 
-            //         if ($scriptOff != null) {
-            //             IPS_RunScript($scriptOff);
-            //         } 
+        //     //         if ($scriptOff != null) {
+        //     //             IPS_RunScript($scriptOff);
+        //     //         } 
 
-            //     } else if ($mode == 2) {
+        //     //     } else if ($mode == 2) {
 
-            //         if ($valueOn != "") {
+        //     //         if ($valueOn != "") {
 
-            //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
+        //     //             $this->setAllInLinkList($this->searchObjectByName("Targets"), intval($valueOn));
 
-            //         }
+        //     //         }
 
-            //         if ($scriptOn != null) {
-            //             IPS_RunScript($scriptOn);
-            //         } 
+        //     //         if ($scriptOn != null) {
+        //     //             IPS_RunScript($scriptOn);
+        //     //         } 
 
-            //     }
+        //     //     }
 
-            // }
+        //     // }
 
-            IPS_RunScript($baseScript);
+        //     IPS_RunScript($baseScript);
 
-        }
+        // }
 
         public function onTresholdChange () {
 
@@ -915,7 +929,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($sperreVal == false) {
 
-                $this->onStatusChange();
+                // $this->onStatusChange();
 
             }
 
