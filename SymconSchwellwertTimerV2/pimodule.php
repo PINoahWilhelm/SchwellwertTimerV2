@@ -7,7 +7,6 @@ abstract class PISymconModule extends IPSModule {
     public $moduleID = null;
     public $libraryID = null;
     public $prefix = null;
-    public $instanceName = null;
     public $parentID = null;
     public $form;
 
@@ -33,7 +32,6 @@ abstract class PISymconModule extends IPSModule {
         $module = IPS_GetModule($moduleGUID);
         //$ownInstance = IPS_GetObject($this->InstanceID);
 
-        //$this->instanceName = $ownInstance['ObjectName'];
 
         //$this->moduleID = $module['ModuleID'];
         //$this->libraryID = $module['LibraryID'];
