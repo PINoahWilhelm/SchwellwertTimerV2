@@ -903,16 +903,20 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
 
-            if ($statusVal != false) {
+            if ($mode == 1) {
 
-                if ($mode == 1) {
+                if ($statusVal != false) {
 
                     SetValue($this->searchObjectByName("Status"), false);
+    
+                }
 
-                } else if ($mode == 2) {
+            } else if ($mode == 2) {
+
+                if ($statusVal != true) {
 
                     SetValue($this->searchObjectByName("Status"), true);
-
+    
                 }
 
             }
