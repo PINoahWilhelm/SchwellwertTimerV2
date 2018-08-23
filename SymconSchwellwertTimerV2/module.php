@@ -20,8 +20,6 @@ require(__DIR__ . "\\pimodule.php");
             // Diese Zeile nicht löschen
             parent::__construct($InstanceID);
 
-
-
             // Selbsterstellter Code
         }
  
@@ -29,6 +27,8 @@ require(__DIR__ . "\\pimodule.php");
         public function Create() {
 
             parent::Create();
+            
+            $this->checkBaseScript();
             
         }
  
@@ -42,6 +42,16 @@ require(__DIR__ . "\\pimodule.php");
             $this->checkSensorVars();
 
             $this->createRealOnChangeEvents(array($this->searchObjectByName("Verzögerung") . "|onDelayVarChange", $this->searchObjectByName("Nachlauf") . "|onTrailingVarChange"), $this->searchObjectByName("Events"));
+
+            $this->checkBaseScript();
+
+        }
+
+        protected function checkBaseScript () {
+
+            if (!$this->doesExist($this->InstanceID)) {
+                return;
+            }
 
             $sperre = $this->searchObjectByName("Sperre");
 
