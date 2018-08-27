@@ -1266,6 +1266,8 @@ abstract class PISymconModule extends IPSModule {
             $lnk = IPS_GetLink($id);
             return $lnk['TargetID'];
 
+        } else {
+            return null;
         }
 
     }
