@@ -579,9 +579,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
 
-            $sensor1type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)));
-            $sensor2type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
-            $sensor3type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
+            $sensor1type = $this->getVariableType($this->searchObjectByName("Schwellwert 1"));
+            $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
+            $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
 
             if ($automatik) {
