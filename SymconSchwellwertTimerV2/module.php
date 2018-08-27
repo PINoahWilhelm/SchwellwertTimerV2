@@ -576,6 +576,9 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
+                        $sensor1schwellwert = (int) $sensor1schwellwert;
+                        $sensor1 = (int) $sensor1;
+
                         if ($sensor1schwellwert <= $sensor1) {
                             $sens1valid = true;
                         }
@@ -584,6 +587,9 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
+                        $sensor2schwellwert = (int) $sensor2schwellwert;
+                        $sensor2 = (int) $sensor2;
+
                         if ($sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
@@ -591,6 +597,9 @@ require(__DIR__ . "\\pimodule.php");
                     } 
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
+
+                        $sensor3schwellwert = (int) $sensor3schwellwert;
+                        $sensor3 = (int) $sensor3;
 
                         if ($sensor3schwellwert <= $sensor3) {
                             $sens3valid = true;
