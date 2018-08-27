@@ -878,6 +878,17 @@ require(__DIR__ . "\\pimodule.php");
                         $sens3valid = true;
                     }
 
+                    if ($sensor1 == null && $sensor1schwellwert == null) {
+                        $sens1valid = true;
+                    }
+
+                    if ($sensor2 == null && $sensor2schwellwert == null) {
+                        $sens2valid = true;
+                    }
+
+                    if ($sensor3 == null && $sensor3schwellwert == null) {
+                        $sens3valid = true;
+                    }
 
                     if ($sens1valid && $sens2valid && $sens3valid) {
 
@@ -944,7 +955,7 @@ require(__DIR__ . "\\pimodule.php");
                     } else if ($this->ReadPropertyInteger("Mode") == 2 && $sensor3 != null && $sensor3schwellwert != null && $sens3valid == false) {
                         $sens3valid = true;
                     }
-                    
+
                     if ($sens1valid || $sens2valid || $sens3valid) {
 
                         $newStatus = true;
