@@ -540,6 +540,21 @@ require(__DIR__ . "\\pimodule.php");
     
         }
 
+        protected function getVariableType ($id) {
+
+            if ($this->doesExist($id)) {
+
+                if ($this->isVariable($id)) {
+
+                    $obj = IPS_GetVariable($id);
+                    return $obj['VariableType'];
+
+                }
+
+            }
+
+        }
+
         public function onTresholdChange () {
 
             $this->onSensorChange();
@@ -564,6 +579,10 @@ require(__DIR__ . "\\pimodule.php");
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
 
+            $sensor1type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 1", $this->Sensoren)));
+            $sensor2type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
+            $sensor3type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
+
             if ($automatik) {
 
                 $newStatus = false;
@@ -576,33 +595,63 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        $sensor1schwellwert = (int) $sensor1schwellwert;
-                        $sensor1 = (int) $sensor1;
+                        if ($sensor1type != 0) {
 
-                        if ($sensor1schwellwert <= $sensor1) {
-                            $sens1valid = true;
+                            if ($sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
+
+                        } else {
+
+                            $sensor1schwellwert = (int) $sensor1schwellwert;
+                            $sensor1 = (int) $sensor1;
+
+                            if ($sensor1schwellwert == $sensor1) {
+                                $sens1valid = true;
+                            }
+
                         }
 
                     } 
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        $sensor2schwellwert = (int) $sensor2schwellwert;
-                        $sensor2 = (int) $sensor2;
+                        if ($sensor2type != 0) {
 
-                        if ($sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                            if ($sensor2schwellwert <= $sensor2) {
+                                $sens2valid = true;
+                            }
+
+                        } else {
+
+                            $sensor2schwellwert = (int) $sensor2schwellwert;
+                            $sensor2 = (int) $sensor2;
+
+                            if ($sensor2schwellwert == $sensor2) {
+                                $sens2valid = true;
+                            }
+
                         }
 
                     } 
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        $sensor3schwellwert = (int) $sensor3schwellwert;
-                        $sensor3 = (int) $sensor3;
+                        if ($sensor3type != 0) {
 
-                        if ($sensor3schwellwert <= $sensor3) {
-                            $sens3valid = true;
+                            if ($sensor3schwellwert <= $sensor3) {
+                                $sens3valid = true;
+                            }
+
+                        } else {
+
+                            $sensor3schwellwert = (int) $sensor3schwellwert;
+                            $sensor3 = (int) $sensor3;
+
+                            if ($sensor3schwellwert == $sensor3) {
+                                $sens1valid = true;
+                            }
+
                         }
 
                     } 
