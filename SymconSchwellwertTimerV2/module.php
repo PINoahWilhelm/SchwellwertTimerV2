@@ -583,6 +583,8 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
             $sensor3type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
 
+            echo "Sensor 2 typ: " . $sensor2type;
+
             if ($automatik) {
 
                 $newStatus = false;
