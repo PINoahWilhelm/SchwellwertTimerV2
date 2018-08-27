@@ -598,7 +598,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else if ($sensor1schwellwert != null && $sensor1 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert !== $sensor1) {
+                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert != $sensor1) {
                             $sens1valid = true;
                         }
 
@@ -624,7 +624,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else if ($sensor2schwellwert != null && $sensor2 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert !== $sensor2) {
+                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert != $sensor2) {
                             $sens2valid = true;
                         }
 
@@ -650,7 +650,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else if ($sensor3schwellwert != null && $sensor3 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert !== $sensor3) {
+                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert != $sensor3) {
                             $sens3valid = true;
                         }
 
@@ -803,17 +803,13 @@ require(__DIR__ . "\\pimodule.php");
                             $sens1valid = true;
                         }
 
-                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert == $sensor1) {
-                            $sens1valid = true;
-                        }
-
                         if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
                             $sens1valid = true;
                         }
 
                     } else if ($sensor1schwellwert != null && $sensor1 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert !== $sensor1) {
+                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert != $sensor1) {
                             $sens1valid = true;
                         }
 
@@ -829,17 +825,13 @@ require(__DIR__ . "\\pimodule.php");
                             $sens2valid = true;
                         }
 
-                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
-                            $sens2valid = true;
-                        }
-
                         if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
 
                     } else if ($sensor2schwellwert != null && $sensor2 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert !== $sensor2) {
+                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert != $sensor2) {
                             $sens2valid = true;
                         }
 
@@ -855,17 +847,13 @@ require(__DIR__ . "\\pimodule.php");
                             $sens3valid = true;
                         }
 
-                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert == $sensor3) {
-                            $sens3valid = true;
-                        }
-
                         if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
                             $sens3valid = true;
                         }
 
                     } else if ($sensor3schwellwert != null && $sensor3 != null && $this->ReadPropertyInteger("Mode") == 2) {
 
-                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert !== $sensor3) {
+                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert != $sensor3) {
                             $sens3valid = true;
                         }
 
