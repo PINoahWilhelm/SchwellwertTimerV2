@@ -547,7 +547,8 @@ require(__DIR__ . "\\pimodule.php");
                 if ($this->isVariable($id)) {
 
                     $obj = IPS_GetVariable($id);
-                    return $obj['VariableType'];
+                    $type = $obj['VariableType'];
+                    return $type;
 
                 }
 
@@ -596,7 +597,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if ($sensor1type != 0) {
+                        if ($sensor1 != true || $sensor1 != false) {
 
                             if ($sensor1schwellwert <= $sensor1) {
                                 $sens1valid = true;
@@ -617,7 +618,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if ($sensor2type != 0) {
+                        if ($sensor2 != true || $sensor2 != false) {
 
                             if ($sensor2schwellwert <= $sensor2) {
                                 $sens2valid = true;
