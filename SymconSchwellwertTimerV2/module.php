@@ -608,8 +608,22 @@ require(__DIR__ . "\\pimodule.php");
                     if ($sensor1schwellwert != null) {
 
                         //echo "Sensor1Typ: " . $sensor1type;
-                        if ($sensor1schwellwert <= $sensor1) {
-                            $sens1valid = true;
+
+                        if (gettype($sensor1schwellwert) == "boolean") {
+
+                            $sensor1schwellwert = (int) $sensor1schwellwert;
+                            $sensor1 = (int) $sensor1;
+
+                            if ($sensor1schwellwert == $sensor1) {
+                                $sens1valid = true;
+                            }
+
+                        } else {
+
+                            if ($sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
+
                         }
 
                     } 
@@ -618,8 +632,21 @@ require(__DIR__ . "\\pimodule.php");
 
                         //echo "Sensor2Typ: " . $sensor2type;
 
-                        if ($sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                        if (gettype($sensor2schwellwert) == "boolean") {
+
+                            $sensor2schwellwert = (int) $sensor2schwellwert;
+                            $sensor2 = (int) $sensor2;
+
+                            if ($sensor2schwellwert == $sensor2) {
+                                $sens2valid = true;
+                            }
+
+                        } else {
+
+                            if ($sensor2schwellwert <= $sensor2) {
+                                $sens2valid = true;
+                            }
+
                         }
 
                     } 
