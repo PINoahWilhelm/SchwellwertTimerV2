@@ -583,6 +583,7 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 2", $this->Sensoren)));
             $sensor3type = $this->getVariableType($this->getTargetID($this->searchObjectByName("Sensor 3", $this->Sensoren)));
 
+
             if ($automatik) {
 
                 $newStatus = false;
@@ -628,7 +629,7 @@ require(__DIR__ . "\\pimodule.php");
                             $sensor2 = (int) $sensor2;
 
                             if ($sensor2schwellwert == $sensor2) {
-                                $sens2valid = true;
+                                $sens2valid = false;
                             }
 
                         }
