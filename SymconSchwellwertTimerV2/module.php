@@ -556,6 +556,16 @@ require(__DIR__ . "\\pimodule.php");
 
         }
 
+        protected function castNull ($wert) {
+
+            if ($wert == null) {
+
+                return 0;
+
+            }
+
+        }
+
         public function onTresholdChange () {
 
             $this->onSensorChange();
@@ -584,6 +594,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
             $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
+            $sensor1 = $this->castNull($sensor1);
+            $sensor2 = $this->castNull($sensor2);
+            $sensor3 = $this->castNull($sensor3);
 
             if ($automatik) {
 
@@ -618,8 +631,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if ($sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                        if ($sensor1 != true || $sensor1 != false) {
+
+                            if ($sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
+
+                        } else {
+
+                            $sensor1schwellwert = (int) $sensor1schwellwert;
+                            $sensor1 = (int) $sensor1;
+
+                            if ($sensor1schwellwert == $sensor1) {
+                                $sens1valid = true;
+                            }
+
                         }
 
                     } 
