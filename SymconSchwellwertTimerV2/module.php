@@ -903,13 +903,13 @@ require(__DIR__ . "\\pimodule.php");
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
                         if ($sensor1 != 0 && $sensor1 != 1) {
-
+                            echo "Not 0 or 1";
                             if ($sensor1schwellwert <= $sensor1) {
                                 $sens1valid = true;
                             }
 
                         } else {
-
+                            echo "Is 0 or 1";
                             $sensor1schwellwert = (int) $sensor1schwellwert;
                             $sensor1 = (int) $sensor1;
 
@@ -981,15 +981,15 @@ require(__DIR__ . "\\pimodule.php");
                         $sens3valid = true;
                     }
 
-                    if ($sensor1 == null && $sensor1schwellwert == null) {
+                    if ($sensor1 == 0 && $sensor1schwellwert == 0) {
                         $sens1valid = true;
                     }
 
-                    if ($sensor2 == null && $sensor2schwellwert == null) {
+                    if ($sensor2 == 0 && $sensor2schwellwert == 0) {
                         $sens2valid = true;
                     }
 
-                    if ($sensor3 == null && $sensor3schwellwert == null) {
+                    if ($sensor3 == 0 && $sensor3schwellwert == 0) {
                         $sens3valid = true;
                     }
 
