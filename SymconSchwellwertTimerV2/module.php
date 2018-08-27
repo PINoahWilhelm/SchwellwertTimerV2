@@ -845,9 +845,6 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1 = $this->castNull($sensor1);
-            $sensor2 = $this->castNull($sensor2);
-            $sensor3 = $this->castNull($sensor3);
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
