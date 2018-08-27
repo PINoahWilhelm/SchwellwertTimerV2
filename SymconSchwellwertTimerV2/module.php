@@ -607,6 +607,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
+                        echo "Sensor1Typ: " . $sensor1type;
                         if ($sensor1schwellwert <= $sensor1) {
                             $sens1valid = true;
                         }
@@ -614,6 +615,8 @@ require(__DIR__ . "\\pimodule.php");
                     } 
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
+
+                        echo "Sensor2Typ: " . $sensor2type;
 
                         if ($sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
