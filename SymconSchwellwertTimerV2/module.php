@@ -576,24 +576,24 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if (gettype($sensor1schwellwert) == "boolean" && boolval($sensor1schwellwert) == boolval($sensor1)) {
+                        if (($sensor1schwellwert == true ||$sensor1schwellwert == false) && boolval($sensor1schwellwert) == boolval($sensor1)) {
                             $sens1valid = true;
-                        }
-
-                        if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
-                            $sens1valid = true;
+                        } else {
+                            if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
                         }
 
                     } 
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if (gettype($sensor2schwellwert) == "boolean" && boolval($sensor2schwellwert) == boolval($sensor2)) {
+                        if (($sensor2schwellwert == true ||$sensor2schwellwert == false) && boolval($sensor2schwellwert) == boolval($sensor2)) {
                             $sens2valid = true;
-                        }
-
-                        if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                        } else {
+                            if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
+                                $sens2valid = true;
+                            }
                         }
 
                     } 
