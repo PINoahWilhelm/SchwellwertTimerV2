@@ -881,6 +881,17 @@ require(__DIR__ . "\\pimodule.php");
 
             $nachlaufactive = GetValue($this->searchObjectByName("Nachlauf aktiv"));
 
+            // Bei unterschreitung tauschen
+            if ($this->ReadPropertyInteger("Mode") == 2) {
+
+                if (!$newStatus) {
+                    $newStatus = true;
+                } else {
+                    $newStatus = false;
+                }
+
+            }
+
             if ($newStatus && $nachlaufactive) {
 
                 $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
