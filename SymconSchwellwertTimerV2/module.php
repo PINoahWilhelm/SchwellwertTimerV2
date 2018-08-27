@@ -618,21 +618,14 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if ($sensor2 != true || $sensor2 != false) {
+                        if ($sensor2 == true) {
+                            $sensor2 = 1;
+                        } else if ($sensor2 == false) {
+                            $sensor2 = 0;
+                        }
 
-                            if ($sensor2schwellwert <= $sensor2) {
-                                $sens2valid = true;
-                            }
-
-                        } else {
-
-                            $sensor2schwellwert = (int) $sensor2schwellwert;
-                            $sensor2 = (int) $sensor2;
-
-                            if ($sensor2schwellwert != $sensor2) {
-                                $sens2valid = true;
-                            }
-
+                        if ($sensor2schwellwert <= $sensor2) {
+                            $sens2valid = true;
                         }
 
                     } 
