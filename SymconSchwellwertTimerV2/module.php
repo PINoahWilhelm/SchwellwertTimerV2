@@ -584,15 +584,23 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if ($sensor1schwellwert <= $sensor1) {
+                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert == $sensor1) {
                             $sens1valid = true;
                         }
+
+                        if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
+                            $sens1valid = true;
+                        } 
 
                     }
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if ($sensor2schwellwert <= $sensor2) {
+                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
+                            $sens2valid = true;
+                        }
+
+                        if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
 
@@ -600,7 +608,11 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        if ($sensor3schwellwert <= $sensor3) {
+                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert == $sensor3) {
+                            $sens3valid = true;
+                        }
+
+                        if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
                             $sens3valid = true;
                         }
 
@@ -735,17 +747,26 @@ require(__DIR__ . "\\pimodule.php");
                     $sens2valid = false;
                     $sens3valid = false;
 
+
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if ($sensor1schwellwert <= $sensor1) {
+                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert == $sensor1) {
                             $sens1valid = true;
                         }
+
+                        if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
+                            $sens1valid = true;
+                        } 
 
                     }
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if ($sensor2schwellwert <= $sensor2) {
+                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
+                            $sens2valid = true;
+                        }
+
+                        if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
 
@@ -753,7 +774,11 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        if ($sensor3schwellwert <= $sensor3) {
+                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert == $sensor3) {
+                            $sens3valid = true;
+                        }
+
+                        if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
                             $sens3valid = true;
                         }
 
