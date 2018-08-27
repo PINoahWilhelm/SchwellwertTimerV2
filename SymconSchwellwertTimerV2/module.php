@@ -589,7 +589,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } 
 
-                    if ($sensor2schwellwert != null && $sensor1 2= null) {
+                    if ($sensor2schwellwert != null && $sensor1 != null) {
 
                         if ($sensor2 == true || $sensor2 == false) {
                             if (boolval($sensor2schwellwert) == boolval($sensor2)) {
