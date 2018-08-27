@@ -560,7 +560,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($wert == null) {
 
-                return 0;
+                return false;
 
             }
 
