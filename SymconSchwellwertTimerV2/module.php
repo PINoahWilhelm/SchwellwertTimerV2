@@ -604,9 +604,9 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->ReadPropertyInteger("SchwellwertMode") == 1) {
 
-                    $sens1valid = true;
-                    $sens2valid = true;
-                    $sens3valid = true;
+                    $sens1valid = false;
+                    $sens2valid = false;
+                    $sens3valid = false;
 
                     if ($sensor1schwellwert != null) {
 
