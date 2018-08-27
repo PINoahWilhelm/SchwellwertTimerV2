@@ -576,11 +576,11 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        // if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert === $sensor1) {
-                        //     $sens1valid = true;
-                        // }
+                        if (gettype($sensor1schwellwert) == "boolean" && boolval($sensor1schwellwert) == boolval($sensor1)) {
+                            $sens1valid = true;
+                        }
 
-                        if ($sensor1schwellwert < $sensor1) {
+                        if (gettype($sensor3schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
                             $sens1valid = true;
                         }
 
@@ -588,11 +588,11 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        // if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
-                        //     $sens2valid = true;
-                        // }
+                        if (gettype($sensor2schwellwert) == "boolean" && boolval($sensor2schwellwert) == boolval($sensor2)) {
+                            $sens2valid = true;
+                        }
 
-                        if ($sensor2schwellwert < $sensor2) {
+                        if (gettype($sensor3schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
 
@@ -600,11 +600,11 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        // if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert === $sensor3) {
-                        //     $sens3valid = true;
-                        // }
+                        if (gettype($sensor3schwellwert) == "boolean" && boolval($sensor3schwellwert) == boolval($sensor3)) {
+                            $sens3valid = true;
+                        }
 
-                        if ($sensor3schwellwert < $sensor3) {
+                        if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
                             $sens3valid = true;
                         }
 
