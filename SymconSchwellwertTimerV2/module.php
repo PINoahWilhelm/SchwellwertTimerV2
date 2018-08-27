@@ -731,23 +731,30 @@ require(__DIR__ . "\\pimodule.php");
 
             $statusVal = GetValue($this->searchObjectbyName("Status"));
 
-            if ($mode == 1) {
+            // if ($mode == 1) {
 
-                if ($statusVal != true) {
+            //     if ($statusVal != true) {
 
-                    SetValue($this->Status, true);
+            //         SetValue($this->Status, true);
     
-                }
+            //     }
 
-            } else if ($mode == 2) {
+            // } else if ($mode == 2) {
 
-                if ($statusVal != false) {
+            //     if ($statusVal != false) {
 
-                    SetValue($this->Status, false);
+            //         SetValue($this->Status, false);
     
-                }
+            //     }
 
+            // }
+
+            if ($statusVal != true) {
+
+                SetValue($this->Status, true);
+        
             }
+
 
             IPS_SetScriptTimer($this->searchObjectByName("DelayEnd"), 0);
 
@@ -910,29 +917,29 @@ require(__DIR__ . "\\pimodule.php");
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
 
-            if ($mode == 1) {
+            // if ($mode == 1) {
 
-                if ($statusVal != false) {
+            //     if ($statusVal != false) {
 
-                    SetValue($this->searchObjectByName("Status"), false);
+            //         SetValue($this->searchObjectByName("Status"), false);
     
-                }
+            //     }
 
-            } else if ($mode == 2) {
+            // } else if ($mode == 2) {
 
-                if ($statusVal != true) {
+            //     if ($statusVal != true) {
 
-                    SetValue($this->searchObjectByName("Status"), true);
+            //         SetValue($this->searchObjectByName("Status"), true);
     
-                }
-
-            }
-
-            // if ($statusVal != false) {
-
-            //     SetValue($this->searchObjectByName("Status"), false);
+            //     }
 
             // }
+
+            if ($statusVal != false) {
+
+                SetValue($this->searchObjectByName("Status"), false);
+
+            }
 
             $this->deleteObject($this->searchObjectByName("Nachlauf Timer"));
 
