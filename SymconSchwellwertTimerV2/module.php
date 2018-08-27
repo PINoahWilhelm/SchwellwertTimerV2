@@ -598,6 +598,18 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2 = $this->castNull($sensor2);
             $sensor3 = $this->castNull($sensor3);
 
+            if (gettype($sensor1schwellwert) == "boolean") {
+                $sensor1schwellwert = (int) $sensor1schwellwert;
+            }
+
+            if (gettype($sensor2schwellwert) == "boolean") {
+                $sensor2schwellwert = (int) $sensor2schwellwert;
+            }
+
+            if (gettype($sensor3schwellwert) == "boolean") {
+                $sensor3schwellwert = (int) $sensor3schwellwert;
+            }
+
             if ($automatik) {
 
                 $newStatus = false;
