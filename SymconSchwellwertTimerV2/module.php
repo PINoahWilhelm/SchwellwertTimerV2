@@ -672,6 +672,17 @@ require(__DIR__ . "\\pimodule.php");
                         return;
                     }                    
 
+                    // Bei unterschreitung tauschen
+                    if ($this->ReadPropertyInteger("Mode") == 2) {
+
+                        if (!$newStatus) {
+                            $newStatus = true;
+                        } else {
+                            $newStatus = false;
+                        }
+
+                    }
+
                     if ($newStatus) {
 
                         if (!$this->doesExist($this->searchObjectByName("Verzögerung Timer"))) {
