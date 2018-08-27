@@ -560,7 +560,7 @@ require(__DIR__ . "\\pimodule.php");
 
             if ($wert == null) {
 
-                return false;
+                return (int) $wert;
 
             }
 
@@ -594,9 +594,13 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
             $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1 = (int) $sensor1;
-            $sensor2 = (int) $sensor2;
-            $sensor3 = (int) $sensor3;
+            $sensor1 = $this->castNull($sensor1);
+            $sensor2 = $this->castNull($sensor2);
+            $sensor3 = $this->castNull($sensor3);
+
+            $sensor1schwellwert = $this->castNull($sensor1schwellwert);
+            $sensor2schwellwert = $this->castNull($sensor2schwellwert);
+            $sensor3schwellwert = $this->castNull($sensor3schwellwert);
 
             if ($automatik) {
 
