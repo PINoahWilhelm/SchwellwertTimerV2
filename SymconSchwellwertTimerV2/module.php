@@ -741,9 +741,9 @@ require(__DIR__ . "\\pimodule.php");
 
             } else if ($mode == 2) {
 
-                if ($statusVal != true) {
+                if ($statusVal != false) {
 
-                    SetValue($this->Status, true);
+                    SetValue($this->Status, false);
     
                 }
 
