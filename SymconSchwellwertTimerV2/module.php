@@ -598,16 +598,23 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2 = $this->castNull($sensor2);
             $sensor3 = $this->castNull($sensor3);
 
+            $sensor1bool = false;
+            $sensor2bool = false;
+            $sensor3bool = false;
+
             if (gettype($sensor1schwellwert) == "boolean") {
                 $sensor1schwellwert = (int) $sensor1schwellwert;
+                $sensor1bool = true;
             }
 
             if (gettype($sensor2schwellwert) == "boolean") {
                 $sensor2schwellwert = (int) $sensor2schwellwert;
+                $sensor2bool = true;
             }
 
             if (gettype($sensor3schwellwert) == "boolean") {
                 $sensor3schwellwert = (int) $sensor3schwellwert;
+                $sensor3bool = true;
             }
 
             if ($automatik) {
@@ -623,8 +630,17 @@ require(__DIR__ . "\\pimodule.php");
                     if ($sensor1schwellwert != null) {
 
                         //echo "Sensor1Typ: " . $sensor1type;
-                        if ($sensor1schwellwert <= $sensor1) {
-                            $sens1valid = true;
+
+                        if ($sensor1bool == true) {
+
+                            if ($sensor1schwellwert == $sensor1) {
+                                $sens1valid = true;
+                            }
+
+                        } else {
+                            if ($sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
                         }
 
                     } 
@@ -633,8 +649,16 @@ require(__DIR__ . "\\pimodule.php");
 
                         //echo "Sensor2Typ: " . $sensor2type;
 
-                        if ($sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                        if ($sensor2bool == true) {
+
+                            if ($sensor2schwellwert == $sensor2) {
+                                $sens2valid = true;
+                            }
+
+                        } else {
+                            if ($sensor2schwellwert <= $sensor2) {
+                                $sens2valid = true;
+                            }
                         }
 
                     } 
