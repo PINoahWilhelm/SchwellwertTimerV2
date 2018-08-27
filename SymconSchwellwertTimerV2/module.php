@@ -580,7 +580,7 @@ require(__DIR__ . "\\pimodule.php");
                             $sens1valid = true;
                         }
 
-                        if (gettype($sensor3schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
+                        if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
                             $sens1valid = true;
                         }
 
@@ -592,7 +592,7 @@ require(__DIR__ . "\\pimodule.php");
                             $sens2valid = true;
                         }
 
-                        if (gettype($sensor3schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
+                        if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
                             $sens2valid = true;
                         }
 
