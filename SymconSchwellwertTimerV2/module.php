@@ -628,7 +628,7 @@ require(__DIR__ . "\\pimodule.php");
                             $sensor2schwellwert = (int) $sensor2schwellwert;
                             $sensor2 = (int) $sensor2;
 
-                            if ($sensor2schwellwert == $sensor2) {
+                            if ($sensor2schwellwert != $sensor2) {
                                 $sens2valid = true;
                             }
 
