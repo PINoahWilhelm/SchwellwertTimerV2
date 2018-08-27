@@ -564,21 +564,6 @@ require(__DIR__ . "\\pimodule.php");
 
             $currentStatus = GetValue($this->searchObjectByName("Status"));
 
-            $sensor1isboolean = false;
-            $sensor2isboolean = false;
-            $sensor3isboolean = false;
-
-            // if ($sensor1 != null) {
-
-            //     $sensor1Obj = IPS_GetObject($this->searchObjectByName("Sensor 1", $this->Sensoren));
-            //     if ($sensor1Obj['ObjectType'] == 2) {
-
-            //         if ()
-
-            //     }
-
-            // } 
-
             
 
             if ($automatik) {
@@ -593,36 +578,52 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if (boolval($sensor1schwellwert) == boolval($sensor1)) {
-                            $sens1valid = true;
-                        }
+                        if ($sensor1 == true || $sensor1 == false) {
 
-                        if ($sensor1schwellwert <= $sensor1) {
-                            $sens1valid = true;
+                            if (boolval($sensor1schwellwert) == boolval($sensor1)) {
+                                $sens1valid = true;
+                            }
+
+                        } else {
+
+                            if ($sensor1schwellwert <= $sensor1) {
+                                $sens1valid = true;
+                            }
+
                         }
 
                     } 
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if (boolval($sensor2schwellwert) == boolval($sensor2)) {
-                            $sens2valid = true;
-                        }
+                        if ($sensor2 == true || $sensor2 == false) {
 
-                        if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
-                            $sens2valid = true;
+                            if (boolval($sensor2schwellwert) == boolval($sensor2)) {
+                                $sens2valid = true;
+                            }
+
+                        } else {
+
+                            if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
+                                $sens2valid = true;
+                            }
+
                         }
 
                     } 
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        if (gettype($sensor3schwellwert) == "boolean" && boolval($sensor3schwellwert) == boolval($sensor3)) {
-                            $sens3valid = true;
-                        }
+                        if ($sensor3 == true || $sensor3 == false) {
 
-                        if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
-                            $sens3valid = true;
+                            if (gettype($sensor3schwellwert) == "boolean" && boolval($sensor3schwellwert) == boolval($sensor3)) {
+                                $sens3valid = true;
+                            }
+    
+                            if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
+                                $sens3valid = true;
+                            }
+
                         }
 
                     } 
