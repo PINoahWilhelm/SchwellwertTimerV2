@@ -32,24 +32,17 @@
 			  { "label": "Profil des Sensors verwenden", "value": "5" }
 		  ]
 	  },
-	  { "type": "Select", "name": "Mode", "caption": "Aktivieren",
-		"options": [
-				{ "label": "Bei Grenzüberschreitung", "value": "1" },
-                { "label": "Bei Grenzunterschreitung", "value": "2" }
-			]
-		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",
 			"options": [
 					{ "label": "UND", "value": "1" },
 					{ "label": "ODER", "value": "2" }
 				]
 		},
-		{ "type": "Label", "label": "Zusätzliche Funktionen" },
-		{ "type": "Label", "label": "Bei..." },
-	  	{ "type": "ValidationTextBox", "name": "valueOn", "caption": "Aktivierung" },
-		{ "type": "ValidationTextBox", "name": "valueOff", "caption": "Deaktivierung" },
-		{ "type": "Label", "label": "Bei..." },
-	  	{ "type": "SelectScript", "name": "ScriptOn", "caption": "Aktivierung" },
-	  	{ "type": "SelectScript", "name": "ScriptOff", "caption": "Deaktivierung" }
+		{ "type": "Select", "name": "Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
+		}
 	]
   }
