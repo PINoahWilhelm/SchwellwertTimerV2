@@ -475,6 +475,17 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
+            if ($tresholdVal == 6) {
+
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Wolkendecke") {
+
+                    $this->addProfile($tresholdVar, $this->prefix . ".Wolkendecke");
+                    $this->setIcon($tresholdVar, "Cloudy");
+
+                }
+
+            }
+
             if ($tresholdVal == 7) {
 
                 $profile = $this->getVarProfile($source);
