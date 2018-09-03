@@ -373,7 +373,7 @@ require(__DIR__ . "\\pimodule.php");
         }
 
         protected function setNeededProfiles () {
-            return array("Lux", "Temperature_F", "Temperature_C", "Wattage", "Windspeed");
+            return array("Lux", "Temperature_F", "Temperature_C", "Wattage", "Windspeed", "Wolkendecke");
         }
 
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {

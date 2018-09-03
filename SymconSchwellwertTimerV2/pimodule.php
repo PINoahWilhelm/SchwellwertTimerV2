@@ -196,7 +196,13 @@ abstract class PISymconModule extends IPSModule {
 
             if (in_array("Windspeed", $neededModules)) {
                 
-                $this->checkVariableProfile($this->prefix . ".Windgeschwindigkeit", $this->varTypeByName("float"), 0,  50, 0.5, null, "", " m/s");
+                $this->checkVariableProfile($this->prefix . ".Windgeschwindigkeit", $this->varTypeByName("float"), 0,  50, 0.5, null, "", " m/s", 2);
+
+            }
+
+            if (in_array("Wolkendecke", $neededModules)) {
+                
+                $this->checkVariableProfile($this->prefix . ".Wolkendecke", $this->varTypeByName("int"), 0,  100, 1, null, "", " %");
 
             }
 
@@ -780,7 +786,7 @@ abstract class PISymconModule extends IPSModule {
 
     // Profil Funktionen
 
-    protected function checkVariableProfile ($name, $type, $min = 0, $max = 100, $steps = 1.0, $associations = null, $prefix = "", $suffix = "") {
+    protected function checkVariableProfile ($name, $type, $min = 0, $max = 100, $steps = 1.0, $associations = null, $prefix = "", $suffix = "", $digits = null) {
 
         if (!IPS_VariableProfileExists($name)) {
 
@@ -792,6 +798,12 @@ abstract class PISymconModule extends IPSModule {
             IPS_SetVariableProfileValues ($name, $min, $max, $steps);
             IPS_SetVariableProfileText($name, $prefix, $suffix);
             
+            if ($digits != null) {
+
+                IPS_SetVariableProfileDigits($name, $digits);
+
+            }
+
             if ($associations != null) {
 
                 foreach ($associations as $assocName => $assocValue) {
