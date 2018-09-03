@@ -51,13 +51,14 @@ abstract class PISymconModule extends IPSModule {
 
         }
 
-        $this->initNeededProfiles();
         $this->initGlobalized();
     }
 
 
     // Überschreibt die interne IPS_Create($id) Funktion
     public function Create() {
+
+        $this->initNeededProfiles();
 
         parent::Create();
 
@@ -195,7 +196,7 @@ abstract class PISymconModule extends IPSModule {
 
             if (in_array("Windspeed", $neededModules)) {
                 
-                $this->checkVariableProfile($this->prefix . ".Windspeed", $this->varTypeByName("float"), 0,  50, 0.5, null, "", " m/s");
+                $this->checkVariableProfile($this->prefix . ".Windgeschwindigkeit", $this->varTypeByName("float"), 0,  50, 0.5, null, "", " m/s");
 
             }
 
