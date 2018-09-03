@@ -193,6 +193,12 @@ abstract class PISymconModule extends IPSModule {
 
             }
 
+            if (in_array("Windspeed", $neededModules)) {
+                
+                $this->checkVariableProfile($this->prefix . ".Windspeed", $this->varTypeByName("float"), 0,  50, 0.5, null, "", " m/s");
+
+            }
+
         }
 
     }

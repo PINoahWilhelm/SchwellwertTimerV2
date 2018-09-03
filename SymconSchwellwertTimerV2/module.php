@@ -373,7 +373,7 @@ require(__DIR__ . "\\pimodule.php");
         }
 
         protected function setNeededProfiles () {
-            return array("Lux", "Temperature_F", "Temperature_C", "Wattage");
+            return array("Lux", "Temperature_F", "Temperature_C", "Wattage", "Windspeed");
         }
 
         protected function giveTresholdProfile ($tresholdVar, $tresholdVal, $source) {
@@ -456,7 +456,26 @@ require(__DIR__ . "\\pimodule.php");
 
             }
 
+            // Windgeschwindigkeit
             if ($tresholdVal == 5) {
+
+                if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Windspeed") {
+
+                    $this->addProfile($tresholdVar, $this->prefix . ".Windspeed");
+                    $this->setIcon($tresholdVar, "WindSpeed");
+
+                }
+
+                // if ($this->getVarType($tresholdVar) == $this->varTypeByName("int") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Windspeed") {
+
+                //     $this->addProfile($tresholdVar, $this->prefix . ".Wattage_int");
+                //     $this->setIcon($tresholdVar, "Electricity");
+
+                // }
+
+            }
+
+            if ($tresholdVal == 7) {
 
                 $profile = $this->getVarProfile($source);
                 $this->addProfile($tresholdVar, $profile);
