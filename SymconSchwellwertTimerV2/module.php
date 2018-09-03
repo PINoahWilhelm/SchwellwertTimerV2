@@ -460,6 +460,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 $profile = $this->getVarProfile($source);
                 $this->addProfile($tresholdVar, $profile);
+                $this->addSetValue($tresholdVar);
 
             }
 
