@@ -461,7 +461,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 if ($this->getVarType($tresholdVar) == $this->varTypeByName("float") && $this->getVarProfile($tresholdVar) != $this->prefix . ".Windspeed") {
 
-                    $this->addProfile($tresholdVar, $this->prefix . ".Windspeed");
+                    $this->addProfile($tresholdVar, $this->prefix . ".Windgeschwindigkeit");
                     $this->setIcon($tresholdVar, "WindSpeed");
 
                 }
