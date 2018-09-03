@@ -22,7 +22,7 @@
 		{ "label": "Lux (lx)", "value": "3" },
 		{ "label": "Watt (W)", "value": "4" },
 		{ "label": "Windgeschwindigkeit (m/s)", "value": "5" },
-		{ "label": "Wolkendecke (%)", "value": "6" },
+		{ "label": "Prozent (%)", "value": "6" },
 		{ "label": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 	  },

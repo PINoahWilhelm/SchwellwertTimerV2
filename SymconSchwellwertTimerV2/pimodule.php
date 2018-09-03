@@ -200,9 +200,9 @@ abstract class PISymconModule extends IPSModule {
 
             }
 
-            if (in_array("Wolkendecke", $neededModules)) {
+            if (in_array("Prozent", $neededModules)) {
                 
-                $this->checkVariableProfile($this->prefix . ".Wolkendecke", $this->varTypeByName("int"), 0,  100, 1, null, "", " %");
+                $this->checkVariableProfile($this->prefix . ".Prozent", $this->varTypeByName("int"), 0,  100, 1, null, "", " %");
 
             }
 
