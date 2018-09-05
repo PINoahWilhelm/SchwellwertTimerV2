@@ -817,7 +817,7 @@ require(__DIR__ . "\\pimodule.php");
 
         public function onDelayEnd () {
 
-            $mode = $this->ReadPropertyInteger();
+            //$mode = $this->ReadPropertyInteger("Mode");
 
             $nachlauf = GetValue($this->searchObjectByName("Nachlauf"));
 
@@ -1045,7 +1045,7 @@ require(__DIR__ . "\\pimodule.php");
             $nachlaufactive = GetValue($this->searchObjectByName("Nachlauf aktiv"));
 
             // Bei unterschreitung tauschen
-            // if ($this->ReadPropertyInteger() == 2) {
+            // if ($this->ReadPropertyInteger("Mode") == 2) {
 
             //     if (!$newStatus) {
             //         $newStatus = true;
@@ -1068,7 +1068,7 @@ require(__DIR__ . "\\pimodule.php");
         public function onTrailingEnd () {
 
             $statusVal = GetValue($this->searchObjectByName("Status"));
-            $mode = $this->ReadPropertyInteger();
+            //$mode = $this->ReadPropertyInteger("Mode");
 
 
             SetValue($this->searchObjectByName("Nachlauf aktiv"), false);
