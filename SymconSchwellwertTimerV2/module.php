@@ -660,7 +660,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor1schwellwert >= $sensor1) {
+                        if ($sensor1schwellwert > $sensor1) {
 
                             $sens1valid = true;
 
@@ -699,7 +699,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor2schwellwert >= $sensor2) {
+                        if ($sensor2schwellwert > $sensor2) {
 
                             $sens2valid = true;
 
@@ -738,7 +738,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor3schwellwert >= $sensor3) {
+                        if ($sensor3schwellwert > $sensor3) {
 
                             $sens3valid = true;
 
@@ -927,7 +927,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor1schwellwert >= $sensor1) {
+                        if ($sensor1schwellwert > $sensor1) {
 
                             $sens1valid = true;
 
@@ -966,7 +966,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor2schwellwert >= $sensor2) {
+                        if ($sensor2schwellwert > $sensor2) {
 
                             $sens2valid = true;
 
@@ -1005,7 +1005,7 @@ require(__DIR__ . "\\pimodule.php");
 
                     } else {
 
-                        if ($sensor3schwellwert >= $sensor3) {
+                        if ($sensor3schwellwert > $sensor3) {
 
                             $sens3valid = true;
 
