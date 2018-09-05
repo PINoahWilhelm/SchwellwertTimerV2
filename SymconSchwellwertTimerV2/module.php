@@ -684,8 +684,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null) {
 
-                        if ($sensor3schwellwert <= $sensor3) {
-                            $sens3valid = true;
+                        if (gettype($sensor3schwellwert) == "boolean") {
+
+                            $sensor3schwellwert = (int) $sensor3schwellwert;
+                            $sensor3 = (int) $sensor3;
+
+                            if ($sensor3schwellwert == $sensor3) {
+                                $sens3valid = true;
+                            }
+
+                        } else {
+
+                            if ($sensor3schwellwert <= $sensor3) {
+                                $sens3valid = true;
+                            }
+
                         }
 
                     } 
