@@ -586,29 +586,33 @@ abstract class PISymconModule extends IPSModule {
         
         foreach ($childs as $child) {
 
-            $childObject = IPS_GetObject($child);
+            if ($this->doesExist($child)) {
+             
+                $childObject = IPS_GetObject($child);
 
-            if ($childObject['ObjectIdent'] == $this->nameToIdent($name)) {
-                
-                $returnId = $childObject['ObjectID'];
-
-            }
-
-            if ($objectType == null) {
-                
                 if ($childObject['ObjectIdent'] == $this->nameToIdent($name)) {
-                    
+                
                     $returnId = $childObject['ObjectID'];
 
                 }
+
+                if ($objectType == null) {
+                
+                    if ($childObject['ObjectIdent'] == $this->nameToIdent($name)) {
+                    
+                        $returnId = $childObject['ObjectID'];
+
+                    }
 
             } else {
                 
-                if ($childObject['ObjectIdent'] == $this->nameToIdent($name) && $childObject['ObjectType'] == $this->objectTypeByName($objectType)) {
+                    if ($childObject['ObjectIdent'] == $this->nameToIdent($name) && $childObject['ObjectType'] == $this->objectTypeByName($objectType)) {
                     
-                    $returnId = $childObject['ObjectID'];
+                        $returnId = $childObject['ObjectID'];
 
+                    }
                 }
+                
             }
         }
 

@@ -173,9 +173,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("BaseScript", null);
 
-            $this->RegisterPropertyInteger("Sensor1Profile", 5);
-            $this->RegisterPropertyInteger("Sensor2Profile", 5);
-            $this->RegisterPropertyInteger("Sensor3Profile", 5);
+            $this->RegisterPropertyInteger("Sensor1Profile", 7);
+            $this->RegisterPropertyInteger("Sensor2Profile", 7);
+            $this->RegisterPropertyInteger("Sensor3Profile", 7);
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
