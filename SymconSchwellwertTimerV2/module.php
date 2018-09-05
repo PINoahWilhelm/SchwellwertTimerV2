@@ -639,9 +639,9 @@ require(__DIR__ . "\\pimodule.php");
 
                 $newStatus = false;
 
-                $sens1valid = false;
-                $sens2valid = false;
-                $sens3valid = false;
+                $sens1valid = true;
+                $sens2valid = true;
+                $sens3valid = true;
 
                 if ($sensor1schwellwert != null && $sensor1 != null) {
 
@@ -652,6 +652,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens1valid = true;
 
+                        } else {
+
+                            $sens1valid = false;
+
                         }
 
                     } else {
@@ -660,7 +664,19 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens1valid = true;
 
+                        } else {
+
+                            $sens1valid = false;
+
                         }
+
+                    }
+
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens1valid = false;
 
                     }
 
@@ -675,6 +691,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens2valid = true;
 
+                        } else {
+
+                            $sens2valid = false;
+
                         }
 
                     } else {
@@ -683,7 +703,19 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens2valid = true;
 
+                        } else {
+
+                            $sens2valid = false;
+
                         }
+
+                    }
+
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens2valid = false;
 
                     }
 
@@ -698,6 +730,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens3valid = true;
 
+                        } else {
+
+                            $sens3valid = false;
+
                         }
 
                     } else {
@@ -706,11 +742,25 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens3valid = true;
 
+                        } else {
+
+                            $sens3valid = false;
+
                         }
 
                     }
 
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens3valid = false;
+
+                    }
+
                 }
+
+
 
                 if ($this->ReadPropertyInteger("SchwellwertMode") == 1) {
 
@@ -865,6 +915,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens1valid = true;
 
+                        } else {
+
+                            $sens1valid = false;
+
                         }
 
                     } else {
@@ -873,7 +927,19 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens1valid = true;
 
+                        } else {
+
+                            $sens1valid = false;
+
                         }
+
+                    }
+
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens1valid = false;
 
                     }
 
@@ -888,6 +954,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens2valid = true;
 
+                        } else {
+
+                            $sens2valid = false;
+
                         }
 
                     } else {
@@ -896,7 +966,19 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens2valid = true;
 
+                        } else {
+
+                            $sens2valid = false;
+
                         }
+
+                    }
+
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens2valid = false;
 
                     }
 
@@ -911,6 +993,10 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens3valid = true;
 
+                        } else {
+
+                            $sens3valid = false;
+
                         }
 
                     } else {
@@ -919,7 +1005,19 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sens3valid = true;
 
+                        } else {
+
+                            $sens3valid = false;
+
                         }
+
+                    }
+
+                } else {
+
+                    if ($this->ReadPropertyInteger("SchwellwertMode") == 2) {
+
+                        $sens3valid = false;
 
                     }
 
