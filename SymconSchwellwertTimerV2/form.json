@@ -14,7 +14,12 @@
 			  { "label": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
-		{ "type": "CheckBox", "name": "sensor1drehen", "caption": "Wert drehen (nur bei Boolean)" },
+		{ "type": "Select", "name": "Sensor1Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
+		},
 	  { "type": "SelectVariable", "name": "Sensor2", "caption": "Sensor2" },
 	  { "type": "Select", "name": "Sensor2Profile", "caption": "Schwellwert Profil2",
 	  "options": [
@@ -27,7 +32,12 @@
 		{ "label": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
-		{ "type": "CheckBox", "name": "sensor2drehen", "caption": "Wert drehen (nur bei Boolean)" },
+		{ "type": "Select", "name": "Sensor2Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
+		},
 	  { "type": "SelectVariable", "name": "Sensor3", "caption": "Sensor3" },
 	  { "type": "Select", "name": "Sensor3Profile", "caption": "Schwellwert Profil3",
 	  "options": [
@@ -40,18 +50,17 @@
 		{ "label": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
-		{ "type": "CheckBox", "name": "sensor3drehen", "caption": "Wert drehen (nur bei Boolean)" },
+		{ "type": "Select", "name": "Sensor3Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
+		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",
 			"options": [
 					{ "label": "UND", "value": "1" },
 					{ "label": "ODER", "value": "2" }
 				]
 		},
-		{ "type": "Select", "name": "Mode", "caption": "Aktivierung",
-			"options": [
-					{ "label": "bei Überschreitung", "value": "1" },
-					{ "label": "bei Unterschreitung", "value": "2" }
-				]
-		}
 	]
   }
