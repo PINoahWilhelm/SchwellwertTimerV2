@@ -171,6 +171,10 @@ require(__DIR__ . "\\pimodule.php");
             $this->RegisterPropertyInteger("Sensor2", null);
             $this->RegisterPropertyInteger("Sensor3", null);
 
+            $this->RegisterPropertyBoolean("sensor1drehen", false);
+            $this->RegisterPropertyBoolean("sensor2drehen", false);
+            $this->RegisterPropertyBoolean("sensor3drehen", false);
+
             $this->RegisterPropertyInteger("BaseScript", null);
 
             $this->RegisterPropertyInteger("Sensor1Profile", 5);
@@ -625,6 +629,10 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
             $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
+            $sensor1drehen = $this->ReadPropertyInteger("sensor1drehen");
+            $sensor2drehen = $this->ReadPropertyInteger("sensor2drehen");
+            $sensor3drehen = $this->ReadPropertyInteger("sensor3drehen");
+
 
             if ($automatik) {
 
@@ -644,6 +652,16 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sensor1schwellwert = (int) $sensor1schwellwert;
                             $sensor1 = (int) $sensor1;
+
+                            if ($sensor1drehen) {
+
+                                if ($sensor1) {
+                                    $sensor1 = false;
+                                } else {
+                                    $sensor1 = true;
+                                }
+
+                            }
 
                             if ($sensor1schwellwert == $sensor1) {
                                 $sens1valid = true;
@@ -668,6 +686,16 @@ require(__DIR__ . "\\pimodule.php");
                             $sensor2schwellwert = (int) $sensor2schwellwert;
                             $sensor2 = (int) $sensor2;
 
+                            if ($sensor2drehen) {
+
+                                if ($sensor2) {
+                                    $sensor2 = false;
+                                } else {
+                                    $sensor2 = true;
+                                }
+
+                            }
+
                             if ($sensor2schwellwert == $sensor2) {
                                 $sens2valid = true;
                             }
@@ -688,6 +716,16 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sensor3schwellwert = (int) $sensor3schwellwert;
                             $sensor3 = (int) $sensor3;
+
+                            if ($sensor3drehen) {
+
+                                if ($sensor3) {
+                                    $sensor3 = false;
+                                } else {
+                                    $sensor3 = true;
+                                }
+
+                            }
 
                             if ($sensor3schwellwert == $sensor3) {
                                 $sens3valid = true;
@@ -747,8 +785,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert == $sensor1) {
-                            $sens1valid = true;
+                        if (gettype($sensor1schwellwert) == "boolean") {
+                            
+                            if ($sensor1drehen) {
+                                if ($sensor1) {
+                                    $sensor1 = false;
+                                } else {
+                                    $sensor1 = true;
+                                }
+                            }
+
+                            if ($sensor1schwellwert == $sensor1) {
+
+                                $sens1valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
@@ -759,8 +810,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
-                            $sens2valid = true;
+                        if (gettype($sensor2schwellwert) == "boolean") {
+                            
+                            if ($sensor2drehen) {
+                                if ($sensor2) {
+                                    $sensor2 = false;
+                                } else {
+                                    $sensor2 = true;
+                                }
+                            }
+
+                            if ($sensor2schwellwert == $sensor2) {
+
+                                $sens2valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
@@ -771,8 +835,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert == $sensor3) {
-                            $sens3valid = true;
+                        if (gettype($sensor3schwellwert) == "boolean") {
+                            
+                            if ($sensor3drehen) {
+                                if ($sensor3) {
+                                    $sensor3 = false;
+                                } else {
+                                    $sensor3 = true;
+                                }
+                            }
+
+                            if ($sensor3schwellwert == $sensor3) {
+
+                                $sens3valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
@@ -913,6 +990,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
+            $sensor1drehen = $this->ReadPropertyInteger("sensor1drehen");
+            $sensor2drehen = $this->ReadPropertyInteger("sensor2drehen");
+            $sensor3drehen = $this->ReadPropertyInteger("sensor3drehen");
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
@@ -937,6 +1017,16 @@ require(__DIR__ . "\\pimodule.php");
                             $sensor1schwellwert = (int) $sensor1schwellwert;
                             $sensor1 = (int) $sensor1;
 
+                            if ($sensor1drehen) {
+
+                                if ($sensor1) {
+                                    $sensor1 = false;
+                                } else {
+                                    $sensor1 = true;
+                                }
+
+                            }
+
                             if ($sensor1schwellwert == $sensor1) {
                                 $sens1valid = true;
                             }
@@ -960,6 +1050,16 @@ require(__DIR__ . "\\pimodule.php");
                             $sensor2schwellwert = (int) $sensor2schwellwert;
                             $sensor2 = (int) $sensor2;
 
+                            if ($sensor2drehen) {
+
+                                if ($sensor2) {
+                                    $sensor2 = false;
+                                } else {
+                                    $sensor2 = true;
+                                }
+
+                            }
+
                             if ($sensor2schwellwert == $sensor2) {
                                 $sens2valid = true;
                             }
@@ -980,6 +1080,16 @@ require(__DIR__ . "\\pimodule.php");
 
                             $sensor3schwellwert = (int) $sensor3schwellwert;
                             $sensor3 = (int) $sensor3;
+
+                            if ($sensor3drehen) {
+
+                                if ($sensor3) {
+                                    $sensor3 = false;
+                                } else {
+                                    $sensor3 = true;
+                                }
+
+                            }
 
                             if ($sensor3schwellwert == $sensor3) {
                                 $sens3valid = true;
@@ -1039,8 +1149,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor1schwellwert != null && $sensor1 != null) {
 
-                        if (gettype($sensor1schwellwert) == "boolean" && $sensor1schwellwert == $sensor1) {
-                            $sens1valid = true;
+                        if (gettype($sensor1schwellwert) == "boolean") {
+                            
+                            if ($sensor1drehen) {
+                                if ($sensor1) {
+                                    $sensor1 = false;
+                                } else {
+                                    $sensor1 = true;
+                                }
+                            }
+
+                            if ($sensor1schwellwert == $sensor1) {
+
+                                $sens1valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor1schwellwert) != "boolean" && $sensor1schwellwert <= $sensor1) {
@@ -1051,8 +1174,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor2schwellwert != null && $sensor2 != null) {
 
-                        if (gettype($sensor2schwellwert) == "boolean" && $sensor2schwellwert == $sensor2) {
-                            $sens2valid = true;
+                        if (gettype($sensor2schwellwert) == "boolean") {
+                            
+                            if ($sensor2drehen) {
+                                if ($sensor2) {
+                                    $sensor2 = false;
+                                } else {
+                                    $sensor2 = true;
+                                }
+                            }
+
+                            if ($sensor2schwellwert == $sensor2) {
+
+                                $sens2valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor2schwellwert) != "boolean" && $sensor2schwellwert <= $sensor2) {
@@ -1063,8 +1199,21 @@ require(__DIR__ . "\\pimodule.php");
 
                     if ($sensor3schwellwert != null && $sensor3 != null) {
 
-                        if (gettype($sensor3schwellwert) == "boolean" && $sensor3schwellwert == $sensor3) {
-                            $sens3valid = true;
+                        if (gettype($sensor3schwellwert) == "boolean") {
+                            
+                            if ($sensor3drehen) {
+                                if ($sensor3) {
+                                    $sensor3 = false;
+                                } else {
+                                    $sensor3 = true;
+                                }
+                            }
+
+                            if ($sensor3schwellwert == $sensor3) {
+
+                                $sens3valid = true;
+
+                            }
                         }
 
                         if (gettype($sensor3schwellwert) != "boolean" && $sensor3schwellwert <= $sensor3) {
