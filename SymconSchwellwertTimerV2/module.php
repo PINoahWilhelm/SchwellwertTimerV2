@@ -627,9 +627,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
             $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1mode = $this->ReadPropertyInteger("sensor1mode");
-            $sensor2mode = $this->ReadPropertyInteger("sensor2mode");
-            $sensor3mode = $this->ReadPropertyInteger("sensor3mode");
+            $Sensor1Mode = $this->ReadPropertyInteger("Sensor1Mode");
+            $Sensor2Mode = $this->ReadPropertyInteger("Sensor2Mode");
+            $Sensor3Mode = $this->ReadPropertyInteger("Sensor3Mode");
 
             $sensor1varType = $this->searchObjectByName("Schwellwert 1");
             $sensor2varType = $this->searchObjectByName("Schwellwert 2");
@@ -836,9 +836,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1mode = $this->ReadPropertyInteger("sensor1mode");
-            $sensor2mode = $this->ReadPropertyInteger("sensor2mode");
-            $sensor3mode = $this->ReadPropertyInteger("sensor3mode");
+            $Sensor1Mode = $this->ReadPropertyInteger("Sensor1Mode");
+            $Sensor2Mode = $this->ReadPropertyInteger("Sensor2Mode");
+            $Sensor3Mode = $this->ReadPropertyInteger("Sensor3Mode");
 
             
 
