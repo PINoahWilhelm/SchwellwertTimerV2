@@ -643,7 +643,7 @@ require(__DIR__ . "\\pimodule.php");
                 $sens2valid = true;
                 $sens3valid = true;
 
-                if (($sensor1schwellwert != null && $sensor1 != null) || $sensor1vartype == 0) {
+                if (($sensor1schwellwert != null && $sensor1 != null) || $sensor1varType == 0) {
 
                     // Bei Überschreitung
                     if ($Sensor1Mode == 1) {
@@ -886,9 +886,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 1"));
-            $sensor2vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
-            $sensor3vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
+            $sensor1varType = $this->getVariableType($this->searchObjectByName("Schwellwert 1"));
+            $sensor2varType = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
+            $sensor3varType = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
             $Sensor1Mode = $this->ReadPropertyInteger("Sensor1Mode");
             $Sensor2Mode = $this->ReadPropertyInteger("Sensor2Mode");
@@ -906,11 +906,11 @@ require(__DIR__ . "\\pimodule.php");
 
                 $newStatus = false;
 
-                $sens1valid = false;
-                $sens2valid = false;
-                $sens3valid = false;
+                $sens1valid = true;
+                $sens2valid = true;
+                $sens3valid = true;
 
-                if (($sensor1schwellwert != null && $sensor1 != null) || $sensor1type == 0) {
+                if (($sensor1schwellwert != null && $sensor1 != null) || $sensor1varType == 0) {
 
                     // Bei Überschreitung
                     if ($Sensor1Mode == 1) {
@@ -949,7 +949,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                if ($sensor2schwellwert != null && $sensor2 != null) {
+                if (($sensor2schwellwert != null && $sensor2 != null) || $sensor2varType == 0) {
 
                     // Bei Überschreitung
                     if ($Sensor2Mode == 1) {
@@ -988,7 +988,7 @@ require(__DIR__ . "\\pimodule.php");
 
                 }
 
-                if ($sensor3schwellwert != null && $sensor3 != null) {
+                if (($sensor3schwellwert != null && $sensor3 != null) || $sensor3varType == 0) {
 
                     // Bei Überschreitung
                     if ($Sensor3Mode == 1) {
@@ -1026,6 +1026,7 @@ require(__DIR__ . "\\pimodule.php");
                     }
 
                 }
+
 
                 if ($this->ReadPropertyInteger("SchwellwertMode") == 1) {
 
