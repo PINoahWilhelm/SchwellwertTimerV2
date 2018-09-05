@@ -171,10 +171,6 @@ require(__DIR__ . "\\pimodule.php");
             $this->RegisterPropertyInteger("Sensor2", null);
             $this->RegisterPropertyInteger("Sensor3", null);
 
-            $this->RegisterPropertyBoolean("sensor1drehen", false);
-            $this->RegisterPropertyBoolean("sensor2drehen", false);
-            $this->RegisterPropertyBoolean("sensor3drehen", false);
-
             $this->RegisterPropertyInteger("BaseScript", null);
 
             $this->RegisterPropertyInteger("Sensor1Profile", 5);
@@ -183,7 +179,9 @@ require(__DIR__ . "\\pimodule.php");
 
             $this->RegisterPropertyInteger("SchwellwertMode", 1);
 
-            $this->RegisterPropertyInteger(, 1);
+            $this->RegisterPropertyInteger("Sensor1Mode", 1);
+            $this->RegisterPropertyInteger("Sensor2Mode", 1);
+            $this->RegisterPropertyInteger("Sensor3Mode", 1);
 
         }
 
