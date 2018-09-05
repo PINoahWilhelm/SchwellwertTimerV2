@@ -629,9 +629,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
             $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1drehen = $this->ReadPropertyInteger("sensor1drehen");
-            $sensor2drehen = $this->ReadPropertyInteger("sensor2drehen");
-            $sensor3drehen = $this->ReadPropertyInteger("sensor3drehen");
+            $sensor1drehen = $this->ReadPropertyBoolean("sensor1drehen");
+            $sensor2drehen = $this->ReadPropertyBoolean("sensor2drehen");
+            $sensor3drehen = $this->ReadPropertyBoolean("sensor3drehen");
 
 
             if ($automatik) {
@@ -990,9 +990,9 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
-            $sensor1drehen = $this->ReadPropertyInteger("sensor1drehen");
-            $sensor2drehen = $this->ReadPropertyInteger("sensor2drehen");
-            $sensor3drehen = $this->ReadPropertyInteger("sensor3drehen");
+            $sensor1drehen = $this->ReadPropertyBoolean("sensor1drehen");
+            $sensor2drehen = $this->ReadPropertyBoolean("sensor2drehen");
+            $sensor3drehen = $this->ReadPropertyBoolean("sensor3drehen");
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
