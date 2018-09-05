@@ -50,6 +50,12 @@
 		{ "label": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
+		{ "type": "Select", "name": "Sensor3Mode", "caption": "Aktivierung",
+			"options": [
+					{ "label": "bei Überschreitung", "value": "1" },
+					{ "label": "bei Unterschreitung", "value": "2" }
+				]
+		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",
 			"options": [
 					{ "label": "UND", "value": "1" },
