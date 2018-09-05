@@ -1953,6 +1953,23 @@ abstract class PISymconModule extends IPSModule {
 
     }
 
+    protected function getVariableType ($id) {
+
+        if ($this->doesExist($id)) {
+
+            if ($this->isVariable($id)) {
+
+                $var = IPS_GetVariable($id);
+                return $var['VariableType'];
+
+            }
+
+        } else {
+            return "none";
+        }
+
+    }
+
     protected function hideAll ($exclude = null, $parent = null) {
 
         if ($parent == null || $parent == null) {

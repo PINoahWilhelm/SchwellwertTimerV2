@@ -646,7 +646,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($sensor1schwellwert != null && $sensor1 != null) {
 
                     // Bei Überschreitung
-                    if ($sensor1type == 1) {
+                    if ($Sensor1Mode == 1) {
 
                         if ($sensor1schwellwert <= $sensor1) {
 
@@ -685,7 +685,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($sensor2schwellwert != null && $sensor2 != null) {
 
                     // Bei Überschreitung
-                    if ($sensor2type == 1) {
+                    if ($Sensor2Mode == 1) {
 
                         if ($sensor2schwellwert <= $sensor2) {
 
@@ -724,7 +724,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($sensor3schwellwert != null && $sensor3 != null) {
 
                     // Bei Überschreitung
-                    if ($sensor3type == 1) {
+                    if ($Sensor3Mode == 1) {
 
                         if ($sensor3schwellwert <= $sensor3) {
 
@@ -886,13 +886,17 @@ require(__DIR__ . "\\pimodule.php");
             $sensor2schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 2"));
             $sensor3schwellwert = $this->getValueIfPossible($this->searchObjectByName("Schwellwert 3"));
 
+            $sensor1vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 1"));
+            $sensor2vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
+            $sensor3vartype = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
+
             $Sensor1Mode = $this->ReadPropertyInteger("Sensor1Mode");
             $Sensor2Mode = $this->ReadPropertyInteger("Sensor2Mode");
             $Sensor3Mode = $this->ReadPropertyInteger("Sensor3Mode");
 
-            $sensor1type = $this->getVariableType($this->searchObjectByName("Schwellwert 1"));
-            $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
-            $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
+            // $sensor1type = $this->ReadPropertyInteger();
+            // $sensor2type = $this->getVariableType($this->searchObjectByName("Schwellwert 2"));
+            // $sensor3type = $this->getVariableType($this->searchObjectByName("Schwellwert 3"));
 
             $trailingActive = $this->getValueIfPossible($this->searchObjectByName("Nachlauf aktiv"));
 
@@ -906,10 +910,10 @@ require(__DIR__ . "\\pimodule.php");
                 $sens2valid = false;
                 $sens3valid = false;
 
-                if ($sensor1schwellwert != null && $sensor1 != null) {
+                if (($sensor1schwellwert != null && $sensor1 != null) || $sensor1type == 0) {
 
                     // Bei Überschreitung
-                    if ($sensor1type == 1) {
+                    if ($Sensor1Mode == 1) {
 
                         if ($sensor1schwellwert <= $sensor1) {
 
@@ -948,7 +952,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($sensor2schwellwert != null && $sensor2 != null) {
 
                     // Bei Überschreitung
-                    if ($sensor2type == 1) {
+                    if ($Sensor2Mode == 1) {
 
                         if ($sensor2schwellwert <= $sensor2) {
 
@@ -987,7 +991,7 @@ require(__DIR__ . "\\pimodule.php");
                 if ($sensor3schwellwert != null && $sensor3 != null) {
 
                     // Bei Überschreitung
-                    if ($sensor3type == 1) {
+                    if ($Sensor3Mode == 1) {
 
                         if ($sensor3schwellwert <= $sensor3) {
 
