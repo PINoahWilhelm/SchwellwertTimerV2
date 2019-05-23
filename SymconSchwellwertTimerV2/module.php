@@ -1,5 +1,5 @@
 <?
-require(__DIR__ . "\\pimodule.php");
+require(__DIR__ . "/pimodule.php");
 
     // Klassendefinition
     class SymconSchwellwertTimerV2 extends PISymconModule {
