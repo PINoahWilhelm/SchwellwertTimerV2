@@ -3,7 +3,7 @@
 	[
 	  { "type": "Label", "label": "Überwachte Objekte" },
 	  { "type": "SelectVariable", "name": "Sensor1", "caption": "Sensor1" },
-	  { "type": "Select", "name": "Sensor1Profile", "caption": "Schwellwert Profil1", "default":"5",
+	  { "type": "Select", "name": "Sensor1Profile", "caption": "Schwellwert Profil1", "default":5,
 	  "options": [
 			  { "caption": "Grad (°C)", "value": "1" },
 			  { "caption": "Grad (°F)", "value": "2" },
