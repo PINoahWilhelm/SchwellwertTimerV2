@@ -5,61 +5,61 @@
 	  { "type": "SelectVariable", "name": "Sensor1", "caption": "Sensor1" },
 	  { "type": "Select", "name": "Sensor1Profile", "caption": "Schwellwert Profil1", "default":"5",
 	  "options": [
-			  { "label": "Grad (°C)", "value": "1" },
-			  { "label": "Grad (°F)", "value": "2" },
-			  { "label": "Lux (lx)", "value": "3" },
-			  { "label": "Watt (W)", "value": "4" },
-			  { "label": "Windgeschwindigkeit (m/s)", "value": "5" }, 
-			  { "label": "Prozent (%)", "value": "6" },
-			  { "label": "Profil des Sensors verwenden", "value": "7" }
+			  { "caption": "Grad (°C)", "value": "1" },
+			  { "caption": "Grad (°F)", "value": "2" },
+			  { "caption": "Lux (lx)", "value": "3" },
+			  { "caption": "Watt (W)", "value": "4" },
+			  { "caption": "Windgeschwindigkeit (m/s)", "value": "5" }, 
+			  { "caption": "Prozent (%)", "value": "6" },
+			  { "caption": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
 		{ "type": "Select", "name": "Sensor1Mode", "caption": "Aktivierung",
 			"options": [
-					{ "label": "bei Überschreitung", "value": "1" },
-					{ "label": "bei Unterschreitung", "value": "2" }
+					{ "caption": "bei Überschreitung", "value": "1" },
+					{ "caption": "bei Unterschreitung", "value": "2" }
 				]
 		},
 	  { "type": "SelectVariable", "name": "Sensor2", "caption": "Sensor2" },
 	  { "type": "Select", "name": "Sensor2Profile", "caption": "Schwellwert Profil2",
 	  "options": [
-		{ "label": "Grad (°C)", "value": "1" },
-		{ "label": "Grad (°F)", "value": "2" },
-		{ "label": "Lux (lx)", "value": "3" },
-		{ "label": "Watt (W)", "value": "4" },
-		{ "label": "Windgeschwindigkeit (m/s)", "value": "5" },
-		{ "label": "Prozent (%)", "value": "6" },
-		{ "label": "Profil des Sensors verwenden", "value": "7" }
+		{ "caption": "Grad (°C)", "value": "1" },
+		{ "caption": "Grad (°F)", "value": "2" },
+		{ "caption": "Lux (lx)", "value": "3" },
+		{ "caption": "Watt (W)", "value": "4" },
+		{ "caption": "Windgeschwindigkeit (m/s)", "value": "5" },
+		{ "caption": "Prozent (%)", "value": "6" },
+		{ "caption": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
 		{ "type": "Select", "name": "Sensor2Mode", "caption": "Aktivierung",
 			"options": [
-					{ "label": "bei Überschreitung", "value": "1" },
-					{ "label": "bei Unterschreitung", "value": "2" }
+					{ "caption": "bei Überschreitung", "value": "1" },
+					{ "caption": "bei Unterschreitung", "value": "2" }
 				]
 		},
 	  { "type": "SelectVariable", "name": "Sensor3", "caption": "Sensor3" },
 	  { "type": "Select", "name": "Sensor3Profile", "caption": "Schwellwert Profil3",
 	  "options": [
-		{ "label": "Grad (°C)", "value": "1" },
-		{ "label": "Grad (°F)", "value": "2" },
-		{ "label": "Lux (lx)", "value": "3" },
-		{ "label": "Watt (W)", "value": "4" },
-		{ "label": "Windgeschwindigkeit (m/s)", "value": "5" },
-		{ "label": "Prozent (%)", "value": "6" },
-		{ "label": "Profil des Sensors verwenden", "value": "7" }
+		{ "caption": "Grad (°C)", "value": "1" },
+		{ "caption": "Grad (°F)", "value": "2" },
+		{ "caption": "Lux (lx)", "value": "3" },
+		{ "caption": "Watt (W)", "value": "4" },
+		{ "caption": "Windgeschwindigkeit (m/s)", "value": "5" },
+		{ "caption": "Prozent (%)", "value": "6" },
+		{ "caption": "Profil des Sensors verwenden", "value": "7" }
 		  ]
 		},
 		{ "type": "Select", "name": "Sensor3Mode", "caption": "Aktivierung",
 			"options": [
-					{ "label": "bei Überschreitung", "value": "1" },
-					{ "label": "bei Unterschreitung", "value": "2" }
+					{ "caption": "bei Überschreitung", "value": "1" },
+					{ "caption": "bei Unterschreitung", "value": "2" }
 				]
 		},
 		{ "type": "Select", "name": "SchwellwertMode", "caption": "Kombination",
 			"options": [
-					{ "label": "UND", "value": "1" },
-					{ "label": "ODER", "value": "2" }
+					{ "caption": "UND", "value": "1" },
+					{ "caption": "ODER", "value": "2" }
 				]
 		}
 	]
